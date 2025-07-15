@@ -68,7 +68,7 @@ npm run deploy
 - Save 클릭
 
 5. **배포 확인**
-- 5-10분 후 `https://mbaas-inc.github.io/service-manual/`에서 확인
+- 5-10분 후 `[매뉴얼 사이트 이동](https://mbaas-inc.github.io/service-manual/)`에서 확인
 
 ## 📁 프로젝트 구조
 
@@ -121,76 +121,10 @@ npm run deploy
 - 모든 개발 작업은 `main` 브랜치에서 진행
 - `npm run deploy` 명령어가 자동으로 `gh-pages` 브랜치 관리
 
-
-## 🐛 문제 해결
-
-### 배포 관련 문제
-
-**❌ 404 에러**
-```bash
-# package.json의 homepage 확인
-"homepage": "https://mbaas-inc.github.io/service-manual/"
-```
-
-**❌ 빈 페이지 표시**
-```bash
-# 캐시 삭제 후 재배포
-npm run build
-npm run deploy
-```
-
-**❌ CSS 미적용**
-- 상대 경로 문제 가능성
-- 브라우저 캐시 삭제 후 재확인
-
-### 개발 환경 문제
-
-**❌ npm start 실행 안됨**
-```bash
-# 의존성 재설치
-rm -rf node_modules package-lock.json
-npm install
-```
-
-**❌ 포트 충돌**
-```bash
-# 다른 포트로 실행
-npm start -- --port 3001
-```
-
-## 📞 지원 및 기여
-
-### 버그 리포트
-- GitHub Issues를 통해 버그 신고
-- 재현 가능한 단계와 스크린샷 첨부
-
-### 기여 방법
-1. Fork 후 feature 브랜치 생성
-2. 변경사항 구현 및 테스트
-3. Pull Request 생성
-
-### 연락처
-- **이메일**: [이메일 주소]
-- **GitHub**: [GitHub 프로필]
-
 ## 📄 라이선스
 
 이 프로젝트는 MIT 라이선스를 따릅니다.
 
-## 🔄 업데이트 로그
-
-### v1.0.0 (2024-01-XX)
-- ✅ 초기 React 프로젝트 설정
-- ✅ 반응형 레이아웃 구현
-- ✅ 사이드바 네비게이션 구현
-- ✅ 단계별 가이드 콘텐츠 추가
-- ✅ GitHub Pages 배포 설정
-
-### 향후 계획
-- 🔍 검색 기능 추가
-- 🌙 다크 모드 구현
-- 📄 인쇄 최적화
-- 🔗 페이지 라우팅 구현
 
 ---
 

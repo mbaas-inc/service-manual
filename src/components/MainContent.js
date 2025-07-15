@@ -1,6 +1,71 @@
 import React from 'react';
+import QuickStartPage from '../pages/QuickStartPage';
+import MemberManagementPage from '../pages/MemberManagementPage';
+import MessagingPage from '../pages/MessagingPage';
+import DefaultPage from '../pages/DefaultPage';
 
 function MainContent({ activeSection }) {
+  // 페이지 매핑 객체
+  const pageMapping = {
+    // 시작하기
+    'quick-start': { component: QuickStartPage, title: '빠른 시작 가이드', breadcrumb: '빠른 시작 가이드' },
+    'account-setup': { component: DefaultPage, title: '계정 생성하기', breadcrumb: '계정 생성하기', description: 'BaaS 계정을 생성하고 첫 번째 프로젝트를 시작하는 방법을 안내합니다.' },
+    'dashboard-overview': { component: DefaultPage, title: '대시보드 둘러보기', breadcrumb: '대시보드 둘러보기', description: '관리자 대시보드의 각 기능과 사용법을 상세히 설명합니다.' },
+    
+    // 회원 관리
+    'member-overview': { component: MemberManagementPage, title: '회원 관리 개요', breadcrumb: '회원 관리 개요' },
+    'member-registration': { component: DefaultPage, title: '회원 가입 설정', breadcrumb: '회원 가입 설정', description: '사용자 회원가입 프로세스를 설정하고 관리하는 방법을 안내합니다.' },
+    'member-list': { component: DefaultPage, title: '회원 목록 보기', breadcrumb: '회원 목록 보기', description: '가입한 회원들의 목록을 확인하고 관리하는 방법을 설명합니다.' },
+    'member-profile': { component: DefaultPage, title: '회원 정보 관리', breadcrumb: '회원 정보 관리', description: '개별 회원의 정보를 수정하고 관리하는 방법을 안내합니다.' },
+    'member-permissions': { component: DefaultPage, title: '권한 설정하기', breadcrumb: '권한 설정하기', description: '회원별 권한 등급을 설정하고 관리하는 방법을 설명합니다.' },
+    'member-export': { component: DefaultPage, title: '회원 데이터 내보내기', breadcrumb: '회원 데이터 내보내기', description: '회원 정보를 CSV나 Excel 파일로 내보내는 방법을 안내합니다.' },
+    
+    // 메시지 발송
+    'message-overview': { component: MessagingPage, title: '메시지 서비스 개요', breadcrumb: '메시지 서비스 개요' },
+    'send-email': { component: DefaultPage, title: '이메일 보내기', breadcrumb: '이메일 보내기', description: '회원들에게 이메일을 발송하는 방법과 모범 사례를 안내합니다.' },
+    'send-sms': { component: DefaultPage, title: 'SMS 발송하기', breadcrumb: 'SMS 발송하기', description: 'SMS 메시지를 발송하고 관리하는 방법을 상세히 설명합니다.' },
+    'push-notifications': { component: DefaultPage, title: '푸시 알림 보내기', breadcrumb: '푸시 알림 보내기', description: '모바일 앱 사용자에게 푸시 알림을 보내는 방법을 안내합니다.' },
+    'message-templates': { component: DefaultPage, title: '메시지 템플릿 만들기', breadcrumb: '메시지 템플릿 만들기', description: '재사용 가능한 메시지 템플릿을 만들고 관리하는 방법을 설명합니다.' },
+    'bulk-messaging': { component: DefaultPage, title: '대량 메시지 발송', breadcrumb: '대량 메시지 발송', description: '많은 수의 회원에게 한 번에 메시지를 발송하는 방법을 안내합니다.' },
+    'message-history': { component: DefaultPage, title: '발송 내역 확인', breadcrumb: '발송 내역 확인', description: '발송한 메시지들의 결과와 통계를 확인하는 방법을 설명합니다.' },
+    
+    // 결제 관리
+    'payment-setup': { component: DefaultPage, title: '결제 시스템 설정', breadcrumb: '결제 시스템 설정', description: '온라인 결제 시스템을 설정하고 연동하는 방법을 안내합니다.' },
+    'payment-methods': { component: DefaultPage, title: '결제 수단 관리', breadcrumb: '결제 수단 관리', description: '다양한 결제 수단을 추가하고 관리하는 방법을 설명합니다.' },
+    'payment-history': { component: DefaultPage, title: '결제 내역 조회', breadcrumb: '결제 내역 조회', description: '결제 내역을 조회하고 분석하는 방법을 안내합니다.' },
+    'refund-management': { component: DefaultPage, title: '환불 처리하기', breadcrumb: '환불 처리하기', description: '고객의 환불 요청을 처리하고 관리하는 방법을 설명합니다.' },
+    'payment-reports': { component: DefaultPage, title: '결제 리포트 보기', breadcrumb: '결제 리포트 보기', description: '결제 관련 리포트를 생성하고 분석하는 방법을 안내합니다.' },
+    
+    // 콘텐츠 관리
+    'content-overview': { component: DefaultPage, title: '콘텐츠 관리 개요', breadcrumb: '콘텐츠 관리 개요', description: '앱 내 콘텐츠를 관리하는 전반적인 방법을 설명합니다.' },
+    'board-management': { component: DefaultPage, title: '게시판 만들기', breadcrumb: '게시판 만들기', description: '공지사항, 커뮤니티 등의 게시판을 만들고 관리하는 방법을 안내합니다.' },
+    'post-management': { component: DefaultPage, title: '게시글 관리하기', breadcrumb: '게시글 관리하기', description: '게시글을 작성, 수정, 삭제하고 관리하는 방법을 설명합니다.' },
+    'comment-moderation': { component: DefaultPage, title: '댓글 관리하기', breadcrumb: '댓글 관리하기', description: '댓글을 모니터링하고 관리하는 방법을 안내합니다.' },
+    'file-management': { component: DefaultPage, title: '파일 업로드 관리', breadcrumb: '파일 업로드 관리', description: '파일 업로드 기능을 설정하고 관리하는 방법을 설명합니다.' },
+    
+    // 통계 및 분석
+    'analytics-overview': { component: DefaultPage, title: '통계 대시보드', breadcrumb: '통계 대시보드', description: '서비스 이용 현황을 한눈에 볼 수 있는 대시보드 사용법을 안내합니다.' },
+    'user-analytics': { component: DefaultPage, title: '사용자 분석', breadcrumb: '사용자 분석', description: '사용자 행동과 패턴을 분석하는 방법을 설명합니다.' },
+    'usage-statistics': { component: DefaultPage, title: '사용량 통계', breadcrumb: '사용량 통계', description: '서비스 사용량 통계를 확인하고 분석하는 방법을 안내합니다.' },
+    'reports-export': { component: DefaultPage, title: '리포트 내보내기', breadcrumb: '리포트 내보내기', description: '분석 결과를 다양한 형태로 내보내는 방법을 설명합니다.' },
+    
+    // 설정
+    'general-settings': { component: DefaultPage, title: '일반 설정', breadcrumb: '일반 설정', description: '서비스의 기본적인 설정을 변경하고 관리하는 방법을 안내합니다.' },
+    'security-settings': { component: DefaultPage, title: '보안 설정', breadcrumb: '보안 설정', description: '계정 보안과 데이터 보호를 위한 설정 방법을 설명합니다.' },
+    'notification-settings': { component: DefaultPage, title: '알림 설정', breadcrumb: '알림 설정', description: '각종 알림을 설정하고 관리하는 방법을 안내합니다.' },
+    'billing-settings': { component: DefaultPage, title: '요금 및 결제 설정', breadcrumb: '요금 및 결제 설정', description: '요금제와 결제 방법을 설정하고 관리하는 방법을 설명합니다.' },
+    
+    // 도움말
+    'faq-common': { component: DefaultPage, title: '자주 묻는 질문', breadcrumb: '자주 묻는 질문', description: '사용자들이 자주 묻는 질문과 답변을 확인하세요.' },
+    'tutorials-video': { component: DefaultPage, title: '동영상 튜토리얼', breadcrumb: '동영상 튜토리얼', description: '기능별 동영상 튜토리얼을 통해 쉽게 배워보세요.' },
+    'support-contact': { component: DefaultPage, title: '고객 지원 문의', breadcrumb: '고객 지원 문의', description: '기술 지원팀에 문의하는 방법과 절차를 안내합니다.' },
+    'community': { component: DefaultPage, title: '사용자 커뮤니티', breadcrumb: '사용자 커뮤니티', description: '다른 사용자들과 정보를 공유하고 소통하는 커뮤니티를 이용하세요.' }
+  };
+
+  // 현재 활성 페이지 정보 가져오기
+  const currentPage = pageMapping[activeSection] || pageMapping['quick-start'];
+  const PageComponent = currentPage.component;
+
   return (
     <main className="main-content">
       {/* 브레드크럼 */}
@@ -9,297 +74,18 @@ function MainContent({ activeSection }) {
         <span className="separator">/</span>
         <a href="#user-guide">사용자 가이드</a>
         <span className="separator">/</span>
-        <span>빠른 시작 가이드</span>
+        <span>{currentPage.breadcrumb}</span>
       </nav>
 
-      {/* 메인 콘텐츠 */}
-      <section id="quick-start">
-        <h1>BaaS 빠른 시작 가이드</h1>
-        <p>개발 지식이 없어도 쉽게 따라할 수 있는 BaaS 사용법을 알려드립니다. 회원 관리부터 메시지 발송까지, 모든 기능을 단계별로 안내해드려요.</p>
-
-        <div className="alert alert-info">
-          <strong>💡 이 가이드로 배울 수 있는 것:</strong> 계정 생성 → 회원 관리 설정 → 메시지 발송 → 기본 운영 방법까지!
-        </div>
-
-        {/* 1단계: 계정 생성 */}
-        <div className="step-content">
-          <h2 className="step-title">
-            <span className="step-number">1</span>
-            계정 생성하고 시작하기
-          </h2>
-          
-          <div className="card">
-            <div className="card-title">BaaS 계정 만들기</div>
-            <p>가장 먼저 BaaS 서비스에 가입하고 프로젝트를 만들어야 합니다. 마치 블로그를 만드는 것처럼 간단해요!</p>
-            
-            <ul className="checklist">
-              <li><a href="https://test2.aiapp.help" target="_blank" rel="noopener noreferrer">BaaS 웹사이트</a>에 접속하기</li>
-              <li>이메일과 비밀번호로 회원가입</li>
-              <li>이메일 인증 완료하기</li>
-              <li>첫 번째 프로젝트 만들기 (예: "우리 카페 앱")</li>
-            </ul>
-            
-            <div className="screenshot">
-              {/* 이미지가 있다면 여기에 추가 */}
-              <p>스크린샷 영역</p>
-            </div>
-            
-            <button className="btn btn-primary">계정 만들러 가기 →</button>
-          </div>
-        </div>
-
-        {/* 2단계: 대시보드 둘러보기 */}
-        <div className="step-content">
-          <h2 className="step-title">
-            <span className="step-number">2</span>
-            대시보드 둘러보기
-          </h2>
-          
-          <div className="card">
-            <div className="card-title">관리자 화면 이해하기</div>
-            <p>로그인하면 보이는 대시보드는 여러분의 '관리자 사무실'이에요. 모든 기능을 여기서 관리할 수 있습니다.</p>
-            
-            <div className="grid-container">
-              <div className="card">
-                <div className="card-title">📊 통계 한눈에 보기</div>
-                <p>오늘 가입한 회원 수, 발송한 메시지 수 등을 한눈에 확인할 수 있어요.</p>
-              </div>
-              
-              <div className="card">
-                <div className="card-title">👥 회원 관리</div>
-                <p>가입한 회원들의 정보를 보고, 메시지를 보내거나 권한을 설정할 수 있어요.</p>
-              </div>
-              
-              <div className="card">
-                <div className="card-title">📨 메시지 센터</div>
-                <p>이메일, SMS, 푸시 알림을 쉽게 보낼 수 있는 곳이에요.</p>
-              </div>
-              
-              <div className="card">
-                <div className="card-title">⚙️ 설정</div>
-                <p>앱의 이름, 로고, 로그인 방식 등을 설정하는 곳이에요.</p>
-              </div>
-            </div>
-            
-            <div className="alert alert-success">
-              <strong>💡 팁:</strong> 처음에는 왼쪽 메뉴를 하나씩 클릭해보면서 어떤 기능들이 있는지 둘러보세요!
-            </div>
-          </div>
-        </div>
-
-        {/* 3단계: 회원 가입 설정 */}
-        <div className="step-content">
-          <h2 className="step-title">
-            <span className="step-number">3</span>
-            회원 가입 설정하기
-          </h2>
-          
-          <div className="card">
-            <div className="card-title">사용자가 어떻게 가입할지 정하기</div>
-            <p>카페에서 멤버십 카드를 만드는 것처럼, 여러분의 앱에서도 회원가입 방식을 정해야 해요.</p>
-            
-            <h3>🔐 로그인 방식 선택하기</h3>
-            <div className="grid-container">
-              <div className="card">
-                <div className="card-title">이메일 로그인</div>
-                <p>가장 기본적인 방식이에요. 이메일과 비밀번호로 가입하고 로그인해요.</p>
-                <div className="alert alert-info">✅ 추천: 처음에는 이것만 사용해도 충분해요!</div>
-              </div>
-              
-              <div className="card">
-                <div className="card-title">소셜 로그인</div>
-                <p>카카오, 네이버, 구글 계정으로 간편하게 가입할 수 있어요.</p>
-                <div className="alert alert-warning">나중에 필요할 때 추가하는 것이 좋아요.</div>
-              </div>
-            </div>
-            
-            <h3>📝 가입 시 받을 정보 정하기</h3>
-            <div className="checklist">
-              <li>이메일 주소 (필수)</li>
-              <li>이름 또는 닉네임 (필수)</li>
-              <li>전화번호 (선택)</li>
-              <li>생년월일 (선택)</li>
-              <li>성별 (선택)</li>
-            </div>
-            
-            <div className="alert alert-warning">
-              <strong>💡 중요:</strong> 처음에는 꼭 필요한 정보만 받으세요. 정보를 많이 요구할수록 가입을 포기하는 사람이 늘어나요.
-            </div>
-          </div>
-        </div>
-
-        {/* 4단계: 첫 번째 메시지 보내기 */}
-        <div className="step-content">
-          <h2 className="step-title">
-            <span className="step-number">4</span>
-            첫 번째 메시지 보내기
-          </h2>
-          
-          <div className="card">
-            <div className="card-title">환영 메시지 보내보기</div>
-            <p>새로 가입한 회원에게 환영 메시지를 보내보세요. 마치 카페에서 "어서오세요!"라고 인사하는 것과 같아요.</p>
-            
-            <h3>📧 이메일 보내기</h3>
-            <div className="card">
-              <p><strong>1. 메시지 센터로 이동</strong></p>
-              <p>왼쪽 메뉴에서 "메시지 발송" → "이메일 보내기"를 클릭하세요.</p>
-              
-              <p><strong>2. 받는 사람 선택</strong></p>
-              <div className="checklist">
-                <li>특정 회원 선택하기</li>
-                <li>전체 회원에게 보내기</li>
-                <li>조건에 맞는 회원들에게만 보내기</li>
-              </div>
-              
-              <p><strong>3. 메시지 내용 작성</strong></p>
-              <div className="quotation">
-                <strong>제목:</strong> 환영합니다! 우리 카페에 오신 것을 환영해요 ☕<br />
-                <strong>내용:</strong><br />
-                안녕하세요 [이름]님!<br /><br />
-                우리 카페 앱에 가입해주셔서 감사합니다.<br />
-                앞으로 맛있는 커피와 다양한 혜택을 즐겨보세요!<br /><br />
-                궁금한 점이 있으시면 언제든 문의해주세요.<br /><br />
-                감사합니다! 🎉
-              </div>
-              
-              <p><strong>4. 미리보기 후 발송</strong></p>
-              <p>"미리보기" 버튼으로 확인한 후 "발송하기" 버튼을 누르면 끝!</p>
-            </div>
-            
-            <div className="alert alert-success">
-              <strong>🎉 축하해요!</strong> 첫 번째 메시지를 성공적으로 보냈어요. 발송 내역에서 결과를 확인할 수 있어요.
-            </div>
-          </div>
-        </div>
-
-        {/* 5단계: 회원 관리하기 */}
-        <div className="step-content">
-          <h2 className="step-title">
-            <span className="step-number">5</span>
-            회원 관리하기
-          </h2>
-          
-          <div className="card">
-            <div className="card-title">회원 정보 확인하고 관리하기</div>
-            <p>가입한 회원들의 정보를 확인하고, 필요에 따라 관리할 수 있어요.</p>
-            
-            <h3>👥 회원 목록 보기</h3>
-            <div className="checklist">
-              <li>전체 회원 수 확인하기</li>
-              <li>최근 가입한 회원 보기</li>
-              <li>회원별 활동 내역 확인하기</li>
-              <li>이메일, 이름으로 회원 검색하기</li>
-            </div>
-            
-            <h3>⚙️ 회원별 관리 기능</h3>
-            <div className="grid-container">
-              <div className="card">
-                <div className="card-title">정보 수정</div>
-                <p>회원이 요청하면 이름, 이메일 등의 정보를 수정할 수 있어요.</p>
-              </div>
-              
-              <div className="card">
-                <div className="card-title">권한 관리</div>
-                <p>일반 회원, VIP 회원, 관리자 등의 등급을 설정할 수 있어요.</p>
-              </div>
-              
-              <div className="card">
-                <div className="card-title">개별 메시지</div>
-                <p>특정 회원에게만 개별 메시지를 보낼 수 있어요.</p>
-              </div>
-              
-              <div className="card">
-                <div className="card-title">탈퇴 처리</div>
-                <p>회원이 탈퇴를 요청하면 안전하게 처리할 수 있어요.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 다음 단계 섹션 */}
-      <section id="next-steps">
-        <h2>🎉 축하합니다! 이제 BaaS 기본 사용법을 알게 되었어요</h2>
-        <p>기본적인 회원 관리와 메시지 발송 기능을 익혔으니, 이제 더 다양한 기능들을 살펴보세요.</p>
-
-        <div className="grid-container">
-          <div className="card">
-            <div className="card-title">💳 결제 시스템 설정</div>
-            <p>온라인 결제를 받을 수 있도록 결제 시스템을 연결해보세요.</p>
-            <button className="btn btn-primary">결제 설정 가이드 →</button>
-          </div>
-          
-          <div className="card">
-            <div className="card-title">📝 게시판 만들기</div>
-            <p>공지사항, 이벤트 등을 올릴 수 있는 게시판을 만들어보세요.</p>
-            <button className="btn btn-primary">게시판 가이드 →</button>
-          </div>
-          
-          <div className="card">
-            <div className="card-title">📊 통계 보는 법</div>
-            <p>회원 가입 추이, 메시지 열람률 등의 통계를 확인하는 방법을 배워보세요.</p>
-            <button className="btn btn-primary">통계 가이드 →</button>
-          </div>
-          
-          <div className="card">
-            <div className="card-title">🔔 자동 메시지 설정</div>
-            <p>생일 축하, 이벤트 알림 등을 자동으로 보내는 방법을 배워보세요.</p>
-            <button className="btn btn-primary">자동화 가이드 →</button>
-          </div>
-        </div>
-      </section>
-
-      {/* 자주 묻는 질문 */}
-      <section id="common-questions">
-        <h2>💭 자주 묻는 질문</h2>
-        <p>BaaS를 처음 사용하시는 분들이 궁금해하는 내용들을 모았어요.</p>
-
-        <div className="card">
-          <div className="card-title">Q. 메시지가 스팸으로 분류되는 것 같아요.</div>
-          <p><strong>A.</strong> 제목에 "무료", "할인" 같은 스팸 키워드를 피하고, 발송자 이름을 명확히 설정하세요. 또한 한 번에 너무 많은 메시지를 보내지 마세요.</p>
-        </div>
-
-        <div className="card">
-          <div className="card-title">Q. 회원 수가 늘어나면 요금이 더 나오나요?</div>
-          <p><strong>A.</strong> 회원 수 자체로는 추가 요금이 발생하지 않아요. 하지만 메시지 발송량, 저장 용량 등에 따라 요금이 달라질 수 있어요. "요금 계산기"에서 미리 확인해보세요.</p>
-        </div>
-
-        <div className="card">
-          <div className="card-title">Q. 모바일에서도 관리할 수 있나요?</div>
-          <p><strong>A.</strong> 네! 모바일 브라우저에서도 모든 기능을 사용할 수 있어요.</p>
-        </div>
-      </section>
-
-      {/* 추가 도움말 */}
-      <section id="additional-help">
-        <h2>🚩 더 자세한 도움이 필요하신가요?</h2>
-        <p>혼자서 해결하기 어려운 문제가 있으시면 언제든 도움을 받으실 수 있어요.</p>
-
-        <div className="grid-container">                      
-          <div className="card">
-            <div className="card-title">📚 전체 API 문서</div>
-            <p>모든 API의 상세한 사용법과 예제 코드를 확인하세요</p>
-            <button className="btn btn-primary">API 문서 보기</button>
-          </div>
-
-          <div className="card">
-            <div className="card-title">🛠️ 샘플 프로젝트</div>
-            <p>실제 작동하는 예제 코드를 다운로드하여 참고하세요.</p>
-            <button className="btn btn-primary">예제 다운로드</button>
-          </div>
-
-          <div className="card">
-            <div className="card-title">💡 도움이 필요하신가요?</div>
-            <p><a href="#support" className="link-primary">기술 지원팀에 문의하기</a> 또는 support@mbaas.com으로 연락주세요.</p>
-            <button className="btn btn-primary">문의하기</button>
-          </div>
-        </div>
-
-        <div className="alert alert-info">
-          <strong>💡 빠른 도움 팁:</strong> 
-          문의하실 때 "어떤 페이지에서" "무엇을 하려고 했는데" "어떤 문제가 발생했는지" 자세히 알려주시면 더 빠르게 도와드릴 수 있어요!
-        </div>
-      </section>
+      {/* 동적 페이지 컴포넌트 렌더링 */}
+      {currentPage.component === DefaultPage ? (
+        <PageComponent 
+          title={currentPage.title}
+          description={currentPage.description}
+        />
+      ) : (
+        <PageComponent />
+      )}
     </main>
   );
 }
