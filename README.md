@@ -68,7 +68,7 @@ npm run deploy
 - Save 클릭
 
 5. **배포 확인**
-- 5-10분 후 `[매뉴얼 사이트 이동](https://mbaas-inc.github.io/service-manual/)`에서 확인
+- 5-10분 후 [매뉴얼 사이트 이동](https://mbaas-inc.github.io/service-manual/)에서 확인
 
 ## 📁 프로젝트 구조
 
