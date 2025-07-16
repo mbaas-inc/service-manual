@@ -78,16 +78,6 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
         { id: 'notification-settings', label: '알림 설정' },
         { id: 'billing-settings', label: '요금 및 결제 설정' }
       ]
-    },
-    {
-      key: 'help',
-      title: '도움말',
-      items: [
-        { id: 'faq-common', label: '자주 묻는 질문' },
-        { id: 'tutorials-video', label: '동영상 튜토리얼' },
-        { id: 'support-contact', label: '고객 지원 문의' },
-        { id: 'community', label: '사용자 커뮤니티' }
-      ]
     }
   ];
 

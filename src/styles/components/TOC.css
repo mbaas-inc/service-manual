@@ -1,0 +1,47 @@
+/* TOC */
+.toc {
+  width: var(--toc-width);
+  padding: 40px 24px;
+  background: var(--bg-primary);
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.toc-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.toc-list {
+  list-style: none;
+}
+
+.toc-list li {
+  margin-bottom: 8px;
+}
+
+.toc-list a {
+  display: block;
+  padding: 6px 0;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+  border-left: 2px solid transparent;
+  padding-left: 12px;
+}
+
+.toc-list a:hover {
+  color: var(--primary-color);
+}
+
+.toc-list a.active {
+  color: var(--primary-color);
+  border-left-color: var(--primary-color);
+}

@@ -1,0 +1,95 @@
+/* 사이드바 */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-primary);
+  border-right: 1px solid var(--border-color);
+  padding: 24px 0;
+  overflow-y: auto;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+}
+
+.sidebar-section {
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-section.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.sidebar-section.closed {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden; 
+}
+
+.sidebar-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 12px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.sidebar-title:hover {
+  background: var(--bg-tertiary);
+  color: var(--primary-color);
+}
+
+.toggle-icon {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+  color: var(--text-muted);
+}
+
+.sidebar-title.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+
+.sidebar-menu {
+  list-style: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.sidebar-menu.collapsed {
+  max-height: 0;
+}
+
+.sidebar-menu:not(.collapsed) {
+  max-height: 1000px;
+}
+
+.sidebar-menu li {
+  margin-bottom: 2px;
+}
+
+.sidebar-menu a {
+  display: block;
+  padding: 10px 24px 10px 40px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  border-right: 3px solid transparent;
+}
+
+.sidebar-menu a:hover {
+  color: var(--primary-color);
+  background: var(--bg-tertiary);
+}
+
+.sidebar-menu a.active {
+  color: var(--primary-color);
+  background: var(--bg-tertiary);
+  border-right-color: var(--primary-color);
+}

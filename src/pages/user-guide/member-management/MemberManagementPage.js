@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MemberManagementPage() {
+function DefaultPage({ title, description }) {
   return (
     <>
       <section id="member-overview">
