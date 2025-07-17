@@ -3,8 +3,12 @@ import QuickStart from '../pages/user-guide/getting-started/QuickStartPage';
 import AccountSetup from '../pages/user-guide/getting-started/AccountSetup';
 import DashboardOverview from '../pages/user-guide/getting-started/DashboardOverview';
 
-// 회원 관리
-import MemberOverview from '../pages/user-guide/member-management/MemberOverview';
+// 인증 관리
+import AuthLogin from '../pages/user-guide/authentication/AuthLogin';
+import AuthJoin from '../pages/user-guide/authentication/AuthJoin';
+import AuthLog from '../pages/user-guide/authentication/AuthLog';
+
+// 고객 관리
 import MemberRegistration from '../pages/user-guide/member-management/MemberRegistration';
 import MemberList from '../pages/user-guide/member-management/MemberList';
 import MemberProfile from '../pages/user-guide/member-management/MemberProfile';
@@ -12,10 +16,8 @@ import MemberPermissions from '../pages/user-guide/member-management/MemberPermi
 import MemberExport from '../pages/user-guide/member-management/MemberExport';
 
 // 메시지 발송
-import MessageOverview from '../pages/user-guide/messaging/MessageOverview';
 import SendEmail from '../pages/user-guide/messaging/SendEmail';
 import SendSMS from '../pages/user-guide/messaging/SendSMS';
-import PushNotifications from '../pages/user-guide/messaging/PushNotifications';
 import MessageTemplates from '../pages/user-guide/messaging/MessageTemplates';
 import BulkMessaging from '../pages/user-guide/messaging/BulkMessaging';
 import MessageHistory from '../pages/user-guide/messaging/MessageHistory';
@@ -27,24 +29,20 @@ import PaymentHistory from '../pages/user-guide/payment/PaymentHistory';
 import RefundManagement from '../pages/user-guide/payment/RefundManagement';
 import PaymentReports from '../pages/user-guide/payment/PaymentReports';
 
-// 콘텐츠 관리
-import ContentOverview from '../pages/user-guide/content/ContentOverview';
-import BoardManagement from '../pages/user-guide/content/BoardManagement';
-import PostManagement from '../pages/user-guide/content/PostManagement';
-import CommentModeration from '../pages/user-guide/content/CommentModeration';
-import FileManagement from '../pages/user-guide/content/FileManagement';
+// 게시판 관리
+import BoardManagement from '../pages/user-guide/board/BoardManagement';
+import PostManagement from '../pages/user-guide/board/PostManagement';
+import CommentModeration from '../pages/user-guide/board/CommentModeration';
 
-// 통계 및 분석
-import AnalyticsOverview from '../pages/user-guide/analytics/AnalyticsOverview';
-import UserAnalytics from '../pages/user-guide/analytics/UserAnalytics';
-import UsageStatistics from '../pages/user-guide/analytics/UsageStatistics';
-import ReportsExport from '../pages/user-guide/analytics/ReportsExport';
+// 푸시
+import PushKey from '../pages/user-guide/push/PushKey';
+import PushDevice from '../pages/user-guide/push/PushDevice';
+import PushTopic from '../pages/user-guide/push/PushTopic';
 
 // 설정
 import GeneralSettings from '../pages/user-guide/settings/GeneralSettings';
 import SecuritySettings from '../pages/user-guide/settings/SecuritySettings';
 import NotificationSettings from '../pages/user-guide/settings/NotificationSettings';
-import BillingSettings from '../pages/user-guide/settings/BillingSettings';
 
 // 개발자 문서
 import APIReference from '../pages/developer/api/APIReference';
@@ -81,35 +79,46 @@ export const pageMapping = {
     subcategory: 'getting-started',
     description: '관리자 대시보드의 각 기능과 사용법을 상세히 설명합니다.'
   },
+
+  // 인증 관리 
+  'auth-login': { 
+    component: AuthLogin, 
+    title: '로그인 설정', 
+    breadcrumb: '로그인 설정',
+    category: 'user-guide',
+    subcategory: 'authentication',
+    description: '소셜 로그인 설정을 할 수 있습니다.'
+  },
+  'auth-join': { 
+    component: AuthJoin, 
+    title: '회원가입 설정', 
+    breadcrumb: '회원가입 설정',
+    category: 'user-guide',
+    subcategory: 'authentication',
+    description: '회원가입 시 수집할 항목과 필수 입력 여부, 추가 설정을 관리할 수 있습니다.'
+  },
+  'auth-log': { 
+    component: AuthLog, 
+    title: '접속 로그', 
+    breadcrumb: '접속 로그',
+    category: 'user-guide',
+    subcategory: 'authentication',
+    description: '사용자의 로그인 기록과 접속 정보를 확인할 수 있습니다.'
+  },
   
-  // 👥 회원 관리
-  'member-overview': { 
-    component: MemberOverview, 
-    title: '회원 관리 개요', 
-    breadcrumb: '회원 관리 개요',
-    category: 'user-guide',
-    subcategory: 'member-management'
-  },
-  'member-registration': { 
-    component: MemberRegistration, 
-    title: '회원 가입 설정', 
-    breadcrumb: '회원 가입 설정',
-    category: 'user-guide',
-    subcategory: 'member-management',
-    description: '사용자 회원가입 프로세스를 설정하고 관리하는 방법을 안내합니다.'
-  },
+  // 👥 고객 관리
   'member-list': { 
     component: MemberList, 
-    title: '회원 목록 보기', 
-    breadcrumb: '회원 목록 보기',
+    title: '고객 목록 보기', 
+    breadcrumb: '고객 목록 보기',
     category: 'user-guide',
     subcategory: 'member-management',
     description: '가입한 회원들의 목록을 확인하고 관리하는 방법을 설명합니다.'
   },
   'member-profile': { 
     component: MemberProfile, 
-    title: '회원 정보 관리', 
-    breadcrumb: '회원 정보 관리',
+    title: '고객 정보 관리', 
+    breadcrumb: '고객 정보 관리',
     category: 'user-guide',
     subcategory: 'member-management',
     description: '개별 회원의 정보를 수정하고 관리하는 방법을 안내합니다.'
@@ -124,68 +133,11 @@ export const pageMapping = {
   },
   'member-export': { 
     component: MemberExport, 
-    title: '회원 데이터 내보내기', 
-    breadcrumb: '회원 데이터 내보내기',
+    title: '고객 데이터 내보내기', 
+    breadcrumb: '고객 데이터 내보내기',
     category: 'user-guide',
     subcategory: 'member-management',
-    description: '회원 정보를 CSV나 Excel 파일로 내보내는 방법을 안내합니다.'
-  },
-  
-  // 📧 메시지 발송
-  'message-overview': { 
-    component: MessageOverview, 
-    title: '메시지 서비스 개요', 
-    breadcrumb: '메시지 서비스 개요',
-    category: 'user-guide',
-    subcategory: 'messaging'
-  },
-  'send-email': { 
-    component: SendEmail, 
-    title: '이메일 보내기', 
-    breadcrumb: '이메일 보내기',
-    category: 'user-guide',
-    subcategory: 'messaging',
-    description: '회원들에게 이메일을 발송하는 방법과 모범 사례를 안내합니다.'
-  },
-  'send-sms': { 
-    component: SendSMS, 
-    title: 'SMS 발송하기', 
-    breadcrumb: 'SMS 발송하기',
-    category: 'user-guide',
-    subcategory: 'messaging',
-    description: 'SMS 메시지를 발송하고 관리하는 방법을 상세히 설명합니다.'
-  },
-  'push-notifications': { 
-    component: PushNotifications, 
-    title: '푸시 알림 보내기', 
-    breadcrumb: '푸시 알림 보내기',
-    category: 'user-guide',
-    subcategory: 'messaging',
-    description: '모바일 앱 사용자에게 푸시 알림을 보내는 방법을 안내합니다.'
-  },
-  'message-templates': { 
-    component: MessageTemplates, 
-    title: '메시지 템플릿 만들기', 
-    breadcrumb: '메시지 템플릿 만들기',
-    category: 'user-guide',
-    subcategory: 'messaging',
-    description: '재사용 가능한 메시지 템플릿을 만들고 관리하는 방법을 설명합니다.'
-  },
-  'bulk-messaging': { 
-    component: BulkMessaging, 
-    title: '대량 메시지 발송', 
-    breadcrumb: '대량 메시지 발송',
-    category: 'user-guide',
-    subcategory: 'messaging',
-    description: '많은 수의 회원에게 한 번에 메시지를 발송하는 방법을 안내합니다.'
-  },
-  'message-history': { 
-    component: MessageHistory, 
-    title: '발송 내역 확인', 
-    breadcrumb: '발송 내역 확인',
-    category: 'user-guide',
-    subcategory: 'messaging',
-    description: '발송한 메시지들의 결과와 통계를 확인하는 방법을 설명합니다.'
+    description: '고객 정보를 CSV나 Excel 파일로 내보내는 방법을 안내합니다.'
   },
   
   // 💳 결제 관리
@@ -229,22 +181,56 @@ export const pageMapping = {
     subcategory: 'payment',
     description: '결제 관련 리포트를 생성하고 분석하는 방법을 안내합니다.'
   },
-  
-  // 📝 콘텐츠 관리
-  'content-overview': { 
-    component: ContentOverview, 
-    title: '콘텐츠 관리 개요', 
-    breadcrumb: '콘텐츠 관리 개요',
+    
+  // 📧 메시지 발송
+  'send-email': { 
+    component: SendEmail, 
+    title: '이메일 보내기', 
+    breadcrumb: '이메일 보내기',
     category: 'user-guide',
-    subcategory: 'content',
-    description: '앱 내 콘텐츠를 관리하는 전반적인 방법을 설명합니다.'
+    subcategory: 'messaging',
+    description: '회원들에게 이메일을 발송하는 방법과 모범 사례를 안내합니다.'
   },
+  'send-sms': { 
+    component: SendSMS, 
+    title: 'SMS 발송하기', 
+    breadcrumb: 'SMS 발송하기',
+    category: 'user-guide',
+    subcategory: 'messaging',
+    description: 'SMS 메시지를 발송하고 관리하는 방법을 상세히 설명합니다.'
+  },
+  'message-templates': { 
+    component: MessageTemplates, 
+    title: '메시지 템플릿 만들기', 
+    breadcrumb: '메시지 템플릿 만들기',
+    category: 'user-guide',
+    subcategory: 'messaging',
+    description: '재사용 가능한 메시지 템플릿을 만들고 관리하는 방법을 설명합니다.'
+  },
+  'bulk-messaging': { 
+    component: BulkMessaging, 
+    title: '대량 메시지 발송', 
+    breadcrumb: '대량 메시지 발송',
+    category: 'user-guide',
+    subcategory: 'messaging',
+    description: '많은 수의 회원에게 한 번에 메시지를 발송하는 방법을 안내합니다.'
+  },
+  'message-history': { 
+    component: MessageHistory, 
+    title: '발송 내역 확인', 
+    breadcrumb: '발송 내역 확인',
+    category: 'user-guide',
+    subcategory: 'messaging',
+    description: '발송한 메시지들의 결과와 통계를 확인하는 방법을 설명합니다.'
+  },
+
+  // 📝 게시판 관리
   'board-management': { 
     component: BoardManagement, 
     title: '게시판 만들기', 
     breadcrumb: '게시판 만들기',
     category: 'user-guide',
-    subcategory: 'content',
+    subcategory: 'board',
     description: '공지사항, 커뮤니티 등의 게시판을 만들고 관리하는 방법을 안내합니다.'
   },
   'post-management': { 
@@ -252,7 +238,7 @@ export const pageMapping = {
     title: '게시글 관리하기', 
     breadcrumb: '게시글 관리하기',
     category: 'user-guide',
-    subcategory: 'content',
+    subcategory: 'board',
     description: '게시글을 작성, 수정, 삭제하고 관리하는 방법을 설명합니다.'
   },
   'comment-moderation': { 
@@ -260,50 +246,34 @@ export const pageMapping = {
     title: '댓글 관리하기', 
     breadcrumb: '댓글 관리하기',
     category: 'user-guide',
-    subcategory: 'content',
+    subcategory: 'board',
     description: '댓글을 모니터링하고 관리하는 방법을 안내합니다.'
   },
-  'file-management': { 
-    component: FileManagement, 
-    title: '파일 업로드 관리', 
-    breadcrumb: '파일 업로드 관리',
-    category: 'user-guide',
-    subcategory: 'content',
-    description: '파일 업로드 기능을 설정하고 관리하는 방법을 설명합니다.'
-  },
   
-  // 📊 통계 및 분석
-  'analytics-overview': { 
-    component: AnalyticsOverview, 
-    title: '통계 대시보드', 
-    breadcrumb: '통계 대시보드',
+  // 푸시 관리
+  'push-key': { 
+    component: PushKey, 
+    title: 'Firebase key 업로드', 
+    breadcrumb: 'Firebase key 업로드',
     category: 'user-guide',
-    subcategory: 'analytics',
-    description: '서비스 이용 현황을 한눈에 볼 수 있는 대시보드 사용법을 안내합니다.'
+    subcategory: 'push',
+    description: 'Firebase 서비스 계정 키를 업로드하여 푸시 알림 서비스를 설정하세요. JSON 형식의 키 파일만 업로드 가능합니다.'
   },
-  'user-analytics': { 
-    component: UserAnalytics, 
-    title: '사용자 분석', 
-    breadcrumb: '사용자 분석',
+  'push-device': { 
+    component: PushDevice, 
+    title: '디바이스 목록', 
+    breadcrumb: '디바이스 목록',
     category: 'user-guide',
-    subcategory: 'analytics',
-    description: '사용자 행동과 패턴을 분석하는 방법을 설명합니다.'
+    subcategory: 'push',
+    description: '등록된 디바이스 목록을 확인하고 푸시 알림 권한 상태를 관리할 수 있습니다. 디바이스별 푸시 동의 및 OS 권한을 한눈에 파악하세요.'
   },
-  'usage-statistics': { 
-    component: UsageStatistics, 
-    title: '사용량 통계', 
-    breadcrumb: '사용량 통계',
+  'push-topic': { 
+    component: PushTopic, 
+    title: '토픽 관리', 
+    breadcrumb: '토픽 관리',
     category: 'user-guide',
-    subcategory: 'analytics',
-    description: '서비스 사용량 통계를 확인하고 분석하는 방법을 안내합니다.'
-  },
-  'reports-export': { 
-    component: ReportsExport, 
-    title: '리포트 내보내기', 
-    breadcrumb: '리포트 내보내기',
-    category: 'user-guide',
-    subcategory: 'analytics',
-    description: '분석 결과를 다양한 형태로 내보내는 방법을 설명합니다.'
+    subcategory: 'push',
+    description: '푸시 알림 토픽을 생성하고 관리할 수 있습니다. 토픽별로 구독자를 관리하고 맞춤형 푸시 알림을 발송하세요.'
   },
   
   // ⚙️ 설정
@@ -330,14 +300,6 @@ export const pageMapping = {
     category: 'user-guide',
     subcategory: 'settings',
     description: '각종 알림을 설정하고 관리하는 방법을 안내합니다.'
-  },
-  'billing-settings': { 
-    component: BillingSettings, 
-    title: '요금 및 결제 설정', 
-    breadcrumb: '요금 및 결제 설정',
-    category: 'user-guide',
-    subcategory: 'settings',
-    description: '요금제와 결제 방법을 설정하고 관리하는 방법을 설명합니다.'
   },
   
   // 👨‍💻 개발자 문서

@@ -17,11 +17,12 @@ function MainContent({ activeSection }) {
     
     const subcategoryNames = {
       'getting-started': '시작하기',
-      'member-management': '회원 관리',
+      'authentication': '인증 관리',
+      'member-management': '고객 관리',
       'messaging': '메시지 발송',
       'payment': '결제 관리',
-      'content': '콘텐츠 관리',
-      'analytics': '통계 및 분석',
+      'board': '게시판 관리',
+      'push': '푸시 관리',
       'settings': '설정',
       'api': 'API 문서',
       'sdk': 'SDK 가이드',
@@ -42,9 +43,6 @@ function MainContent({ activeSection }) {
     <main className="main-content" data-category={currentPage.category}>
       {/* 🔥 개선된 브레드크럼 */}
       <nav className="breadcrumb">
-        <a href="#home" className="breadcrumb-link">홈</a>
-        <span className="separator">/</span>
-        
         <a href={`#${currentPage.category}`} className="breadcrumb-link">
           {breadcrumbData.category}
         </a>
@@ -61,20 +59,6 @@ function MainContent({ activeSection }) {
         
         <span className="breadcrumb-current">{breadcrumbData.current}</span>
       </nav>
-
-      {/* 🔥 페이지 메타 정보 */}
-      <div className="page-meta">
-        <div className="page-category">
-          <span className={`category-badge ${currentPage.category}`}>
-            {breadcrumbData.category}
-          </span>
-          {breadcrumbData.subcategory && (
-            <span className="subcategory-badge">
-              {breadcrumbData.subcategory}
-            </span>
-          )}
-        </div>
-      </div>
 
       {/* 동적 페이지 컴포넌트 렌더링 */}
       {/* 🔥 DefaultPage에는 추가 props 전달, 다른 페이지는 기본 렌더링 */}

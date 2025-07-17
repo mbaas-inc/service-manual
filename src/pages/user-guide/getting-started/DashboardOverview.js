@@ -1,148 +1,87 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function DefaultPage({ title, description }) {
-  const [userType, setUserType] = useState('user'); // 'user' 또는 'developer'
-
-  // 사용자 유형별 콘텐츠 정의
-  const getContentByUserType = () => {
-    if (userType === 'developer') {
-      return {
-        description: description || '개발자를 위한 기술 문서와 API 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '🔧',
-            title: 'API 문서',
-            description: 'RESTful API 엔드포인트와 사용법을 확인하세요.',
-            buttonText: 'API 보기',
-            priority: 'high'
-          },
-          {
-            icon: '📚',
-            title: 'SDK 가이드',
-            description: '다양한 언어별 SDK 설치 및 사용법을 안내합니다.',
-            buttonText: 'SDK 다운로드',
-            priority: 'high'
-          },
-          {
-            icon: '🔗',
-            title: '연동 가이드',
-            description: '외부 서비스와의 연동 방법을 상세히 설명합니다.',
-            buttonText: '연동하기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '개발자 빠른 시작',
-          steps: [
-            '개발 환경 설정',
-            'API 키 발급 받기',
-            'SDK 설치 및 초기화',
-            'Hello World 예제 실행'
-          ]
-        },
-        resources: [
-          { title: '📖 기술 문서', description: '상세한 기술 스펙과 구현 가이드' },
-          { title: '💻 코드 예제', description: '실제 사용 가능한 샘플 코드' },
-          { title: '🐛 디버깅 가이드', description: '일반적인 오류와 해결방법' }
-        ]
-      };
-    } else {
-      return {
-        description: description || '비개발자도 쉽게 사용할 수 있는 단계별 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '📱',
-            title: '앱 만들기',
-            description: '코딩 없이도 앱을 만들 수 있는 방법을 안내합니다.',
-            buttonText: '시작하기',
-            priority: 'high'
-          },
-          {
-            icon: '⚙️',
-            title: '설정 관리',
-            description: '대시보드에서 설정을 변경하는 방법을 알려드립니다.',
-            buttonText: '설정하기',
-            priority: 'high'
-          },
-          {
-            icon: '📊',
-            title: '데이터 분석',
-            description: '사용 현황과 통계를 확인하는 방법을 설명합니다.',
-            buttonText: '분석보기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '사용자 빠른 시작',
-          steps: [
-            '계정 생성 및 로그인',
-            '프로젝트 만들기',
-            '기본 설정 완료',
-            '첫 번째 기능 사용해보기'
-          ]
-        },
-        resources: [
-          { title: '🎥 동영상 가이드', description: '화면으로 보는 단계별 사용법' },
-          { title: '❓ FAQ', description: '자주 묻는 질문과 답변' },
-          { title: '💬 커뮤니티', description: '다른 사용자들과 정보 공유' }
-        ]
-      };
-    }
+function DashboardOverview({ title = "대시보드 둘러보기", description }) {
+  
+  // 일반 사용자를 위한 콘텐츠
+  const content = {
+    description: description || '메시지 관리 대시보드의 모든 기능을 쉽게 이해하고 활용할 수 있도록 안내합니다.',
+    features: [
+      {
+        icon: '📊',
+        title: '발송량 통계',
+        description: '일일, 주간, 월별 메시지 발송량을 한눈에 확인하세요.',
+        buttonText: '통계 보기',
+        priority: 'high'
+      },
+      {
+        icon: '✅',
+        title: '발송 성공률',
+        description: '메시지 전송 성공률과 실패 원인을 분석해보세요.',
+        buttonText: '성공률 확인',
+        priority: 'high'
+      },
+      {
+        icon: '📈',
+        title: '발송 트렌드',
+        description: '일별 발송 패턴과 트렌드를 그래프로 확인하세요.',
+        buttonText: '트렌드 분석',
+        priority: 'high'
+      },
+      {
+        icon: '📱',
+        title: '발송 유형별 분석',
+        description: 'SMS, 이메일, 푸시 알림별 발송 현황을 비교해보세요.',
+        buttonText: '유형별 보기',
+        priority: 'medium'
+      },
+      {
+        icon: '🕒',
+        title: '최근 활동 내역',
+        description: '최근 메시지 발송 내역과 상태를 실시간으로 확인하세요.',
+        buttonText: '활동 내역',
+        priority: 'medium'
+      },
+      {
+        icon: '⚙️',
+        title: '대시보드 설정',
+        description: '나에게 맞는 대시보드 레이아웃과 표시 옵션을 설정하세요.',
+        buttonText: '설정하기',
+        priority: 'medium'
+      }
+    ],
+    quickStart: {
+      title: '대시보드 시작하기',
+      steps: [
+        '대시보드 메인 화면 둘러보기',
+        '통계 그래프 읽는 방법 익히기',
+        '필터와 기간 설정 사용법',
+        '내보내기 및 리포트 기능 활용'
+      ]
+    },
+    resources: [
+      { title: '🎥 대시보드 사용법 동영상', description: '화면으로 보는 대시보드 활용 가이드' },
+      { title: '📋 데이터 해석 가이드', description: '통계 수치와 그래프를 올바르게 읽는 방법' },
+      { title: '💡 효과적인 분석 팁', description: '데이터를 활용한 메시지 최적화 전략' }
+    ]
   };
-
-  const content = getContentByUserType();
 
   return (
     <>
       <section id="main-content">
         <h1>{title}</h1>
         
-        {/* 🔥 사용자 유형 선택 버튼 */}
-        <div className="user-type-selector">
-          <div className="selector-header">
-            <h3>어떤 유형의 사용자이신가요?</h3>
-            <p>선택하신 유형에 맞는 맞춤형 가이드를 제공해드립니다.</p>
-          </div>
-          <div className="type-buttons">
-            <button 
-              className={`type-btn ${userType === 'user' ? 'active' : ''}`}
-              onClick={() => setUserType('user')}
-            >
-              <div className="type-icon">👤</div>
-              <div className="type-info">
-                <div className="type-title">일반 사용자</div>
-                <div className="type-desc">비개발자, 비즈니스 사용자</div>
-              </div>
-            </button>
-            
-            <button 
-              className={`type-btn ${userType === 'developer' ? 'active' : ''}`}
-              onClick={() => setUserType('developer')}
-            >
-              <div className="type-icon">👨‍💻</div>
-              <div className="type-info">
-                <div className="type-title">개발자</div>
-                <div className="type-desc">개발자, 기술 담당자</div>
-              </div>
-            </button>
-          </div>
-        </div>
-
         {/* 동적 설명 */}
-        <p className="main-description">{content.description}</p>
+        <p>{content.description}</p>
 
         <div className="alert alert-info">
-          <strong>💡 {userType === 'developer' ? '개발자 팁' : '사용자 안내'}:</strong> 
-          {userType === 'developer' 
-            ? '기술 문서와 API 레퍼런스를 통해 빠르게 개발을 시작하세요.'
-            : '단계별 가이드를 따라하시면 누구나 쉽게 사용할 수 있습니다.'
-          }
+          <strong>💡 사용자 안내:</strong> 
+          대시보드의 모든 데이터는 실시간으로 업데이트되며, 필터를 활용해 원하는 기간의 데이터를 확인할 수 있습니다.
         </div>
 
-        <h2 id="overview">개요</h2>
+        <h2 id="overview">대시보드 주요 영역</h2>
         <div className="card">
-          <div className="card-title">주요 기능</div>
-          <p>{userType === 'developer' ? '개발자를 위한' : '사용자를 위한'} {title} 기능에 대해 자세히 알아보실 수 있습니다.</p>
+          <div className="card-title">메시지 관리 대시보드 구성 요소</div>
+          <p>메시지 관리 대시보드의 핵심 기능들을 하나씩 살펴보세요.</p>
           
           <div className="grid-container">
             {content.features.map((feature, index) => (
@@ -150,7 +89,7 @@ function DefaultPage({ title, description }) {
                 <div className="card-title">
                   <span className="feature-icon">{feature.icon}</span>
                   {feature.title}
-                  {feature.priority === 'high' && <span className="priority-badge">추천</span>}
+                  {feature.priority === 'high' && <span className="priority-badge">필수</span>}
                 </div>
                 <p>{feature.description}</p>
                 <button className="btn btn-primary">{feature.buttonText}</button>
@@ -161,10 +100,8 @@ function DefaultPage({ title, description }) {
 
         <h2 id="getting-started">{content.quickStart.title}</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 환경 설정' : '시작하기 전에'}
-          </div>
-          <p>{title} 기능을 사용하기 위한 단계별 가이드입니다.</p>
+          <div className="card-title">대시보드 활용 단계</div>
+          <p>대시보드를 효과적으로 활용하기 위한 단계별 가이드입니다.</p>
           
           <div className="step-content">
             <h3 id="step-1">단계별 가이드</h3>
@@ -175,125 +112,162 @@ function DefaultPage({ title, description }) {
             </ul>
           </div>
 
-          {userType === 'developer' && (
-            <div className="code-example">
-              <h4>🔧 코드 예제</h4>
-              <div className="code-block">
-                <pre><code>{`// ${title} 기본 사용 예제
-import { mBaasSDK } from '@mbaas/sdk';
+            <div className="screenshot">
+              <p>대시보드 스크린샷 영역</p>
+            </div>
+        </div>
 
-const client = new mBaasSDK({
-  apiKey: 'your-api-key',
-  projectId: 'your-project-id'
-});
-
-// 기본 기능 사용
-await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></pre>
+        <h2 id="dashboard-sections">대시보드 세부 영역 설명</h2>
+        <div className="card">
+          <div className="card-title">각 영역별 상세 기능</div>
+          <p>대시보드의 각 섹션이 제공하는 정보와 활용 방법을 알아보세요.</p>
+          
+          <div className="accordion-content">
+            <div className="card">
+              <div className="card-title">📊 발송량 통계 영역</div>
+              <div className="feature-details">
+                <p><strong>위치:</strong> 대시보드 상단</p>
+                <p><strong>기능:</strong></p>
+                <ul>
+                  <li>• 실시간 오늘 발송량 표시</li>
+                  <li>• 주간/월간 누적 발송량</li>
+                  <li>• 전일/전주/전월 대비 증감률</li>
+                  <li>• 발송 유형별(SMS/이메일/푸시) 구분 표시</li>
+                </ul>
+                <div className="usage-tip">
+                  <strong>💡 활용 팁:</strong> 증감률이 급격히 변화했다면 마케팅 캠페인이나 시스템 이슈를 확인해보세요.
+                </div>
               </div>
             </div>
-          )}
+
+            <div className="card">
+              <div className="card-title">✅ 발송 성공률 영역</div>
+              <div className="feature-details">
+                <p><strong>위치:</strong> 대시보드 우측 상단</p>
+                <p><strong>기능:</strong></p>
+                <ul>
+                  <li>• 전체 발송 성공률 퍼센티지</li>
+                  <li>• 실패 원인별 분류 (잘못된 번호, 차단, 시스템 오류 등)</li>
+                  <li>• 유형별 성공률 비교</li>
+                  <li>• 성공률 추이 미니 그래프</li>
+                </ul>
+                <div className="usage-tip">
+                  <strong>💡 활용 팁:</strong> 성공률이 90% 이하로 떨어지면 수신자 리스트 정리가 필요할 수 있습니다.
+                </div>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="card-title">📈 일별 발송률 그래프</div>
+              <div className="feature-details">
+                <p><strong>위치:</strong> 대시보드 중앙</p>
+                <p><strong>기능:</strong></p>
+                <ul>
+                  <li>• 최근 7일간 일별 발송량 추이</li>
+                  <li>• 시간대별 발송 패턴 분석</li>
+                  <li>• 요일별 발송 패턴 확인</li>
+                  <li>• 그래프 확대/축소 및 구간 선택</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="card-title">📱 발송 유형별 분석</div>
+              <div className="feature-details">
+                <p><strong>위치:</strong> 대시보드 좌측 하단</p>
+                <p><strong>기능:</strong></p>
+                <ul>
+                  <li>• SMS, 이메일, 푸시 알림별 발송량 비교</li>
+                  <li>• 파이 차트 또는 막대 그래프로 시각화</li>
+                  <li>• 각 유형별 비용 및 효율성 지표</li>
+                  <li>• 클릭률, 열람률 등 상호작용 지표</li>
+                </ul>
+                <div className="usage-tip">
+                  <strong>💡 활용 팁:</strong> 유형별 효율성을 비교하여 예산 배분과 전략을 수립하세요.
+                </div>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="card-title">🕒 최근 활동 내역</div>
+              <div className="feature-details">
+                <p><strong>위치:</strong> 대시보드 우측 하단</p>
+                <p><strong>기능:</strong></p>
+                <ul>
+                  <li>• 최근 24시간 발송 내역 실시간 표시</li>
+                  <li>• 발송 상태별 색상 구분 (성공/실패/대기)</li>
+                  <li>• 발송 시간, 수신자, 메시지 유형 정보</li>
+                  <li>• 상세 로그 확인 링크</li>
+                </ul>
+                <div className="usage-tip">
+                  <strong>💡 활용 팁:</strong> 실패한 발송 건을 클릭하여 실패 원인을 확인하고 재발송 여부를 결정하세요.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h2 id="resources">유용한 자료</h2>
+        <h2 id="troubleshooting">자주 묻는 질문</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 리소스' : '학습 자료'}
+          <div className="card-title">대시보드 사용 FAQ</div>
+          <div className="card">
+            <div className="card-title">Q. 그래프가 표시되지 않아요.</div>
+            <p><strong>A.</strong> 브라우저를 새로고침하거나, 다른 브라우저에서 접속해보세요. 광고 차단 프로그램이 있다면 해제해보세요.</p>
           </div>
-          <p>더 효과적으로 활용할 수 있는 자료들을 모았습니다.</p>
-          
-          <div className="resources-grid">
-            {content.resources.map((resource, index) => (
-              <div key={index} className="resource-item">
-                <div className="resource-title">{resource.title}</div>
-                <div className="resource-desc">{resource.description}</div>
-                <button className="btn btn-secondary">보러가기</button>
-              </div>
-            ))}
+          <div className="card">
+            <div className="card-title">Q. 모바일에서도 대시보드를 볼 수 있나요?</div>
+            <p><strong>A.</strong> 네, 반응형으로 제작되어 모바일에서도 최적화된 화면으로 확인할 수 있습니다.</p>
           </div>
         </div>
 
-        <h2 id="troubleshooting">문제 해결</h2>
+        <h2 id="tips">효과적인 대시보드 활용 팁</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 관련 문제' : '자주 발생하는 문제'}
-          </div>
+          <div className="card-title">비즈니스 인사이트 도출 팁</div>
           
-          {userType === 'developer' ? (
-            <>
-              <div className="card">
-                <div className="card-title">Q. API 호출이 실패합니다.</div>
-                <p><strong>A.</strong> API 키와 엔드포인트 URL이 올바른지 확인하세요. 요청 헤더에 Content-Type이 올바르게 설정되어 있는지도 확인해보세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. SDK 초기화 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 프로젝트 ID와 API 키가 올바른지 확인하고, 최신 버전의 SDK를 사용하고 있는지 확인하세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 인증 토큰이 만료됩니다.</div>
-                <p><strong>A.</strong> refresh token을 사용하여 자동으로 토큰을 갱신하도록 구현하거나, 토큰 만료 시점을 체크하여 재인증하세요.</p>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="card">
-                <div className="card-title">Q. 기능이 정상적으로 작동하지 않아요.</div>
-                <p><strong>A.</strong> 먼저 기본 설정이 올바른지 확인해보세요. 설정에 문제가 없다면 브라우저 새로고침 후 다시 시도해보세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 권한 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 관리자 권한이 필요한 기능일 수 있습니다. 계정 권한을 확인하거나 관리자에게 문의하세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 데이터가 표시되지 않습니다.</div>
-                <p><strong>A.</strong> 데이터 로딩에 시간이 걸릴 수 있습니다. 잠시 후 다시 확인해보시거나, 필터 설정을 확인해보세요.</p>
-              </div>
-            </>
-          )}
+          <div className="grid-container">
+            <div className="card">
+              <h4>📈 데이터 분석 노하우</h4>
+              <p>• 발송량 증감의 패턴을 찾아 마케팅 전략 수립<br/>
+              • 성공률이 낮은 시간대나 유형을 파악하여 개선<br/>
+              • 경쟁사 대비 우리의 위치 파악</p>
+            </div>
+            <div className="card">
+              <h4>⏰ 최적 발송 시간 찾기</h4>
+              <p>• 일별 그래프에서 높은 피크 시간대 확인<br/>
+              • 타겟 고객층의 활동 패턴 분석<br/>
+              • A/B 테스트로 최적 시간 검증</p>
+            </div>
+            <div className="card">
+              <h4>💰 비용 효율성 분석</h4>
+              <p>• 유형별 발송 비용 대비 효과 측정<br/>
+              • ROI가 높은 채널에 예산 집중<br/>
+              • 정기적인 성과 리뷰 및 전략 조정</p>
+            </div>
+            <div className="card">
+              <h4>🎯 개인화 전략</h4>
+              <p>• 고객 세그먼트별 반응률 차이 분석<br/>
+              • 메시지 유형별 선호도 파악<br/>
+              • 개인화 메시지의 성과 측정</p>
+            </div>
+          </div>
         </div>
 
         <h2 id="support">추가 지원</h2>
         <div className="card">
-          <div className="card-title">도움이 더 필요하신가요?</div>
-          <p>위의 내용으로 해결되지 않는 문제가 있으시면 언제든 문의해주세요.</p>
+          <div className="card-title">대시보드 관련 도움이 필요하신가요?</div>
+          <p>대시보드 사용 중 궁금한 점이나 문제가 있으시면 언제든 문의해주세요.</p>
           
           <div className="grid-container">
-            {userType === 'developer' ? (
-              <>
-                <div className="card">
-                  <div className="card-title">🔧 기술 지원</div>
-                  <p>dev-support@mbaas.com</p>
-                  <p>개발 관련 기술 문의</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📚 개발자 포럼</div>
-                  <p>developers.mbaas.com</p>
-                  <p>개발자 커뮤니티 참여</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">🐛 버그 리포트</div>
-                  <p>GitHub Issues</p>
-                  <p>버그 신고 및 기능 요청</p>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="card">
-                  <div className="card-title">📞 전화 문의</div>
-                  <p>02-1234-5678</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📧 이메일 문의</div>
-                  <p>support@mbaas.com</p>
-                  <p>24시간 접수 가능</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">💬 채팅 문의</div>
-                  <p>실시간 채팅 지원</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-              </>
-            )}
+            <div className="card">
+              <div className="card-title">📧 이메일 문의</div>
+              <p>support@mbaas.com</p>
+              <p>대시보드 관련 모든 문의</p>
+            </div>
+            <div className="card">
+              <div className="card-title">💬 1:1 문의하기</div>
+              <p>1:1 문의하기를 남겨 질의해주세요.</p>
+              <p>문의하러 가기</p>
+            </div>
           </div>
         </div>
       </section>
@@ -301,4 +275,4 @@ await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></
   );
 }
 
-export default DefaultPage;
+export default DashboardOverview;

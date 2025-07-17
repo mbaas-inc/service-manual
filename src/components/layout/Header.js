@@ -15,7 +15,7 @@ function Header({ onToggleSidebar, onCategoryNavigation, currentCategory }) {
 
   return (
     <header className="header">
-      <div className="logo">mBaaS 사용자 가이드</div>
+      <div className="logo">mBaaS 서비스 매뉴얼</div>
       
       {/* 모바일 메뉴 버튼 */}
       <button className="mobile-menu-btn" onClick={onToggleSidebar}>

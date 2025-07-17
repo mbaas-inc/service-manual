@@ -13,28 +13,22 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
       ]
     },
     {
-      key: 'member-management',
-      title: '회원 관리',
+      key: 'authentication',
+      title: '인증 관리',
       items: [
-        { id: 'member-overview', label: '회원 관리 개요' },
-        { id: 'member-registration', label: '회원 가입 설정' },
+        { id: 'auth-login', label: '로그인 설정' },
+        { id: 'auth-join', label: '회원가입 설정' },
+        { id: 'auth-log', label: '접속 로그' },
+      ]
+    },
+    {
+      key: 'member-management',
+      title: '고객 관리',
+      items: [
         { id: 'member-list', label: '회원 목록 보기' },
         { id: 'member-profile', label: '회원 정보 관리' },
         { id: 'member-permissions', label: '권한 설정하기' },
         { id: 'member-export', label: '회원 데이터 내보내기' }
-      ]
-    },
-    {
-      key: 'messaging',
-      title: '메시지 발송',
-      items: [
-        { id: 'message-overview', label: '메시지 서비스 개요' },
-        { id: 'send-email', label: '이메일 보내기' },
-        { id: 'send-sms', label: 'SMS 발송하기' },
-        { id: 'push-notifications', label: '푸시 알림 보내기' },
-        { id: 'message-templates', label: '메시지 템플릿 만들기' },
-        { id: 'bulk-messaging', label: '대량 메시지 발송' },
-        { id: 'message-history', label: '발송 내역 확인' }
       ]
     },
     {
@@ -49,24 +43,32 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
       ]
     },
     {
-      key: 'content',
-      title: '콘텐츠 관리',
+      key: 'messaging',
+      title: '메시지 발송',
       items: [
-        { id: 'content-overview', label: '콘텐츠 관리 개요' },
-        { id: 'board-management', label: '게시판 만들기' },
-        { id: 'post-management', label: '게시글 관리하기' },
-        { id: 'comment-moderation', label: '댓글 관리하기' },
-        { id: 'file-management', label: '파일 업로드 관리' }
+        { id: 'send-email', label: '이메일 보내기' },
+        { id: 'send-sms', label: 'SMS 발송하기' },
+        { id: 'message-templates', label: '메시지 템플릿 만들기' },
+        { id: 'bulk-messaging', label: '대량 메시지 발송' },
+        { id: 'message-history', label: '발송 내역 확인' }
       ]
     },
     {
-      key: 'analytics',
-      title: '통계 및 분석',
+      key: 'board',
+      title: '게시판 관리',
       items: [
-        { id: 'analytics-overview', label: '통계 대시보드' },
-        { id: 'user-analytics', label: '사용자 분석' },
-        { id: 'usage-statistics', label: '사용량 통계' },
-        { id: 'reports-export', label: '리포트 내보내기' }
+        { id: 'board-management', label: '게시판 만들기' },
+        { id: 'post-management', label: '게시글 관리하기' },
+        { id: 'comment-moderation', label: '댓글 관리하기' }
+      ]
+    },
+    {
+      key: 'push',
+      title: '푸시 관리',
+      items: [
+        { id: 'push-key', label: 'Firebase key 업로드' },
+        { id: 'push-device', label: '디바이스 목록' },
+        { id: 'push-topic', label: '토픽 관리' }
       ]
     },
     {
@@ -75,8 +77,7 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
       items: [
         { id: 'general-settings', label: '일반 설정' },
         { id: 'security-settings', label: '보안 설정' },
-        { id: 'notification-settings', label: '알림 설정' },
-        { id: 'billing-settings', label: '요금 및 결제 설정' }
+        { id: 'notification-settings', label: '알림 설정' }
       ]
     }
   ];

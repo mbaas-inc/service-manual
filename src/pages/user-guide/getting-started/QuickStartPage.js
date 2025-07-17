@@ -55,12 +55,12 @@ function QuickStartPage() {
               </div>
               
               <div className="card">
-                <div className="card-title">👥 회원 관리</div>
-                <p>가입한 회원들의 정보를 보고, 메시지를 보내거나 권한을 설정할 수 있어요.</p>
+                <div className="card-title">👥 고객 관리</div>
+                <p>가입한 고객들의 정보를 보고, 메시지를 보내거나 권한을 설정할 수 있어요.</p>
               </div>
               
               <div className="card">
-                <div className="card-title">📨 메시지 센터</div>
+                <div className="card-title">📨 메시지 관리</div>
                 <p>이메일, SMS, 푸시 알림을 쉽게 보낼 수 있는 곳이에요.</p>
               </div>
               
@@ -130,7 +130,7 @@ function QuickStartPage() {
             
             <h3 id="send-email">📧 이메일 보내기</h3>
             <div className="card">
-              <p><strong>1. 메시지 센터로 이동</strong></p>
+              <p><strong>1. 메시지 관리로 이동</strong></p>
               <p>왼쪽 메뉴에서 "메시지 발송" → "이메일 보내기"를 클릭하세요.</p>
               
               <p><strong>2. 받는 사람 선택</strong></p>
