@@ -43,7 +43,7 @@ function Header({ onToggleSidebar, onCategoryNavigation, currentCategory }) {
               개발자 문서
             </a>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a 
               href="#help"
               className={currentActiveNav === 'help' ? 'active' : ''}
@@ -51,7 +51,7 @@ function Header({ onToggleSidebar, onCategoryNavigation, currentCategory }) {
             >
               FAQ
             </a>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>
