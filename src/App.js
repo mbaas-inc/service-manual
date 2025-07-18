@@ -160,6 +160,7 @@ function App() {
           <TOC 
             activeSection={activeSection}
             onSetActive={setActiveLink}
+            pageType={getCurrentPageCategory()} 
             key={activeSection} // activeSection이 변경될 때마다 TOC 재생성
           />
         </div>

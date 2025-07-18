@@ -45,7 +45,7 @@ import SecuritySettings from '../pages/user-guide/settings/SecuritySettings';
 import NotificationSettings from '../pages/user-guide/settings/NotificationSettings';
 
 // 개발자 문서
-import APIReference from '../pages/developer/api/APIReference';
+import AccountApiDocs from '../pages/developer/api/AccountApiDocs';
 import Authentication from '../pages/developer/api/Authentication';
 import SDKOverview from '../pages/developer/sdk/SDKOverview';
 import WebhookSetup from '../pages/developer/integration/WebhookSetup';
@@ -303,13 +303,13 @@ export const pageMapping = {
   },
   
   // 👨‍💻 개발자 문서
-  'api-reference': { 
-    component: APIReference, 
-    title: 'API 레퍼런스', 
-    breadcrumb: 'API 레퍼런스',
+  'api-account': { 
+    component: AccountApiDocs, 
+    title: 'Account API', 
+    breadcrumb: 'Account API',
     category: 'developer',
     subcategory: 'api',
-    description: 'RESTful API 엔드포인트와 상세 사용법을 제공합니다.'
+    description: '회원가입, 로그인, 내 정보 조회 등 계정 관리를 위한 RESTful API 가이드입니다.'
   },
   'authentication': { 
     component: Authentication, 
@@ -363,7 +363,7 @@ export const getSectionsBySubcategory = (category, subcategory) => {
 export const getDefaultPage = (category) => {
   const defaults = {
     'user-guide': 'quick-start',
-    'developer': 'api-reference',
+    'developer': 'api-account',
     'help': 'faq-common'
   };
   return defaults[category] || 'quick-start';
