@@ -129,10 +129,15 @@ function AccountApiDocs() {
           "id": "UUID",
           "user_id": "admin01",
           "name": "관리자",
-          "phone": "01012345678",
+          "phone": "010-1234-5678",
           "last_logged_at": "2025-07-17T10:30:00",
-          "created_at": "2025-07-01T12:00:00"
-        }
+          "created_at": "2025-07-01T12:00:00",
+          "data": {
+            "etc1":"etc1",
+            "etc2":"etc2"
+          }
+        },
+        "message": "내 정보"
       },
       parameters: []
     }
@@ -159,7 +164,7 @@ function AccountApiDocs() {
         <div className="api-example">
           <h4><i data-lucide="globe" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>Base URL</h4>
           <CodeBlock 
-            code="https://www.aiapp.link/account"
+            code="https://api.aiapp.link/account"
             codeId="base-url"
           />
         </div>
@@ -379,7 +384,7 @@ function AccountApiDocs() {
           <h4><i data-lucide="code" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>JavaScript 예제</h4>
           <CodeBlock 
             code={`// 회원가입
-const signupResponse = await fetch('https://www.aiapp.link/account/signup', {
+const signupResponse = await fetch('https://api.aiapp.link/account/signup', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -398,7 +403,7 @@ const signupData = await signupResponse.json();
 console.log('회원가입 결과:', signupData);
 
 // 로그인
-const loginResponse = await fetch('https://www.aiapp.link/account/login', {
+const loginResponse = await fetch('https://api.aiapp.link/account/login', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -414,7 +419,7 @@ const loginData = await loginResponse.json();
 console.log('로그인 결과:', loginData);
 
 // 내 정보 조회 (쿠키에 access_token 필요)
-const infoResponse = await fetch('https://www.aiapp.link/account/info', {
+const infoResponse = await fetch('https://api.aiapp.link/account/info', {
   method: 'GET',
   credentials: 'include' // 쿠키 포함
 });
@@ -442,7 +447,7 @@ signup_data = {
 }
 
 signup_response = requests.post(
-    'https://www.aiapp.link/account/signup',
+    'https://api.aiapp.link/account/signup',
     json=signup_data
 )
 print('회원가입 결과:', signup_response.json())
@@ -455,7 +460,7 @@ login_data = {
 }
 
 login_response = requests.post(
-    'https://www.aiapp.link/account/login',
+    'https://api.aiapp.link/account/login',
     json=login_data
 )
 
@@ -464,7 +469,7 @@ cookies = login_response.cookies
 
 # 내 정보 조회
 info_response = requests.get(
-    'https://www.aiapp.link/account/info',
+    'https://api.aiapp.link/account/info',
     cookies=cookies
 )
 print('내 정보:', info_response.json())`}
