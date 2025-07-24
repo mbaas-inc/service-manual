@@ -22,9 +22,11 @@ function App() {
     'member-management': false,
     'messaging': false,
     'payment': false,
-    'content': false,
+    'board': false,
+    'push': false,
     'analytics': false,
     'settings': false,
+    'api-docs': false,
     'developer': false,
     'help': false
   });
@@ -76,7 +78,7 @@ function App() {
     } else if (category === 'developer') {
       setSidebarSections(prev => ({
         ...Object.keys(prev).reduce((acc, key) => ({ ...acc, [key]: false }), {}),
-        'developer': true
+        'api-docs': true
       }));
     } else if (category === 'help') {
       setSidebarSections(prev => ({

@@ -128,7 +128,7 @@ function TOC({ activeSection, onSetActive, pageType = 'user-guide' }) {
   // 스크롤 위치에 따른 활성 섹션 자동 감지
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 150; // 헤더 높이 + 여유분
+      const scrollPos = window.scrollY + 100; // 헤더 높이 조정
       let currentActiveId = '';
 
       for (let i = tocItems.length - 1; i >= 0; i--) {
@@ -136,17 +136,11 @@ function TOC({ activeSection, onSetActive, pageType = 'user-guide' }) {
         const element = document.getElementById(item.id);
         
         if (element) {
-          let offsetTop;
+          // 실제 화면상의 위치를 getBoundingClientRect로 정확히 계산
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
           
-          if (item.isCardTitle) {
-            // card-title의 경우 부모 card 요소의 위치 사용
-            const parentCard = element.closest('.card');
-            offsetTop = parentCard ? parentCard.offsetTop : element.offsetTop;
-          } else {
-            offsetTop = element.offsetTop;
-          }
-          
-          if (scrollPos >= offsetTop - 50) { // 약간의 여유분
+          if (scrollPos >= elementTop - 80) { // 여유분 조정
             currentActiveId = item.id;
             break;
           }
@@ -158,6 +152,9 @@ function TOC({ activeSection, onSetActive, pageType = 'user-guide' }) {
       }
     };
 
+    // 초기 로드 시에도 실행
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [tocItems, currentActive]);
@@ -168,19 +165,12 @@ function TOC({ activeSection, onSetActive, pageType = 'user-guide' }) {
     
     const element = document.getElementById(itemId);
     if (element) {
-      let targetElement = element;
+      // getBoundingClientRect로 정확한 위치 계산
+      const rect = element.getBoundingClientRect();
+      const elementTop = rect.top + window.scrollY;
       
-      // card-title의 경우 부모 card로 스크롤
-      if (element.classList.contains('card-title')) {
-        const parentCard = element.closest('.card');
-        if (parentCard) {
-          targetElement = parentCard;
-        }
-      }
-      
-      const offsetTop = targetElement.offsetTop - 100; // 헤더 높이 + 여유분
       window.scrollTo({
-        top: offsetTop,
+        top: elementTop - 80, // 헤더 높이 + 여유분
         behavior: 'smooth'
       });
     }

@@ -1,299 +1,364 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function DefaultPage({ title, description }) {
-  const [userType, setUserType] = useState('user'); // 'user' 또는 'developer'
-
-  // 사용자 유형별 콘텐츠 정의
-  const getContentByUserType = () => {
-    if (userType === 'developer') {
-      return {
-        description: description || '개발자를 위한 기술 문서와 API 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '🔧',
-            title: 'API 문서',
-            description: 'RESTful API 엔드포인트와 사용법을 확인하세요.',
-            buttonText: 'API 보기',
-            priority: 'high'
-          },
-          {
-            icon: '📚',
-            title: 'SDK 가이드',
-            description: '다양한 언어별 SDK 설치 및 사용법을 안내합니다.',
-            buttonText: 'SDK 다운로드',
-            priority: 'high'
-          },
-          {
-            icon: '🔗',
-            title: '연동 가이드',
-            description: '외부 서비스와의 연동 방법을 상세히 설명합니다.',
-            buttonText: '연동하기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '개발자 빠른 시작',
-          steps: [
-            '개발 환경 설정',
-            'API 키 발급 받기',
-            'SDK 설치 및 초기화',
-            'Hello World 예제 실행'
-          ]
-        },
-        resources: [
-          { title: '📖 기술 문서', description: '상세한 기술 스펙과 구현 가이드' },
-          { title: '💻 코드 예제', description: '실제 사용 가능한 샘플 코드' },
-          { title: '🐛 디버깅 가이드', description: '일반적인 오류와 해결방법' }
-        ]
-      };
-    } else {
-      return {
-        description: description || '비개발자도 쉽게 사용할 수 있는 단계별 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '📱',
-            title: '앱 만들기',
-            description: '코딩 없이도 앱을 만들 수 있는 방법을 안내합니다.',
-            buttonText: '시작하기',
-            priority: 'high'
-          },
-          {
-            icon: '⚙️',
-            title: '설정 관리',
-            description: '대시보드에서 설정을 변경하는 방법을 알려드립니다.',
-            buttonText: '설정하기',
-            priority: 'high'
-          },
-          {
-            icon: '📊',
-            title: '데이터 분석',
-            description: '사용 현황과 통계를 확인하는 방법을 설명합니다.',
-            buttonText: '분석보기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '사용자 빠른 시작',
-          steps: [
-            '계정 생성 및 로그인',
-            '프로젝트 만들기',
-            '기본 설정 완료',
-            '첫 번째 기능 사용해보기'
-          ]
-        },
-        resources: [
-          { title: '🎥 동영상 가이드', description: '화면으로 보는 단계별 사용법' },
-          { title: '❓ FAQ', description: '자주 묻는 질문과 답변' },
-          { title: '💬 커뮤니티', description: '다른 사용자들과 정보 공유' }
-        ]
-      };
-    }
-  };
-
-  const content = getContentByUserType();
-
+function AuthJoin() {
   return (
     <>
       <section id="main-content">
-        <h1>{title}</h1>
+        <h1>회원가입 설정</h1>
         
-        {/* 🔥 사용자 유형 선택 버튼 */}
-        <div className="user-type-selector">
-          <div className="selector-header">
-            <h3>어떤 유형의 사용자이신가요?</h3>
-            <p>선택하신 유형에 맞는 맞춤형 가이드를 제공해드립니다.</p>
-          </div>
-          <div className="type-buttons">
-            <button 
-              className={`type-btn ${userType === 'user' ? 'active' : ''}`}
-              onClick={() => setUserType('user')}
-            >
-              <div className="type-icon">👤</div>
-              <div className="type-info">
-                <div className="type-title">일반 사용자</div>
-                <div className="type-desc">비개발자, 비즈니스 사용자</div>
-              </div>
-            </button>
-            
-            <button 
-              className={`type-btn ${userType === 'developer' ? 'active' : ''}`}
-              onClick={() => setUserType('developer')}
-            >
-              <div className="type-icon">👨‍💻</div>
-              <div className="type-info">
-                <div className="type-title">개발자</div>
-                <div className="type-desc">개발자, 기술 담당자</div>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* 동적 설명 */}
-        <p className="main-description">{content.description}</p>
+        <p className="main-description">
+          앱/웹 내 회원가입에서 수집할 항목과 필수 입력 여부, 추가 설정을 관리할 수 있습니다.
+        </p>
 
         <div className="alert alert-info">
-          <strong>💡 {userType === 'developer' ? '개발자 팁' : '사용자 안내'}:</strong> 
-          {userType === 'developer' 
-            ? '기술 문서와 API 레퍼런스를 통해 빠르게 개발을 시작하세요.'
-            : '단계별 가이드를 따라하시면 누구나 쉽게 사용할 수 있습니다.'
-          }
+          <strong>💡 안내:</strong> 회원가입 설정을 변경하면 즉시 적용되며, 이미 가입한 회원에게는 영향을 주지 않습니다.
         </div>
 
-        <h2 id="overview">개요</h2>
+        <h2 id="overview">회원가입 설정 개요</h2>
         <div className="card">
-          <div className="card-title">주요 기능</div>
-          <p>{userType === 'developer' ? '개발자를 위한' : '사용자를 위한'} {title} 기능에 대해 자세히 알아보실 수 있습니다.</p>
+          <div className="card-title">설정 가능한 항목</div>
+          <p>회원가입 시 수집할 정보와 인증 방법을 자유롭게 구성할 수 있습니다.</p>
           
           <div className="grid-container">
-            {content.features.map((feature, index) => (
-              <div key={index} className={`card feature-card ${feature.priority}`}>
-                <div className="card-title">
-                  <span className="feature-icon">{feature.icon}</span>
-                  {feature.title}
-                  {feature.priority === 'high' && <span className="priority-badge">추천</span>}
-                </div>
-                <p>{feature.description}</p>
-                <button className="btn btn-primary">{feature.buttonText}</button>
+            <div className="card feature-card high">
+              <div className="card-title">
+                <span className="feature-icon">📋</span>
+                필수 항목 관리
+                <span className="priority-badge">중요</span>
               </div>
-            ))}
+              <p>아이디, 비밀번호, 이메일, 이름 등 회원가입 시 반드시 입력해야 하는 항목들을 관리합니다.</p>
+            </div>
+            
+            <div className="card feature-card">
+              <div className="card-title">
+                <span className="feature-icon">✔️</span>
+                선택 항목 설정
+              </div>
+              <p>영문 이름, 연락처 등 선택적으로 수집할 수 있는 추가 정보를 설정합니다.</p>
+            </div>
+            
+            <div className="card feature-card">
+              <div className="card-title">
+                <span className="feature-icon">🔐</span>
+                비밀번호 정책
+              </div>
+              <p>비밀번호 복잡도, 변경 주기 등 보안 정책을 설정합니다.</p>
+            </div>
+            
+            <div className="card feature-card">
+              <div className="card-title">
+                <span className="feature-icon">📧</span>
+                인증 수단 관리
+              </div>
+              <p>이메일, SMS 인증 사용 여부와 인증 방식을 설정합니다.</p>
+            </div>
           </div>
         </div>
 
-        <h2 id="getting-started">{content.quickStart.title}</h2>
+        <h2 id="getting-started">설정 방법</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 환경 설정' : '시작하기 전에'}
-          </div>
-          <p>{title} 기능을 사용하기 위한 단계별 가이드입니다.</p>
+          <div className="card-title">회원가입 설정 단계</div>
+          <p>관리자 대시보드에서 회원가입 설정을 변경하는 방법입니다.</p>
           
           <div className="step-content">
-            <h3 id="step-1">단계별 가이드</h3>
-            <ul className="checklist">
-              {content.quickStart.steps.map((step, index) => (
-                <li key={index}>{step}</li>
-              ))}
-            </ul>
-          </div>
-
-          {userType === 'developer' && (
-            <div className="code-example">
-              <h4>🔧 코드 예제</h4>
-              <div className="code-block">
-                <pre><code>{`// ${title} 기본 사용 예제
-import { mBaasSDK } from '@mbaas/sdk';
-
-const client = new mBaasSDK({
-  apiKey: 'your-api-key',
-  projectId: 'your-project-id'
-});
-
-// 기본 기능 사용
-await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></pre>
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">1</span>
+                인증 관리 메뉴 접속
+              </div>
+              <p>좌측 사이드바에서 <strong>인증 관리 &gt; 회원가입 설정</strong>을 클릭합니다.</p>
+              <div className='screenshot'>
+                <img src="/images/auth-menu.png" alt="인증 관리 메뉴 스크린샷"/>
               </div>
             </div>
-          )}
+            
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">2</span>
+                필수 항목 확인
+              </div>
+              <p>기본 필수 항목들을 확인하고 각 항목의 세부 설정을 조정합니다.</p>
+              <div className="sub-steps">
+                <div className="sub-step">
+                  <strong>• 아이디</strong>: 중복 체크, 형식 제한 설정
+                </div>
+                <div className="sub-step">
+                  <strong>• 비밀번호</strong>: 복잡도 규칙, 변경 주기 설정
+                </div>
+                <div className="sub-step">
+                  <strong>• 이메일</strong>: 인증 사용 여부 설정
+                </div>
+                <div className="sub-step">
+                  <strong>• 이름</strong>: 실명 확인 방식 설정
+                </div>
+              </div>
+            </div>
+            
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">3</span>
+                선택 항목 활성화
+              </div>
+              <p>필요에 따라 추가 정보 수집 항목을 활성화합니다.</p>
+              <div className="checkbox-list">
+                <label className="checkbox-item">
+                  <input type="checkbox" disabled />
+                  <span>영문 이름 수집</span>
+                </label>
+                <label className="checkbox-item">
+                  <input type="checkbox"  disabled />
+                  <span>연락처 수집 (SMS 인증 가능)</span>
+                </label>
+              </div>
+            </div>
+            
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">4</span>
+                설정 저장
+              </div>
+              <p>모든 설정을 완료한 후 <strong>저장</strong> 버튼을 클릭하여 변경사항을 적용합니다.</p>
+            </div>
+          </div>
         </div>
 
-        <h2 id="resources">유용한 자료</h2>
+        <h2 id="field-settings">항목별 상세 설정</h2>
+        
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 리소스' : '학습 자료'}
-          </div>
-          <p>더 효과적으로 활용할 수 있는 자료들을 모았습니다.</p>
+          <div className="card-title">필수 입력 항목</div>
           
-          <div className="resources-grid">
-            {content.resources.map((resource, index) => (
-              <div key={index} className="resource-item">
-                <div className="resource-title">{resource.title}</div>
-                <div className="resource-desc">{resource.description}</div>
-                <button className="btn btn-secondary">보러가기</button>
+          <div className="field-guide">
+            <h3>아이디 (Username)</h3>
+            <div className="field-content">
+              <p>사용자의 고유 식별자로 사용됩니다.</p>
+              <ul>
+                <li><strong>- 중복 불가</strong>: 시스템에서 자동으로 중복 체크</li>
+                <li><strong>- 변경 불가</strong>: 가입 후 변경할 수 없음</li>
+                <li><strong>- 형식 제한</strong>: 영문, 숫자 허용</li>
+                <li><strong>- 길이 제한</strong>: 최소 4자, 최대 20자</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="field-guide">
+            <h3>비밀번호 (Password)</h3>
+            <div className="field-content">
+              <p>계정 보안을 위한 비밀번호 설정입니다.</p>
+              
+              <div className="password-policy-box">
+                <h4>비밀번호 정책 옵션</h4>
+                <table className="policy-table">
+                  <thead>
+                    <tr>
+                      <th>정책 항목</th>
+                      <th>설명</th>
+                      <th>권장 설정</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>영문 대문자</td>
+                      <td>최소 1개 이상의 대문자 포함</td>
+                      <td>✓ 사용</td>
+                    </tr>
+                    <tr>
+                      <td>영문 소문자</td>
+                      <td>최소 1개 이상의 소문자 포함</td>
+                      <td>✓ 사용</td>
+                    </tr>
+                    <tr>
+                      <td>숫자</td>
+                      <td>최소 1개 이상의 숫자 포함</td>
+                      <td>✓ 사용</td>
+                    </tr>
+                    <tr>
+                      <td>특수문자</td>
+                      <td>!@#$%^&* 등 특수문자 포함</td>
+                      <td>✓ 사용</td>
+                    </tr>
+                    <tr>
+                      <td>최소 길이</td>
+                      <td>비밀번호 최소 자릿수</td>
+                      <td>8자 이상</td>
+                    </tr>
+                    <tr>
+                      <td>변경 주기</td>
+                      <td>정기적인 비밀번호 변경 요구</td>
+                      <td>90일, 180일, 365일</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-            ))}
+              
+              <div className="alert alert-warning">
+                <strong>⚠️ 주의:</strong> 너무 복잡한 비밀번호 정책은 사용자 이탈을 유발할 수 있습니다. 보안과 편의성의 균형을 고려하세요.
+              </div>
+            </div>
+          </div>
+          
+          <div className="field-guide">
+            <h3>이메일 (Email)</h3>
+            <div className="field-content">
+              <p>계정 복구, 알림 발송 등에 사용되는 필수 연락처입니다.</p>
+              <ul>
+                <li><strong>- 형식 검증</strong>: 유효한 이메일 형식 자동 체크</li>
+                <li><strong>- 인증 옵션</strong>: 이메일 인증 사용 시 가입 완료 전 인증 필수</li>
+              </ul>
+              
+              <div className="verification-box">
+                <h4>이메일 인증 설정</h4>
+                <div className="verification-options">
+                  <div className="option-item">
+                    <strong>인증 방식:</strong> 인증 번호 발송
+                  </div>
+                  <div className="option-item">
+                    <strong>유효 시간:</strong> 30분
+                  </div>
+                  <div className="option-item">
+                    <strong>재발송 제한:</strong> 5회/일
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="field-guide">
+            <h3>이름 (Name)</h3>
+            <div className="field-content">
+              <p>사용자의 실명 정보입니다.</p>
+              <ul>
+                <li><strong>- 한글/영문</strong>: 한글 또는 영문 이름 입력</li>
+                <li><strong>- 길이 제한</strong>: 최소 2자, 최대 50자</li>
+                <li><strong>- 특수문자</strong>: 공백 외 특수문자 불허</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <h2 id="troubleshooting">문제 해결</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 관련 문제' : '자주 발생하는 문제'}
+          <div className="card-title">선택 입력 항목</div>
+          
+          <div className="field-guide">
+            <h3>영문 이름 (English Name)</h3>
+            <div className="field-content">
+              <p>해외 서비스 연동이나 국제화 대응 시 활용됩니다.</p>
+              <ul>
+                <li>영문 알파벳과 공백만 허용</li>
+                <li>First Name, Last Name 분리 수집 가능</li>
+              </ul>
+            </div>
           </div>
           
-          {userType === 'developer' ? (
-            <>
-              <div className="card">
-                <div className="card-title">Q. API 호출이 실패합니다.</div>
-                <p><strong>A.</strong> API 키와 엔드포인트 URL이 올바른지 확인하세요. 요청 헤더에 Content-Type이 올바르게 설정되어 있는지도 확인해보세요.</p>
+          <div className="field-guide">
+            <h3>연락처 (Phone Number)</h3>
+            <div className="field-content">
+              <p>SMS 발송, 본인 확인 등에 활용됩니다.</p>
+              <ul>
+                <li><strong>- 검증</strong>: 유효한 휴대폰 번호 형식 체크</li>
+                <li><strong>- 인증</strong>: SMS 인증 기능 연동 가능</li>
+              </ul>
+              
+              <div className="verification-box">
+                <h4>SMS 인증 설정</h4>
+                <div className="verification-options">
+                  <div className="option-item">
+                    <strong>인증 방식:</strong> 6자리 인증번호
+                  </div>
+                  <div className="option-item">
+                    <strong>유효 시간:</strong> 3분
+                  </div>
+                  <div className="option-item">
+                    <strong>재발송 제한:</strong> 3회/일
+                  </div>
+                  <div className="option-item">
+                    <strong>비용:</strong> 건당 과금 (별도 문의)
+                  </div>
+                </div>
               </div>
-              <div className="card">
-                <div className="card-title">Q. SDK 초기화 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 프로젝트 ID와 API 키가 올바른지 확인하고, 최신 버전의 SDK를 사용하고 있는지 확인하세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 인증 토큰이 만료됩니다.</div>
-                <p><strong>A.</strong> refresh token을 사용하여 자동으로 토큰을 갱신하도록 구현하거나, 토큰 만료 시점을 체크하여 재인증하세요.</p>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="card">
-                <div className="card-title">Q. 기능이 정상적으로 작동하지 않아요.</div>
-                <p><strong>A.</strong> 먼저 기본 설정이 올바른지 확인해보세요. 설정에 문제가 없다면 브라우저 새로고침 후 다시 시도해보세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 권한 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 관리자 권한이 필요한 기능일 수 있습니다. 계정 권한을 확인하거나 관리자에게 문의하세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 데이터가 표시되지 않습니다.</div>
-                <p><strong>A.</strong> 데이터 로딩에 시간이 걸릴 수 있습니다. 잠시 후 다시 확인해보시거나, 필터 설정을 확인해보세요.</p>
-              </div>
-            </>
-          )}
+            </div>
+          </div>
+        </div>
+
+        <h2 id="best-practices">모범 사례</h2>
+        <div className="card">
+          <div className="card-title">효과적인 회원가입 설정</div>
+          
+          <div className="best-practices">
+            <div className="practice-item">
+              <h4>✅ 필수 항목 최소화</h4>
+              <p>회원가입 전환율을 높이기 위해 꼭 필요한 정보만 필수로 설정하세요. 추가 정보는 가입 후 프로필 완성 단계에서 수집할 수 있습니다.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 명확한 안내 제공</h4>
+              <p>각 입력 항목마다 왜 필요한지, 어떻게 활용되는지 명확히 안내하여 사용자의 신뢰를 얻으세요.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 적절한 보안 수준</h4>
+              <p>비밀번호 정책은 보안과 사용성의 균형을 고려하여 설정하세요. 지나치게 복잡한 요구사항은 오히려 보안을 해칠 수 있습니다.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 유연한 인증 옵션</h4>
+              <p>이메일과 SMS 인증을 선택적으로 활용하세요. 서비스 특성에 따라 적절한 인증 수단을 선택하면 됩니다.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 개인정보 보호</h4>
+              <p>수집한 개인정보는 명시된 목적에만 사용하고, 개인정보처리방침을 명확히 고지하세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="troubleshooting">자주 묻는 질문</h2>
+        <div className="card">
+          <div className="card-title">회원가입 설정 FAQ</div>
+          
+          <div className="faq-list">
+            <div className="card">
+              <div className="card-title">Q. 이미 가입한 회원에게도 새 설정이 적용되나요?</div>
+              <p><strong>A.</strong> 아니요, 변경된 설정은 새로 가입하는 회원에게만 적용됩니다. 기존 회원 정보는 영향받지 않습니다.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 필수 항목을 나중에 선택 항목으로 변경할 수 있나요?</div>
+              <p><strong>A.</strong> 아이디, 비밀번호, 이메일, 이름은 시스템 운영에 필수적인 항목이므로 선택 항목으로 변경할 수 없습니다.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. SMS 인증 비용은 어떻게 되나요?</div>
+              <p><strong>A.</strong> SMS 발송 비용은 사용량에 따라 과금됩니다. 자세한 요금은 고객센터로 문의해주세요.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 이메일 인증 메일이 도착하지 않아요.</div>
+              <p><strong>A.</strong> 스팸함을 확인해보시고, 발신 도메인이 화이트리스트에 등록되어 있는지 확인하세요.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 비밀번호 정책을 변경하면 기존 회원도 변경해야 하나요?</div>
+              <p><strong>A.</strong> 변경 주기를 설정한 경우에만 기존 회원에게도 적용됩니다. 복잡도 규칙은 다음 비밀번호 변경 시 적용됩니다.</p>
+            </div>
+          </div>
         </div>
 
         <h2 id="support">추가 지원</h2>
         <div className="card">
-          <div className="card-title">도움이 더 필요하신가요?</div>
-          <p>위의 내용으로 해결되지 않는 문제가 있으시면 언제든 문의해주세요.</p>
+          <div className="card-title">도움이 필요하신가요?</div>
+          <p>회원가입 설정과 관련하여 추가 도움이 필요하시면 언제든 문의해주세요.</p>
           
           <div className="grid-container">
-            {userType === 'developer' ? (
-              <>
-                <div className="card">
-                  <div className="card-title">🔧 기술 지원</div>
-                  <p>dev-support@mbaas.com</p>
-                  <p>개발 관련 기술 문의</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📚 개발자 포럼</div>
-                  <p>developers.mbaas.com</p>
-                  <p>개발자 커뮤니티 참여</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">🐛 버그 리포트</div>
-                  <p>GitHub Issues</p>
-                  <p>버그 신고 및 기능 요청</p>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="card">
-                  <div className="card-title">📞 전화 문의</div>
-                  <p>02-1234-5678</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📧 이메일 문의</div>
-                  <p>support@mbaas.com</p>
-                  <p>24시간 접수 가능</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">💬 채팅 문의</div>
-                  <p>실시간 채팅 지원</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-              </>
-            )}
+            <div className="card">
+              <div className="card-title">📧 이메일 문의</div>
+              <p>support@mbaas.com</p>
+              <p>기술 지원 및 일반 문의</p>
+            </div>
+            <div className="card">
+              <div className="card-title">💬 1:1 문의</div>
+              <p>관리자 대시보드 내 1:1 문의</p>
+              <p>실시간 답변 제공</p>
+            </div>
           </div>
         </div>
       </section>
@@ -301,4 +366,4 @@ await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></
   );
 }
 
-export default DefaultPage;
+export default AuthJoin;
