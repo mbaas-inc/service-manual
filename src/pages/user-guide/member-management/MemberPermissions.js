@@ -1,299 +1,375 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function DefaultPage({ title, description }) {
-  const [userType, setUserType] = useState('user'); // 'user' 또는 'developer'
-
-  // 사용자 유형별 콘텐츠 정의
-  const getContentByUserType = () => {
-    if (userType === 'developer') {
-      return {
-        description: description || '개발자를 위한 기술 문서와 API 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '🔧',
-            title: 'API 문서',
-            description: 'RESTful API 엔드포인트와 사용법을 확인하세요.',
-            buttonText: 'API 보기',
-            priority: 'high'
-          },
-          {
-            icon: '📚',
-            title: 'SDK 가이드',
-            description: '다양한 언어별 SDK 설치 및 사용법을 안내합니다.',
-            buttonText: 'SDK 다운로드',
-            priority: 'high'
-          },
-          {
-            icon: '🔗',
-            title: '연동 가이드',
-            description: '외부 서비스와의 연동 방법을 상세히 설명합니다.',
-            buttonText: '연동하기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '개발자 빠른 시작',
-          steps: [
-            '개발 환경 설정',
-            'API 키 발급 받기',
-            'SDK 설치 및 초기화',
-            'Hello World 예제 실행'
-          ]
-        },
-        resources: [
-          { title: '📖 기술 문서', description: '상세한 기술 스펙과 구현 가이드' },
-          { title: '💻 코드 예제', description: '실제 사용 가능한 샘플 코드' },
-          { title: '🐛 디버깅 가이드', description: '일반적인 오류와 해결방법' }
-        ]
-      };
-    } else {
-      return {
-        description: description || '비개발자도 쉽게 사용할 수 있는 단계별 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '📱',
-            title: '앱 만들기',
-            description: '코딩 없이도 앱을 만들 수 있는 방법을 안내합니다.',
-            buttonText: '시작하기',
-            priority: 'high'
-          },
-          {
-            icon: '⚙️',
-            title: '설정 관리',
-            description: '대시보드에서 설정을 변경하는 방법을 알려드립니다.',
-            buttonText: '설정하기',
-            priority: 'high'
-          },
-          {
-            icon: '📊',
-            title: '데이터 분석',
-            description: '사용 현황과 통계를 확인하는 방법을 설명합니다.',
-            buttonText: '분석보기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '사용자 빠른 시작',
-          steps: [
-            '계정 생성 및 로그인',
-            '프로젝트 만들기',
-            '기본 설정 완료',
-            '첫 번째 기능 사용해보기'
-          ]
-        },
-        resources: [
-          { title: '🎥 동영상 가이드', description: '화면으로 보는 단계별 사용법' },
-          { title: '❓ FAQ', description: '자주 묻는 질문과 답변' },
-          { title: '💬 커뮤니티', description: '다른 사용자들과 정보 공유' }
-        ]
-      };
-    }
-  };
-
-  const content = getContentByUserType();
-
+function MemberPermissions() {
   return (
     <>
       <section id="main-content">
-        <h1>{title}</h1>
+        <h1>고객 권한 관리</h1>
         
-        {/* 🔥 사용자 유형 선택 버튼 */}
-        <div className="user-type-selector">
-          <div className="selector-header">
-            <h3>어떤 유형의 사용자이신가요?</h3>
-            <p>선택하신 유형에 맞는 맞춤형 가이드를 제공해드립니다.</p>
-          </div>
-          <div className="type-buttons">
-            <button 
-              className={`type-btn ${userType === 'user' ? 'active' : ''}`}
-              onClick={() => setUserType('user')}
-            >
-              <div className="type-icon">👤</div>
-              <div className="type-info">
-                <div className="type-title">일반 사용자</div>
-                <div className="type-desc">비개발자, 비즈니스 사용자</div>
-              </div>
-            </button>
-            
-            <button 
-              className={`type-btn ${userType === 'developer' ? 'active' : ''}`}
-              onClick={() => setUserType('developer')}
-            >
-              <div className="type-icon">👨‍💻</div>
-              <div className="type-info">
-                <div className="type-title">개발자</div>
-                <div className="type-desc">개발자, 기술 담당자</div>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* 동적 설명 */}
-        <p className="main-description">{content.description}</p>
+        <p className="main-description">
+          고객의 권한을 체계적으로 관리하고 신규 가입 회원의 기본 등급을 설정하는 방법을 안내합니다. 계층적 권한 구조를 통해 세분화된 권한 관리가 가능합니다.
+        </p>
 
         <div className="alert alert-info">
-          <strong>💡 {userType === 'developer' ? '개발자 팁' : '사용자 안내'}:</strong> 
-          {userType === 'developer' 
-            ? '기술 문서와 API 레퍼런스를 통해 빠르게 개발을 시작하세요.'
-            : '단계별 가이드를 따라하시면 누구나 쉽게 사용할 수 있습니다.'
-          }
+          <strong>💡 안내:</strong> 권한 변경은 즉시 적용되며, 이미 로그인한 사용자는 다음 로그인 시부터 새로운 권한이 적용됩니다.
         </div>
 
-        <h2 id="overview">개요</h2>
+        <h2 id="overview">권한 관리 개요</h2>
         <div className="card">
           <div className="card-title">주요 기능</div>
-          <p>{userType === 'developer' ? '개발자를 위한' : '사용자를 위한'} {title} 기능에 대해 자세히 알아보실 수 있습니다.</p>
+          <p>고객의 권한을 효율적으로 관리하여 서비스 접근 제어와 기능 사용을 체계화할 수 있습니다.</p>
           
           <div className="grid-container">
-            {content.features.map((feature, index) => (
-              <div key={index} className={`card feature-card ${feature.priority}`}>
-                <div className="card-title">
-                  <span className="feature-icon">{feature.icon}</span>
-                  {feature.title}
-                  {feature.priority === 'high' && <span className="priority-badge">추천</span>}
-                </div>
-                <p>{feature.description}</p>
-                <button className="btn btn-primary">{feature.buttonText}</button>
+            <div className="card feature-card high">
+              <div className="card-title">
+                <span className="feature-icon">⚙️</span>
+                기본 등급 설정
+                <span className="priority-badge">핵심</span>
               </div>
-            ))}
+              <p>신규 가입 회원에게 자동으로 부여될 기본 권한 등급을 설정할 수 있습니다.</p>
+            </div>
+            
+            <div className="card feature-card high">
+              <div className="card-title">
+                <span className="feature-icon">🏗️</span>
+                계층적 구조
+              </div>
+              <p>부모-자식 관계로 권한을 구성하여 체계적인 권한 관리가 가능합니다.</p>
+            </div>
+            
+            <div className="card feature-card">
+              <div className="card-title">
+                <span className="feature-icon">➕</span>
+                권한 추가
+              </div>
+              <p>새로운 권한을 생성하고 기존 권한과의 계층 관계를 설정할 수 있습니다.</p>
+            </div>
+            
           </div>
         </div>
 
-        <h2 id="getting-started">{content.quickStart.title}</h2>
+        <h2 id="default-permission">기본 등급 설정</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 환경 설정' : '시작하기 전에'}
-          </div>
-          <p>{title} 기능을 사용하기 위한 단계별 가이드입니다.</p>
+          <div className="card-title">신규 가입자 기본 권한</div>
+          <p>새로 가입하는 회원에게 자동으로 부여될 기본 권한 등급을 설정할 수 있습니다.</p>
           
           <div className="step-content">
-            <h3 id="step-1">단계별 가이드</h3>
-            <ul className="checklist">
-              {content.quickStart.steps.map((step, index) => (
-                <li key={index}>{step}</li>
-              ))}
-            </ul>
-          </div>
-
-          {userType === 'developer' && (
-            <div className="code-example">
-              <h4>🔧 코드 예제</h4>
-              <div className="code-block">
-                <pre><code>{`// ${title} 기본 사용 예제
-import { mBaasSDK } from '@mbaas/sdk';
-
-const client = new mBaasSDK({
-  apiKey: 'your-api-key',
-  projectId: 'your-project-id'
-});
-
-// 기본 기능 사용
-await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></pre>
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">1</span>
+                권한 관리 메뉴 접속
+              </div>
+              <p>좌측 사이드바에서 <strong>고객 관리 &gt; 권한 관리</strong>를 클릭합니다.</p>
+              <div className="screenshot">
+                <img src="/images/permission-menu.png" alt="권한 관리 메뉴 스크린샷" />
               </div>
             </div>
-          )}
+            
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">2</span>
+                기본 등급 설정 영역 확인
+              </div>
+              <p>화면 상단의 '기본 등급 설정' 섹션에서 현재 설정된 기본 권한을 확인할 수 있습니다.</p>
+              <div className="default-setting-example">
+                <h4>기본 등급 설정 화면 예시</h4>
+                <div className="setting-panel">
+                  <div className="setting-header">
+                    <h5>현재 기본 등급</h5>
+                    <span className="permission-user">일반회원</span>
+                  </div>
+                  <div className="setting-description">
+                    <p>신규 가입 회원은 자동으로 '일반회원' 권한이 부여됩니다.</p>
+                    <p><strong>권한 범위:</strong> 기본 서비스 이용, 개인 정보 관리</p>
+                  </div>
+                  <button className="btn btn-primary">기본 등급 변경</button>
+                </div>
+              </div>
+            </div>
+            
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">3</span>
+                기본 등급 변경
+              </div>
+              <p>'기본 등급 변경' 버튼을 클릭하여 새로운 기본 권한을 선택할 수 있습니다.</p>
+              <div className="permission-options">
+                <div className="option-list">
+                  <div className="permission-option">
+                    <span className="permission-user">일반회원</span>
+                    <div className="option-details">
+                      <p><strong>기본 서비스 이용 권한</strong></p>
+                      <ul>
+                        <li>개인 정보 관리</li>
+                        <li>기본 기능 사용</li>
+                        <li>고객 지원 문의</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="permission-option disabled">
+                    <span className="permission-admin">관리자</span>
+                    <div className="option-details">
+                      <p><strong>시스템 관리 권한</strong></p>
+                      <p className="warning-text">⚠️ 관리자 권한은 기본 등급으로 설정할 수 없습니다.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h2 id="resources">유용한 자료</h2>
+        <h2 id="permission-hierarchy">권한 계층 구조</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 리소스' : '학습 자료'}
-          </div>
-          <p>더 효과적으로 활용할 수 있는 자료들을 모았습니다.</p>
+          <div className="card-title">계층적 권한 관리</div>
+          <p>권한을 계층적으로 구성하여 체계적이고 효율적인 권한 관리를 할 수 있습니다.</p>
           
-          <div className="resources-grid">
-            {content.resources.map((resource, index) => (
-              <div key={index} className="resource-item">
-                <div className="resource-title">{resource.title}</div>
-                <div className="resource-desc">{resource.description}</div>
-                <button className="btn btn-secondary">보러가기</button>
+          <div className="hierarchy-guide">
+            <div className="hierarchy-concept">
+              <h3>계층 구조의 이해</h3>
+              <div className="concept-explanation">
+                <div className="concept-item">
+                  <h4>부모 권한 (Parent Permission)</h4>
+                  <p>상위 권한으로, 하위 권한들을 포함하는 권한입니다. 부모 권한을 가진 사용자는 모든 하위 권한의 기능을 사용할 수 있습니다.</p>
+                </div>
+                
+                <div className="concept-item">
+                  <h4>자식 권한 (Child Permission)</h4>
+                  <p>특정 부모 권한 아래에 속하는 하위 권한입니다. 더 세분화된 기능 접근을 제어할 때 사용합니다.</p>
+                </div>
               </div>
-            ))}
+              
+              <div className="hierarchy-example">
+                <h4>권한 계층 구조 예시</h4>
+                <div className="tree-structure">
+                  <div className="tree-node root">
+                    <span className="permission-admin">관리자</span>
+                    <div className="tree-children">
+                      <div className="tree-node">
+                        <span className="permission-premium">프리미엄</span>
+                        <div className="tree-children">
+                          <div className="tree-node">
+                            <span className="permission-user">일반회원</span>
+                          </div>
+                          <div className="tree-node">
+                            <span className="permission-custom">VIP회원</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="tree-node">
+                        <span className="permission-custom">운영자</span>
+                        <div className="tree-children">
+                          <div className="tree-node">
+                            <span className="permission-custom">콘텐츠 관리자</span>
+                          </div>
+                          <div className="tree-node">
+                            <span className="permission-custom">고객 관리자</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="hierarchy-benefits">
+                  <h4>계층 구조의 장점</h4>
+                  <ul>
+                    <li><strong>- 권한 상속:</strong> 상위 권한은 하위 권한의 모든 기능을 자동으로 포함</li>
+                    <li><strong>- 체계적 관리:</strong> 권한 관계를 명확하게 파악하고 관리 가능</li>
+                    <li><strong>- 확장성:</strong> 새로운 권한을 기존 구조에 쉽게 추가</li>
+                    <li><strong>- 유지보수:</strong> 권한 변경 시 계층 구조를 통한 일괄 적용</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h2 id="troubleshooting">문제 해결</h2>
+        <h2 id="add-permission">새 권한 추가</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 관련 문제' : '자주 발생하는 문제'}
-          </div>
+          <div className="card-title">권한 생성 및 설정</div>
+          <p>새로운 권한을 생성하고 기존 권한 구조에 적절히 배치하는 방법을 안내합니다.</p>
           
-          {userType === 'developer' ? (
-            <>
-              <div className="card">
-                <div className="card-title">Q. API 호출이 실패합니다.</div>
-                <p><strong>A.</strong> API 키와 엔드포인트 URL이 올바른지 확인하세요. 요청 헤더에 Content-Type이 올바르게 설정되어 있는지도 확인해보세요.</p>
+          <div className="step-content">
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">1</span>
+                권한 추가 버튼 클릭
               </div>
-              <div className="card">
-                <div className="card-title">Q. SDK 초기화 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 프로젝트 ID와 API 키가 올바른지 확인하고, 최신 버전의 SDK를 사용하고 있는지 확인하세요.</p>
+              <p>권한 목록 화면에서 <strong>'새 권한 추가'</strong> 버튼을 클릭합니다.</p>
+            </div>
+            
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">2</span>
+                권한 정보 입력
               </div>
-              <div className="card">
-                <div className="card-title">Q. 인증 토큰이 만료됩니다.</div>
-                <p><strong>A.</strong> refresh token을 사용하여 자동으로 토큰을 갱신하도록 구현하거나, 토큰 만료 시점을 체크하여 재인증하세요.</p>
+              <p>새로운 권한의 기본 정보를 입력합니다.</p>
+              
+              <div className="form-example">
+                <h4>권한 추가 폼 예시</h4>
+                <div className="form-panel">
+                  <div className="form-group">
+                    <label className="form-label">권한 이름 *</label>
+                    <input type="text" className="form-input" placeholder="예: VIP회원, 콘텐츠 편집자" />
+                    <div className="form-help">권한을 식별할 수 있는 명확한 이름을 입력하세요.</div>
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="form-label">부모 권한 선택</label>
+                    <select className="form-select">
+                      <option value="">상위 권한 없음 (최상위 권한)</option>
+                      <option value="admin">관리자</option>
+                      <option value="user">일반회원</option>
+                    </select>
+                    <div className="form-help">선택한 부모 권한의 하위에 이 권한이 생성됩니다.</div>
+                  </div>
+                </div>
               </div>
-            </>
-          ) : (
-            <>
-              <div className="card">
-                <div className="card-title">Q. 기능이 정상적으로 작동하지 않아요.</div>
-                <p><strong>A.</strong> 먼저 기본 설정이 올바른지 확인해보세요. 설정에 문제가 없다면 브라우저 새로고침 후 다시 시도해보세요.</p>
+            </div>
+            
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">3</span>
+                권한 생성 완료
               </div>
-              <div className="card">
-                <div className="card-title">Q. 권한 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 관리자 권한이 필요한 기능일 수 있습니다. 계정 권한을 확인하거나 관리자에게 문의하세요.</p>
+              <p>모든 설정을 확인 후 <strong>'권한 생성'</strong> 버튼을 클릭하여 새로운 권한을 생성합니다.</p>
+              
+              <div className="alert alert-success">
+                <strong>✅ 생성 완료:</strong> 새로운 권한이 성공적으로 생성되었습니다. 이제 고객에게 이 권한을 부여할 수 있습니다.
               </div>
-              <div className="card">
-                <div className="card-title">Q. 데이터가 표시되지 않습니다.</div>
-                <p><strong>A.</strong> 데이터 로딩에 시간이 걸릴 수 있습니다. 잠시 후 다시 확인해보시거나, 필터 설정을 확인해보세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="permission-management">권한 목록 관리</h2>
+        <div className="card">
+          <div className="card-title">기존 권한 관리</div>
+          <p>생성된 권한들을 수정, 삭제하고 권한별 사용자 현황을 확인할 수 있습니다.</p>
+          
+          <div className="management-functions">
+            <div className="function-item">
+              <div className="function-header">
+                <span className="function-icon">✏️</span>
+                <h3>권한 수정</h3>
               </div>
-            </>
-          )}
+              <div className="function-content">
+                <p>기존 권한의 이름, 설명, 기능 접근 범위 등을 수정할 수 있습니다.</p>
+                <ul>
+                  <li>권한 이름 및 설명 변경</li>
+                  <li>부모 권한 재설정 (계층 구조 변경)</li>
+                  <li>기능 접근 권한 추가/제거</li>
+                  <li>권한 색상 변경</li>
+                </ul>
+                
+                <div className="alert alert-warning">
+                  <strong>⚠️ 주의:</strong> 권한 수정은 해당 권한을 가진 모든 사용자에게 즉시 적용됩니다.
+                </div>
+              </div>
+            </div>
+            
+            <div className="function-item">
+              <div className="function-header">
+                <span className="function-icon">🗑️</span>
+                <h3>권한 삭제</h3>
+              </div>
+              <div className="function-content">
+                <p>더 이상 사용하지 않는 권한을 삭제할 수 있습니다.</p>
+                
+                <div className="deletion-conditions">
+                  <h4>삭제 가능 조건</h4>
+                  <ul>
+                    <li>해당 권한을 가진 사용자가 없어야 함</li>
+                    <li>하위 권한이 없어야 함 (자식 권한이 있는 경우 삭제 불가)</li>
+                    <li>기본 등급으로 설정되지 않아야 함</li>
+                    <li>시스템 기본 권한이 아니어야 함</li>
+                  </ul>
+                </div>
+                
+                <div className="alert alert-danger">
+                  <strong>🚨 경고:</strong> 삭제된 권한은 복구할 수 없습니다. 삭제 전 충분히 검토하세요.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="best-practices">모범 사례</h2>
+        <div className="card">
+          <div className="card-title">효과적인 권한 관리</div>
+          
+          <div className="best-practices">
+            <div className="practice-item">
+              <h4>✅ 최소 권한 원칙</h4>
+              <p>사용자에게는 업무 수행에 필요한 최소한의 권한만 부여하여 보안을 강화하세요.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 계층 구조 활용</h4>
+              <p>권한을 계층적으로 구성하여 관리 효율성을 높이고 권한 상속을 적극 활용하세요.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 정기적인 권한 검토</h4>
+              <p>주기적으로 사용자의 권한을 검토하여 불필요한 권한은 제거하고 필요한 권한은 추가하세요.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 명확한 권한명</h4>
+              <p>권한 이름과 설명을 명확하게 작성하여 관리자들이 쉽게 이해할 수 있도록 하세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="troubleshooting">자주 묻는 질문</h2>
+        <div className="card">
+          <div className="card-title">권한 관리 FAQ</div>
+          
+          <div className="faq-list">
+            <div className="card">
+              <div className="card-title">Q. 권한을 삭제할 수 없어요.</div>
+              <p><strong>A.</strong> 해당 권한을 사용하는 사용자가 있거나 하위 권한이 존재하는 경우 삭제할 수 없습니다. 먼저 사용자들의 권한을 변경하고 하위 권한을 정리한 후 삭제하세요.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 권한 변경이 적용되지 않습니다.</div>
+              <p><strong>A.</strong> 권한 변경은 즉시 적용되지만, 이미 로그인한 사용자는 다음 로그인 시부터 새로운 권한이 적용됩니다. 즉시 적용이 필요한 경우 해당 사용자의 세션을 강제 종료하세요.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 기본 등급 설정을 변경했는데 기존 사용자에게도 적용되나요?</div>
+              <p><strong>A.</strong> 기본 등급 설정은 신규 가입자에게만 적용됩니다. 기존 사용자의 권한은 변경되지 않으므로 필요시 개별적으로 변경해야 합니다.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 권한 계층 구조를 변경할 수 있나요?</div>
+              <p><strong>A.</strong> 네, 권한 수정 기능을 통해 부모 권한을 변경하여 계층 구조를 재구성할 수 있습니다. 다만 순환 참조가 발생하지 않도록 주의하세요.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 권한별 사용자 수가 실시간으로 업데이트되나요?</div>
+              <p><strong>A.</strong> 권한별 사용자 수는 실시간으로 업데이트됩니다. 다만 캐시로 인해 최대 5분 정도의 지연이 있을 수 있습니다.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 관리자 권한을 가진 사용자가 한 명뿐인데 권한을 변경할 수 있나요?</div>
+              <p><strong>A.</strong> 시스템에 최소 한 명의 관리자가 있어야 하므로, 마지막 관리자의 권한을 변경하기 전에 다른 사용자에게 관리자 권한을 부여해야 합니다.</p>
+            </div>
+          </div>
         </div>
 
         <h2 id="support">추가 지원</h2>
         <div className="card">
-          <div className="card-title">도움이 더 필요하신가요?</div>
-          <p>위의 내용으로 해결되지 않는 문제가 있으시면 언제든 문의해주세요.</p>
+          <div className="card-title">도움이 필요하신가요?</div>
+          <p>권한 관리와 관련하여 추가 도움이 필요하시면 언제든 연락주세요.</p>
           
           <div className="grid-container">
-            {userType === 'developer' ? (
-              <>
-                <div className="card">
-                  <div className="card-title">🔧 기술 지원</div>
-                  <p>dev-support@mbaas.com</p>
-                  <p>개발 관련 기술 문의</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📚 개발자 포럼</div>
-                  <p>developers.mbaas.com</p>
-                  <p>개발자 커뮤니티 참여</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">🐛 버그 리포트</div>
-                  <p>GitHub Issues</p>
-                  <p>버그 신고 및 기능 요청</p>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="card">
-                  <div className="card-title">📞 전화 문의</div>
-                  <p>02-1234-5678</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📧 이메일 문의</div>
-                  <p>support@mbaas.com</p>
-                  <p>24시간 접수 가능</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">💬 채팅 문의</div>
-                  <p>실시간 채팅 지원</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-              </>
-            )}
+            <div className="card">
+              <div className="card-title">📧 기술 지원</div>
+              <p>support@mbaas.com</p>
+              <p>권한 관리 관련 문의</p>
+            </div>
           </div>
         </div>
       </section>
@@ -301,4 +377,4 @@ await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></
   );
 }
 
-export default DefaultPage;
+export default MemberPermissions;

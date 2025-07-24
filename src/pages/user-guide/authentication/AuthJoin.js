@@ -354,11 +354,6 @@ function AuthJoin() {
               <p>support@mbaas.com</p>
               <p>기술 지원 및 일반 문의</p>
             </div>
-            <div className="card">
-              <div className="card-title">💬 1:1 문의</div>
-              <p>관리자 대시보드 내 1:1 문의</p>
-              <p>실시간 답변 제공</p>
-            </div>
           </div>
         </div>
       </section>

@@ -9,11 +9,8 @@ import AuthJoin from '../pages/user-guide/authentication/AuthJoin';
 import AuthLog from '../pages/user-guide/authentication/AuthLog';
 
 // 고객 관리
-import MemberRegistration from '../pages/user-guide/member-management/MemberRegistration';
 import MemberList from '../pages/user-guide/member-management/MemberList';
-import MemberProfile from '../pages/user-guide/member-management/MemberProfile';
 import MemberPermissions from '../pages/user-guide/member-management/MemberPermissions';
-import MemberExport from '../pages/user-guide/member-management/MemberExport';
 
 // 메시지 발송
 import SendEmail from '../pages/user-guide/messaging/SendEmail';
@@ -113,31 +110,15 @@ export const pageMapping = {
     breadcrumb: '고객 목록 보기',
     category: 'user-guide',
     subcategory: 'member-management',
-    description: '가입한 회원들의 목록을 확인하고 관리하는 방법을 설명합니다.'
-  },
-  'member-profile': { 
-    component: MemberProfile, 
-    title: '고객 정보 관리', 
-    breadcrumb: '고객 정보 관리',
-    category: 'user-guide',
-    subcategory: 'member-management',
-    description: '개별 회원의 정보를 수정하고 관리하는 방법을 안내합니다.'
+    description: '가입한 고객들의 목록을 확인하고 관리하는 방법을 설명합니다.'
   },
   'member-permissions': { 
     component: MemberPermissions, 
-    title: '권한 설정하기', 
-    breadcrumb: '권한 설정하기',
+    title: '고객 권한 설정하기', 
+    breadcrumb: '고객 권한 설정하기',
     category: 'user-guide',
     subcategory: 'member-management',
-    description: '회원별 권한 등급을 설정하고 관리하는 방법을 설명합니다.'
-  },
-  'member-export': { 
-    component: MemberExport, 
-    title: '고객 데이터 내보내기', 
-    breadcrumb: '고객 데이터 내보내기',
-    category: 'user-guide',
-    subcategory: 'member-management',
-    description: '고객 정보를 CSV나 Excel 파일로 내보내는 방법을 안내합니다.'
+    description: '고객별 권한 등급을 설정하고 관리하는 방법을 설명합니다.'
   },
   
   // 💳 결제 관리

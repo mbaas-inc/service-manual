@@ -71,10 +71,8 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
           key: 'member-management',
           title: '고객 관리',
           items: [
-            { id: 'member-list', label: '회원 목록 보기' },
-            { id: 'member-profile', label: '회원 정보 관리' },
-            { id: 'member-permissions', label: '권한 설정하기' },
-            { id: 'member-export', label: '회원 데이터 내보내기' }
+            { id: 'member-list', label: '고객 정보 관리' },
+            { id: 'member-permissions', label: '고객 권한 설정하기' },
           ]
         },
         {

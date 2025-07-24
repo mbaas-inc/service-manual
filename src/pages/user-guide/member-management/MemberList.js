@@ -1,299 +1,469 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function DefaultPage({ title, description }) {
-  const [userType, setUserType] = useState('user'); // 'user' 또는 'developer'
-
-  // 사용자 유형별 콘텐츠 정의
-  const getContentByUserType = () => {
-    if (userType === 'developer') {
-      return {
-        description: description || '개발자를 위한 기술 문서와 API 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '🔧',
-            title: 'API 문서',
-            description: 'RESTful API 엔드포인트와 사용법을 확인하세요.',
-            buttonText: 'API 보기',
-            priority: 'high'
-          },
-          {
-            icon: '📚',
-            title: 'SDK 가이드',
-            description: '다양한 언어별 SDK 설치 및 사용법을 안내합니다.',
-            buttonText: 'SDK 다운로드',
-            priority: 'high'
-          },
-          {
-            icon: '🔗',
-            title: '연동 가이드',
-            description: '외부 서비스와의 연동 방법을 상세히 설명합니다.',
-            buttonText: '연동하기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '개발자 빠른 시작',
-          steps: [
-            '개발 환경 설정',
-            'API 키 발급 받기',
-            'SDK 설치 및 초기화',
-            'Hello World 예제 실행'
-          ]
-        },
-        resources: [
-          { title: '📖 기술 문서', description: '상세한 기술 스펙과 구현 가이드' },
-          { title: '💻 코드 예제', description: '실제 사용 가능한 샘플 코드' },
-          { title: '🐛 디버깅 가이드', description: '일반적인 오류와 해결방법' }
-        ]
-      };
-    } else {
-      return {
-        description: description || '비개발자도 쉽게 사용할 수 있는 단계별 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '📱',
-            title: '앱 만들기',
-            description: '코딩 없이도 앱을 만들 수 있는 방법을 안내합니다.',
-            buttonText: '시작하기',
-            priority: 'high'
-          },
-          {
-            icon: '⚙️',
-            title: '설정 관리',
-            description: '대시보드에서 설정을 변경하는 방법을 알려드립니다.',
-            buttonText: '설정하기',
-            priority: 'high'
-          },
-          {
-            icon: '📊',
-            title: '데이터 분석',
-            description: '사용 현황과 통계를 확인하는 방법을 설명합니다.',
-            buttonText: '분석보기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '사용자 빠른 시작',
-          steps: [
-            '계정 생성 및 로그인',
-            '프로젝트 만들기',
-            '기본 설정 완료',
-            '첫 번째 기능 사용해보기'
-          ]
-        },
-        resources: [
-          { title: '🎥 동영상 가이드', description: '화면으로 보는 단계별 사용법' },
-          { title: '❓ FAQ', description: '자주 묻는 질문과 답변' },
-          { title: '💬 커뮤니티', description: '다른 사용자들과 정보 공유' }
-        ]
-      };
-    }
-  };
-
-  const content = getContentByUserType();
-
+function MemberList() {
   return (
     <>
       <section id="main-content">
-        <h1>{title}</h1>
+        <h1>고객 정보 관리</h1>
         
-        {/* 🔥 사용자 유형 선택 버튼 */}
-        <div className="user-type-selector">
-          <div className="selector-header">
-            <h3>어떤 유형의 사용자이신가요?</h3>
-            <p>선택하신 유형에 맞는 맞춤형 가이드를 제공해드립니다.</p>
-          </div>
-          <div className="type-buttons">
-            <button 
-              className={`type-btn ${userType === 'user' ? 'active' : ''}`}
-              onClick={() => setUserType('user')}
-            >
-              <div className="type-icon">👤</div>
-              <div className="type-info">
-                <div className="type-title">일반 사용자</div>
-                <div className="type-desc">비개발자, 비즈니스 사용자</div>
-              </div>
-            </button>
-            
-            <button 
-              className={`type-btn ${userType === 'developer' ? 'active' : ''}`}
-              onClick={() => setUserType('developer')}
-            >
-              <div className="type-icon">👨‍💻</div>
-              <div className="type-info">
-                <div className="type-title">개발자</div>
-                <div className="type-desc">개발자, 기술 담당자</div>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* 동적 설명 */}
-        <p className="main-description">{content.description}</p>
+        <p className="main-description">
+          가입한 고객들의 목록을 확인하고 관리하는 방법을 설명합니다. 검색, 정보 확인, 개별 관리 기능을 활용하세요.
+        </p>
 
         <div className="alert alert-info">
-          <strong>💡 {userType === 'developer' ? '개발자 팁' : '사용자 안내'}:</strong> 
-          {userType === 'developer' 
-            ? '기술 문서와 API 레퍼런스를 통해 빠르게 개발을 시작하세요.'
-            : '단계별 가이드를 따라하시면 누구나 쉽게 사용할 수 있습니다.'
-          }
+          <strong>💡 안내:</strong> 고객 정보는 개인정보보호법에 따라 안전하게 관리됩니다. 정당한 목적 없이 개인정보를 열람하거나 처리하지 마세요.
         </div>
 
-        <h2 id="overview">개요</h2>
+        <h2 id="overview">고객 관리 개요</h2>
         <div className="card">
           <div className="card-title">주요 기능</div>
-          <p>{userType === 'developer' ? '개발자를 위한' : '사용자를 위한'} {title} 기능에 대해 자세히 알아보실 수 있습니다.</p>
+          <p>관리자 대시보드에서 고객 정보를 체계적으로 관리할 수 있습니다.</p>
           
           <div className="grid-container">
-            {content.features.map((feature, index) => (
-              <div key={index} className={`card feature-card ${feature.priority}`}>
-                <div className="card-title">
-                  <span className="feature-icon">{feature.icon}</span>
-                  {feature.title}
-                  {feature.priority === 'high' && <span className="priority-badge">추천</span>}
-                </div>
-                <p>{feature.description}</p>
-                <button className="btn btn-primary">{feature.buttonText}</button>
+            <div className="card feature-card high">
+              <div className="card-title">
+                <span className="feature-icon">🔍</span>
+                고객 검색
+                <span className="priority-badge">핵심</span>
               </div>
-            ))}
+              <p>아이디, 이름, 연락처로 빠르게 원하는 고객을 찾을 수 있습니다.</p>
+            </div>
+            
+            <div className="card feature-card high">
+              <div className="card-title">
+                <span className="feature-icon">📋</span>
+                정보 확인
+              </div>
+              <p>고객의 기본 정보, 권한, 접속 기록 등을 한눈에 확인할 수 있습니다.</p>
+            </div>
+            
+            <div className="card feature-card">
+              <div className="card-title">
+                <span className="feature-icon">💬</span>
+                메시지 발송
+              </div>
+              <p>개별 고객에게 이메일이나 SMS를 직접 발송할 수 있습니다.</p>
+            </div>
+            
+            <div className="card feature-card">
+              <div className="card-title">
+                <span className="feature-icon">⚙️</span>
+                정보 관리
+              </div>
+              <p>고객 정보 수정 및 계정 삭제 등의 관리 작업을 수행할 수 있습니다.</p>
+            </div>
           </div>
         </div>
 
-        <h2 id="getting-started">{content.quickStart.title}</h2>
+        <h2 id="access-guide">고객 목록 접근 방법</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 환경 설정' : '시작하기 전에'}
-          </div>
-          <p>{title} 기능을 사용하기 위한 단계별 가이드입니다.</p>
+          <div className="card-title">고객 관리 화면 접속</div>
+          <p>관리자 대시보드에서 고객 목록에 접근하는 방법을 안내합니다.</p>
           
           <div className="step-content">
-            <h3 id="step-1">단계별 가이드</h3>
-            <ul className="checklist">
-              {content.quickStart.steps.map((step, index) => (
-                <li key={index}>{step}</li>
-              ))}
-            </ul>
-          </div>
-
-          {userType === 'developer' && (
-            <div className="code-example">
-              <h4>🔧 코드 예제</h4>
-              <div className="code-block">
-                <pre><code>{`// ${title} 기본 사용 예제
-import { mBaasSDK } from '@mbaas/sdk';
-
-const client = new mBaasSDK({
-  apiKey: 'your-api-key',
-  projectId: 'your-project-id'
-});
-
-// 기본 기능 사용
-await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></pre>
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">1</span>
+                고객 관리 메뉴 접속
+              </div>
+              <p>좌측 사이드바에서 <strong>고객 관리 &gt; 고객 정보 관리</strong>를 클릭합니다.</p>
+              <div className="screenshot">
+                <img src="/images/member-menu.png" alt="고객 관리 메뉴 스크린샷" />
               </div>
             </div>
-          )}
+            
+            <div className="step-item">
+              <div className="step-title">
+                <span className="step-number">2</span>
+                고객 목록 화면 확인
+              </div>
+              <p>등록된 모든 고객의 목록이 표시됩니다. 기본적으로 최신 가입순으로 정렬됩니다.</p>
+              <div className="member-table-example">
+                <h4>고객 목록 화면 예시</h4>
+                <table className="member-table">
+                  <thead>
+                    <tr>
+                      <th>이름</th>
+                      <th>아이디</th>
+                      <th>권한</th>
+                      <th>연락처</th>
+                      <th>최근접속</th>
+                      <th>가입일자</th>
+                      <th>관리</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>홍길동</td>
+                      <td>hong123</td>
+                      <td><span className="permission-user">일반회원</span></td>
+                      <td>010-1234-5678</td>
+                      <td>2024-01-15 14:30</td>
+                      <td>2023-12-01</td>
+                      <td>
+                        <div className="action-buttons">
+                          <button className="btn-action message">메시지</button>
+                          <button className="btn-action edit">수정</button>
+                          <button className="btn-action delete">삭제</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>이관리</td>
+                      <td>admin_lee</td>
+                      <td><span className="permission-admin">관리자</span></td>
+                      <td>010-5555-7777</td>
+                      <td>2024-01-15 16:45</td>
+                      <td>2023-10-01</td>
+                      <td>
+                        <div className="action-buttons">
+                          <button className="btn-action message">메시지</button>
+                          <button className="btn-action edit">수정</button>
+                          <button className="btn-action delete" disabled>삭제</button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h2 id="resources">유용한 자료</h2>
+        <h2 id="search-function">고객 검색 기능</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 리소스' : '학습 자료'}
-          </div>
-          <p>더 효과적으로 활용할 수 있는 자료들을 모았습니다.</p>
+          <div className="card-title">빠른 고객 찾기</div>
+          <p>다양한 조건으로 원하는 고객을 빠르게 검색할 수 있습니다.</p>
           
-          <div className="resources-grid">
-            {content.resources.map((resource, index) => (
-              <div key={index} className="resource-item">
-                <div className="resource-title">{resource.title}</div>
-                <div className="resource-desc">{resource.description}</div>
-                <button className="btn btn-secondary">보러가기</button>
+          <div className="search-guide">
+            <div className="search-option">
+              <h3>검색 옵션</h3>
+              <div className="search-methods">
+                <div className="search-method">
+                  <div className="method-header">
+                    <span className="method-icon">🆔</span>
+                    <strong>아이디로 검색</strong>
+                  </div>
+                  <p>고객의 로그인 ID로 검색합니다. 정확한 아이디를 입력하거나 일부만 입력해도 검색 가능합니다.</p>
+                  <div className="search-example">
+                    <strong>예시:</strong> "hong" 입력 → "hong123", "hong_user" 등 관련 계정 검색
+                  </div>
+                </div>
+                
+                <div className="search-method">
+                  <div className="method-header">
+                    <span className="method-icon">👤</span>
+                    <strong>이름으로 검색</strong>
+                  </div>
+                  <p>고객의 실명으로 검색합니다. 한글, 영문 모두 지원하며 부분 검색도 가능합니다.</p>
+                  <div className="search-example">
+                    <strong>예시:</strong> "홍" 입력 → "홍길동", "홍영수" 등 관련 이름 검색
+                  </div>
+                </div>
+                
+                <div className="search-method">
+                  <div className="method-header">
+                    <span className="method-icon">📞</span>
+                    <strong>연락처로 검색</strong>
+                  </div>
+                  <p>등록된 전화번호로 검색합니다. 숫자만 입력하면 되며, 하이픈(-) 없이도 검색 가능합니다.</p>
+                  <div className="search-example">
+                    <strong>예시:</strong> "01012345678" 또는 "010-1234-5678" 모두 검색 가능
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
+            
+            <div className="search-tips">
+              <h3>검색 팁</h3>
+              <div className="tips-list">
+                <div className="tip-item">
+                  <strong>✅ 부분 검색 활용</strong>
+                  <p>전체 정보를 기억하지 못해도 일부만 입력하면 관련 결과를 모두 찾아줍니다.</p>
+                </div>
+                <div className="tip-item">
+                  <strong>✅ 대소문자 구분 없음</strong>
+                  <p>영문 검색 시 대소문자를 구분하지 않으므로 편리하게 검색할 수 있습니다.</p>
+                </div>
+                <div className="tip-item">
+                  <strong>✅ 실시간 검색</strong>
+                  <p>입력하는 즉시 결과가 나타나므로 빠르게 원하는 고객을 찾을 수 있습니다.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <h2 id="troubleshooting">문제 해결</h2>
+        <h2 id="customer-info">고객 정보 확인</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 관련 문제' : '자주 발생하는 문제'}
-          </div>
+          <div className="card-title">표시되는 정보 항목</div>
           
-          {userType === 'developer' ? (
-            <>
-              <div className="card">
-                <div className="card-title">Q. API 호출이 실패합니다.</div>
-                <p><strong>A.</strong> API 키와 엔드포인트 URL이 올바른지 확인하세요. 요청 헤더에 Content-Type이 올바르게 설정되어 있는지도 확인해보세요.</p>
+          <div className="info-fields">
+            <div className="field-section">
+              <h3>기본 정보</h3>
+              <div className="field-list">
+                <div className="field-item">
+                  <div className="field-header">
+                    <span className="field-icon">👤</span>
+                    <strong>이름</strong>
+                  </div>
+                  <p>고객의 실명입니다. 회원가입 시 입력한 정보로 표시됩니다.</p>
+                </div>
+                
+                <div className="field-item">
+                  <div className="field-header">
+                    <span className="field-icon">🆔</span>
+                    <strong>아이디</strong>
+                  </div>
+                  <p>로그인에 사용되는 고유 식별자입니다. 중복될 수 없으며 변경이 불가능합니다.</p>
+                </div>
+                
+                <div className="field-item">
+                  <div className="field-header">
+                    <span className="field-icon">📞</span>
+                    <strong>연락처</strong>
+                  </div>
+                  <p>고객의 휴대폰 번호입니다. SMS 발송이나 본인 확인 시 사용됩니다.</p>
+                </div>
               </div>
-              <div className="card">
-                <div className="card-title">Q. SDK 초기화 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 프로젝트 ID와 API 키가 올바른지 확인하고, 최신 버전의 SDK를 사용하고 있는지 확인하세요.</p>
+            </div>
+            
+            <div className="field-section">
+              <h3>계정 상태</h3>
+              <div className="field-list">
+                <div className="field-item">
+                  <div className="field-header">
+                    <span className="field-icon">🏷️</span>
+                    <strong>권한</strong>
+                  </div>
+                  <p>고객의 권한 등급을 표시합니다.</p>
+                  <div className="permission-types">
+                    <div className="permission-example">
+                      <span className="permission-admin">관리자</span>
+                      <span className="permission-desc">시스템 전체 관리 권한</span>
+                    </div>
+                    <div className="permission-example">
+                      <span className="permission-user">일반회원</span>
+                      <span className="permission-desc">기본 서비스 이용 권한</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="field-item">
+                  <div className="field-header">
+                    <span className="field-icon">⏰</span>
+                    <strong>최근 접속시간</strong>
+                  </div>
+                  <p>고객이 마지막으로 로그인한 일시를 표시합니다.</p>
+                  <div className="time-format">
+                    <strong>형식:</strong> YYYY-MM-DD HH:MM (예: 2024-01-15 14:30)
+                  </div>
+                </div>
+                
+                <div className="field-item">
+                  <div className="field-header">
+                    <span className="field-icon">📅</span>
+                    <strong>가입일자</strong>
+                  </div>
+                  <p>고객이 처음 회원가입한 날짜를 표시합니다.</p>
+                  <div className="date-info">
+                    <p>가입일로부터 경과된 기간을 통해 고객의 충성도나 활동 패턴을 파악할 수 있습니다.</p>
+                  </div>
+                </div>
               </div>
-              <div className="card">
-                <div className="card-title">Q. 인증 토큰이 만료됩니다.</div>
-                <p><strong>A.</strong> refresh token을 사용하여 자동으로 토큰을 갱신하도록 구현하거나, 토큰 만료 시점을 체크하여 재인증하세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="management-actions">고객 관리 기능</h2>
+        <div className="card">
+          <div className="card-title">개별 고객 관리</div>
+          <p>각 고객에 대해 다양한 관리 작업을 수행할 수 있습니다.</p>
+          
+          <div className="management-functions">
+            <div className="function-item">
+              <div className="function-header">
+                <span className="function-icon">💬</span>
+                <h3>메시지 보내기</h3>
               </div>
-            </>
-          ) : (
-            <>
-              <div className="card">
-                <div className="card-title">Q. 기능이 정상적으로 작동하지 않아요.</div>
-                <p><strong>A.</strong> 먼저 기본 설정이 올바른지 확인해보세요. 설정에 문제가 없다면 브라우저 새로고침 후 다시 시도해보세요.</p>
+              <div className="function-content">
+                <p>선택한 고객에게 개별 메시지를 발송할 수 있습니다.</p>
+                
+                <div className="message-options">
+                  <div className="message-type">
+                    <strong>📧 이메일 발송</strong>
+                    <ul>
+                      <li>중요한 공지사항 전달</li>
+                      <li>개인화된 안내 메시지</li>
+                      <li>이벤트 및 프로모션 안내</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="message-type">
+                    <strong>📱 SMS 발송</strong>
+                    <ul>
+                      <li>긴급한 알림 전달</li>
+                      <li>인증번호 재발송</li>
+                      <li>간단한 안내 메시지</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="alert alert-info">
+                  <strong>💡 팁:</strong> 메시지 발송 전에 고객의 수신 동의 여부를 확인하세요. 스팸으로 신고될 수 있습니다.
+                </div>
               </div>
-              <div className="card">
-                <div className="card-title">Q. 권한 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 관리자 권한이 필요한 기능일 수 있습니다. 계정 권한을 확인하거나 관리자에게 문의하세요.</p>
+            </div>
+            
+            <div className="function-item">
+              <div className="function-header">
+                <span className="function-icon">✏️</span>
+                <h3>정보 수정하기</h3>
               </div>
-              <div className="card">
-                <div className="card-title">Q. 데이터가 표시되지 않습니다.</div>
-                <p><strong>A.</strong> 데이터 로딩에 시간이 걸릴 수 있습니다. 잠시 후 다시 확인해보시거나, 필터 설정을 확인해보세요.</p>
+              <div className="function-content">
+                <p>고객의 정보를 수정하거나 업데이트할 수 있습니다.</p>
+                
+                <div className="editable-fields">
+                  <div className="editable-section">
+                    <strong>수정 가능한 항목:</strong>
+                    <ul>
+                      <li><strong>이름</strong>: 실명 변경 시 (신분증 확인 필요)</li>
+                      <li><strong>연락처</strong>: 전화번호 변경 시</li>
+                      <li><strong>권한</strong>: 고객 등급 변경</li>
+                      <li><strong>상태</strong>: 계정 활성화/비활성화</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="editable-section">
+                    <strong>수정 불가능한 항목:</strong>
+                    <ul>
+                      <li><strong>아이디</strong>: 시스템 무결성을 위해 변경 불가</li>
+                      <li><strong>가입일자</strong>: 이력 관리를 위해 변경 불가</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="alert alert-warning">
+                  <strong>⚠️ 주의:</strong> 고객 정보 수정 시 반드시 정당한 사유가 있어야 하며, 가능하면 고객 본인의 동의를 받으세요.
+                </div>
               </div>
-            </>
-          )}
+            </div>
+            
+            <div className="function-item">
+              <div className="function-header">
+                <span className="function-icon">🗑️</span>
+                <h3>계정 삭제하기</h3>
+              </div>
+              <div className="function-content">
+                <p>고객의 계정을 완전히 삭제할 수 있습니다. 매우 신중하게 사용해야 하는 기능입니다.</p>
+                
+                <div className="deletion-info">
+                  <div className="deletion-types">
+                    <div className="deletion-type">
+                      <strong>🔒 일시 정지</strong>
+                      <p>계정을 비활성화하되 데이터는 보관합니다. 추후 복구 가능합니다.</p>
+                    </div>
+                    
+                    <div className="deletion-type">
+                      <strong>🗑️ 완전 삭제</strong>
+                      <p>계정과 모든 관련 데이터를 영구적으로 삭제합니다. 복구가 불가능합니다.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="deletion-cautions">
+                    <h4>삭제 시 주의사항</h4>
+                    <ul>
+                      <li>관리자 계정은 삭제할 수 없습니다</li>
+                      <li>진행 중인 결제나 주문이 있는 계정은 삭제 전 처리 필요</li>
+                      <li>법적 보관 의무가 있는 데이터는 별도 보관</li>
+                      <li>삭제 전 반드시 백업 및 확인 절차 진행</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="alert alert-danger">
+                  <strong>🚨 경고:</strong> 계정 삭제는 되돌릴 수 없는 작업입니다. 삭제 전 반드시 충분히 검토하고 필요시 상급자 승인을 받으세요.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="best-practices">모범 사례</h2>
+        <div className="card">
+          <div className="card-title">효과적인 고객 관리</div>
+          
+          <div className="best-practices">
+            <div className="practice-item">
+              <h4>✅ 정기적인 고객 정보 검증</h4>
+              <p>주기적으로 고객 정보의 정확성을 확인하고, 연락처 변경이나 이름 변경 등을 업데이트하세요.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 개인정보 보호 준수</h4>
+              <p>개인정보보호법에 따라 고객 정보 접근을 최소화하고, 필요한 경우에만 열람하세요.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 고객 세분화 관리</h4>
+              <p>권한이나 활동 수준에 따라 고객을 세분화하여 맞춤형 서비스를 제공하세요.</p>
+            </div>
+            
+            <div className="practice-item">
+              <h4>✅ 고객 소통 기록</h4>
+              <p>고객과의 메시지 발송 내역이나 문의 응답 기록을 체계적으로 관리하세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="troubleshooting">자주 묻는 질문</h2>
+        <div className="card">
+          <div className="card-title">고객 관리 FAQ</div>
+          
+          <div className="faq-list">
+            <div className="card">
+              <div className="card-title">Q. 고객 정보가 검색되지 않아요.</div>
+              <p><strong>A.</strong> 검색어의 철자를 확인하고, 부분 검색을 시도해보세요. 고객이 탈퇴했거나 계정이 삭제된 경우 검색되지 않습니다.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 관리자 계정을 삭제할 수 없어요.</div>
+              <p><strong>A.</strong> 시스템 보안을 위해 관리자 계정은 삭제가 제한됩니다. 권한을 먼저 변경한 후 삭제하거나, 최고 관리자에게 문의하세요.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 메시지 발송이 실패합니다.</div>
+              <p><strong>A.</strong> 고객의 연락처 정보가 정확한지 확인하고, 수신 동의 여부를 체크하세요. SMS의 경우 발송 크레딧이 부족할 수 있습니다.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 고객 목록이 너무 많아서 관리가 어려워요.</div>
+              <p><strong>A.</strong> 검색과 필터 기능을 적극 활용하세요. 권한별, 접속 상태별로 필터링하거나 페이지당 표시 개수를 조정할 수 있습니다.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 실수로 고객 정보를 잘못 수정했어요.</div>
+              <p><strong>A.</strong> 관리 로그를 확인하여 이전 정보를 파악하고, 가능한 한 빨리 올바른 정보로 복구하세요. 필요시 고객에게 직접 확인하세요.</p>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">Q. 중복 계정이 있는 것 같아요.</div>
+              <p><strong>A.</strong> 이름과 연락처로 검색하여 중복 계정을 확인하고, 고객과 상담 후 불필요한 계정을 정리하세요.</p>
+            </div>
+          </div>
         </div>
 
         <h2 id="support">추가 지원</h2>
         <div className="card">
-          <div className="card-title">도움이 더 필요하신가요?</div>
-          <p>위의 내용으로 해결되지 않는 문제가 있으시면 언제든 문의해주세요.</p>
+          <div className="card-title">도움이 필요하신가요?</div>
+          <p>고객 관리와 관련하여 추가 도움이 필요하시면 언제든 연락주세요.</p>
           
           <div className="grid-container">
-            {userType === 'developer' ? (
-              <>
-                <div className="card">
-                  <div className="card-title">🔧 기술 지원</div>
-                  <p>dev-support@mbaas.com</p>
-                  <p>개발 관련 기술 문의</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📚 개발자 포럼</div>
-                  <p>developers.mbaas.com</p>
-                  <p>개발자 커뮤니티 참여</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">🐛 버그 리포트</div>
-                  <p>GitHub Issues</p>
-                  <p>버그 신고 및 기능 요청</p>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="card">
-                  <div className="card-title">📞 전화 문의</div>
-                  <p>02-1234-5678</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📧 이메일 문의</div>
-                  <p>support@mbaas.com</p>
-                  <p>24시간 접수 가능</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">💬 채팅 문의</div>
-                  <p>실시간 채팅 지원</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-              </>
-            )}
+            <div className="card">
+              <div className="card-title">📧 기술 지원</div>
+              <p>support@mbaas.com</p>
+              <p>고객 관리 기능 문의</p>
+            </div>
           </div>
         </div>
       </section>
@@ -301,4 +471,4 @@ await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></
   );
 }
 
-export default DefaultPage;
+export default MemberList;
