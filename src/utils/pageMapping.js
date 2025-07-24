@@ -21,10 +21,8 @@ import MessageHistory from '../pages/user-guide/messaging/MessageHistory';
 
 // 결제 관리
 import PaymentSetup from '../pages/user-guide/payment/PaymentSetup';
-import PaymentMethods from '../pages/user-guide/payment/PaymentMethods';
 import PaymentHistory from '../pages/user-guide/payment/PaymentHistory';
 import RefundManagement from '../pages/user-guide/payment/RefundManagement';
-import PaymentReports from '../pages/user-guide/payment/PaymentReports';
 
 // 게시판 관리
 import BoardManagement from '../pages/user-guide/board/BoardManagement';
@@ -124,19 +122,11 @@ export const pageMapping = {
   // 💳 결제 관리
   'payment-setup': { 
     component: PaymentSetup, 
-    title: '결제 시스템 설정', 
-    breadcrumb: '결제 시스템 설정',
+    title: 'PG 결제 설정', 
+    breadcrumb: 'PG 결제 설정',
     category: 'user-guide',
     subcategory: 'payment',
     description: '온라인 결제 시스템을 설정하고 연동하는 방법을 안내합니다.'
-  },
-  'payment-methods': { 
-    component: PaymentMethods, 
-    title: '결제 수단 관리', 
-    breadcrumb: '결제 수단 관리',
-    category: 'user-guide',
-    subcategory: 'payment',
-    description: '다양한 결제 수단을 추가하고 관리하는 방법을 설명합니다.'
   },
   'payment-history': { 
     component: PaymentHistory, 
@@ -153,14 +143,6 @@ export const pageMapping = {
     category: 'user-guide',
     subcategory: 'payment',
     description: '고객의 환불 요청을 처리하고 관리하는 방법을 설명합니다.'
-  },
-  'payment-reports': { 
-    component: PaymentReports, 
-    title: '결제 리포트 보기', 
-    breadcrumb: '결제 리포트 보기',
-    category: 'user-guide',
-    subcategory: 'payment',
-    description: '결제 관련 리포트를 생성하고 분석하는 방법을 안내합니다.'
   },
     
   // 📧 메시지 발송

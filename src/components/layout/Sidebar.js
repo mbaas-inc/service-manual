@@ -79,11 +79,18 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
           key: 'payment',
           title: '결제 관리',
           items: [
-            { id: 'payment-setup', label: '결제 시스템 설정' },
-            { id: 'payment-methods', label: '결제 수단 관리' },
+            { id: 'payment-setup', label: 'PG 결제 설정' },
             { id: 'payment-history', label: '결제 내역 조회' },
-            { id: 'refund-management', label: '환불 처리하기' },
-            { id: 'payment-reports', label: '결제 리포트 보기' }
+            // { id: 'refund-management', label: '환불 처리하기' },
+          ]
+        },
+        {
+          key: 'board',
+          title: '게시판 관리',
+          items: [
+            { id: 'board-management', label: '게시판 만들기' },
+            { id: 'post-management', label: '게시글 관리하기' },
+            { id: 'comment-moderation', label: '댓글 관리하기' }
           ]
         },
         {
@@ -98,15 +105,6 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
           ]
         },
         {
-          key: 'board',
-          title: '게시판 관리',
-          items: [
-            { id: 'board-management', label: '게시판 만들기' },
-            { id: 'post-management', label: '게시글 관리하기' },
-            { id: 'comment-moderation', label: '댓글 관리하기' }
-          ]
-        },
-        {
           key: 'push',
           title: '푸시 관리',
           items: [
@@ -115,15 +113,15 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
             { id: 'push-topic', label: '토픽 관리' }
           ]
         },
-        {
-          key: 'settings',
-          title: '설정',
-          items: [
-            { id: 'general-settings', label: '일반 설정' },
-            { id: 'security-settings', label: '보안 설정' },
-            { id: 'notification-settings', label: '알림 설정' }
-          ]
-        }
+        // {
+        //   key: 'settings',
+        //   title: '설정',
+        //   items: [
+        //     { id: 'general-settings', label: '일반 설정' },
+        //     { id: 'security-settings', label: '보안 설정' },
+        //     { id: 'notification-settings', label: '알림 설정' }
+        //   ]
+        // }
       ];
     }
     
