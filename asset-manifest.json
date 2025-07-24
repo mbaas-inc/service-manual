@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/service-manual/static/css/main.95dd7fec.css",
-    "main.js": "/service-manual/static/js/main.bb28bcfb.js",
+    "main.css": "/service-manual/static/css/main.2b398f54.css",
+    "main.js": "/service-manual/static/js/main.8c23ea45.js",
     "static/js/453.380f2664.chunk.js": "/service-manual/static/js/453.380f2664.chunk.js",
+    "static/media/toss.png": "/service-manual/static/media/toss.b40267c06865d8bf89c8.png",
+    "static/media/nicepay.png": "/service-manual/static/media/nicepay.7877610ca0e26a60cefc.png",
+    "static/media/kginicis.svg": "/service-manual/static/media/kginicis.b719d99d956dcec201fd9439bfd0b7f7.svg",
+    "static/media/payco.svg": "/service-manual/static/media/payco.2e3b9f0c23ecab92c79975573c6bf488.svg",
     "index.html": "/service-manual/index.html",
-    "main.95dd7fec.css.map": "/service-manual/static/css/main.95dd7fec.css.map",
-    "main.bb28bcfb.js.map": "/service-manual/static/js/main.bb28bcfb.js.map",
+    "main.2b398f54.css.map": "/service-manual/static/css/main.2b398f54.css.map",
+    "main.8c23ea45.js.map": "/service-manual/static/js/main.8c23ea45.js.map",
     "453.380f2664.chunk.js.map": "/service-manual/static/js/453.380f2664.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.95dd7fec.css",
-    "static/js/main.bb28bcfb.js"
+    "static/css/main.2b398f54.css",
+    "static/js/main.8c23ea45.js"
   ]
 }
