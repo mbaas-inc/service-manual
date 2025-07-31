@@ -1,91 +1,70 @@
 import React, { useState } from 'react';
 
-function DefaultPage({ title, description }) {
-  const [userType, setUserType] = useState('user'); // 'user' 또는 'developer'
-
+function CommentModeration({ title = "댓글 관리", description }) {
+  const [userType, setUserType] = useState('admin'); // 'admin' 또는 'moderator'
+  
   // 사용자 유형별 콘텐츠 정의
   const getContentByUserType = () => {
-    if (userType === 'developer') {
+    if (userType === 'moderator') {
       return {
-        description: description || '개발자를 위한 기술 문서와 API 가이드를 제공합니다.',
+        description: description || '모더레이터를 위한 댓글 검토, 신고 처리, 스팸 필터링 등의 댓글 관리 업무를 안내합니다.',
         features: [
           {
-            icon: '🔧',
-            title: 'API 문서',
-            description: 'RESTful API 엔드포인트와 사용법을 확인하세요.',
-            buttonText: 'API 보기',
+            icon: '🔍',
+            title: '댓글 검토',
+            description: '새로 작성된 댓글을 검토하고 승인/차단 처리합니다.',
             priority: 'high'
           },
           {
-            icon: '📚',
-            title: 'SDK 가이드',
-            description: '다양한 언어별 SDK 설치 및 사용법을 안내합니다.',
-            buttonText: 'SDK 다운로드',
-            priority: 'high'
-          },
-          {
-            icon: '🔗',
-            title: '연동 가이드',
-            description: '외부 서비스와의 연동 방법을 상세히 설명합니다.',
-            buttonText: '연동하기',
-            priority: 'medium'
-          }
-        ],
-        quickStart: {
-          title: '개발자 빠른 시작',
-          steps: [
-            '개발 환경 설정',
-            'API 키 발급 받기',
-            'SDK 설치 및 초기화',
-            'Hello World 예제 실행'
-          ]
-        },
-        resources: [
-          { title: '📖 기술 문서', description: '상세한 기술 스펙과 구현 가이드' },
-          { title: '💻 코드 예제', description: '실제 사용 가능한 샘플 코드' },
-          { title: '🐛 디버깅 가이드', description: '일반적인 오류와 해결방법' }
-        ]
-      };
-    } else {
-      return {
-        description: description || '비개발자도 쉽게 사용할 수 있는 단계별 가이드를 제공합니다.',
-        features: [
-          {
-            icon: '📱',
-            title: '앱 만들기',
-            description: '코딩 없이도 앱을 만들 수 있는 방법을 안내합니다.',
-            buttonText: '시작하기',
-            priority: 'high'
-          },
-          {
-            icon: '⚙️',
-            title: '설정 관리',
-            description: '대시보드에서 설정을 변경하는 방법을 알려드립니다.',
-            buttonText: '설정하기',
+            icon: '🚫',
+            title: '부적절한 댓글 차단',
+            description: '욕설, 스팸, 부적절한 댓글을 신속하게 차단합니다.',
             priority: 'high'
           },
           {
             icon: '📊',
-            title: '데이터 분석',
-            description: '사용 현황과 통계를 확인하는 방법을 설명합니다.',
-            buttonText: '분석보기',
+            title: '댓글 통계',
+            description: '댓글 현황과 모더레이션 통계를 확인합니다.',
             priority: 'medium'
           }
         ],
         quickStart: {
-          title: '사용자 빠른 시작',
+          title: '모더레이터 빠른 시작',
           steps: [
-            '계정 생성 및 로그인',
-            '프로젝트 만들기',
-            '기본 설정 완료',
-            '첫 번째 기능 사용해보기'
+            '모더레이터 권한으로 로그인',
+            '신고된 댓글 목록 확인',
+            '댓글 내용 검토 및 판단',
+            '적절한 조치 및 사용자 안내'
           ]
-        },
-        resources: [
-          { title: '🎥 동영상 가이드', description: '화면으로 보는 단계별 사용법' },
-          { title: '❓ FAQ', description: '자주 묻는 질문과 답변' },
-          { title: '💬 커뮤니티', description: '다른 사용자들과 정보 공유' }
-        ]
+        }
+      };
+    } else {
+      return {
+        description: description || '관리자를 위한 댓글 시스템 설정 등을 안내합니다.',
+        features: [
+          {
+            icon: '⚙️',
+            title: '댓글 시스템 설정',
+            description: '댓글 기능의 전반적인 설정과 정책을 관리합니다.',
+            buttonText: '설정하기',
+            priority: 'high'
+          },
+          {
+            icon: '👥',
+            title: '사용자 관리',
+            description: '댓글 작성자의 권한과 제재 상태를 관리합니다.',
+            buttonText: '사용자관리',
+            priority: 'medium'
+          }
+        ],
+        quickStart: {
+          title: '댓글 관리 시작하기',
+          steps: [
+            '관리자 권한으로 로그인',
+            '댓글 정책 및 필터 설정',
+            '모더레이터 권한 부여',
+          ]
+        }
       };
     }
   };
@@ -96,53 +75,20 @@ function DefaultPage({ title, description }) {
     <>
       <section id="main-content">
         <h1>{title}</h1>
-        
-        {/* 🔥 사용자 유형 선택 버튼 */}
-        <div className="user-type-selector">
-          <div className="selector-header">
-            <h3>어떤 유형의 사용자이신가요?</h3>
-            <p>선택하신 유형에 맞는 맞춤형 가이드를 제공해드립니다.</p>
-          </div>
-          <div className="type-buttons">
-            <button 
-              className={`type-btn ${userType === 'user' ? 'active' : ''}`}
-              onClick={() => setUserType('user')}
-            >
-              <div className="type-icon">👤</div>
-              <div className="type-info">
-                <div className="type-title">일반 사용자</div>
-                <div className="type-desc">비개발자, 비즈니스 사용자</div>
-              </div>
-            </button>
-            
-            <button 
-              className={`type-btn ${userType === 'developer' ? 'active' : ''}`}
-              onClick={() => setUserType('developer')}
-            >
-              <div className="type-icon">👨‍💻</div>
-              <div className="type-info">
-                <div className="type-title">개발자</div>
-                <div className="type-desc">개발자, 기술 담당자</div>
-              </div>
-            </button>
-          </div>
-        </div>
 
-        {/* 동적 설명 */}
-        <p className="main-description">{content.description}</p>
+        <p className="main-description">
+          {description || '관리자를 위한 댓글 시스템 설정 등을 안내합니다.'}
+        </p>
 
         <div className="alert alert-info">
-          <strong>💡 {userType === 'developer' ? '개발자 팁' : '사용자 안내'}:</strong> 
-          {userType === 'developer' 
-            ? '기술 문서와 API 레퍼런스를 통해 빠르게 개발을 시작하세요.'
-            : '단계별 가이드를 따라하시면 누구나 쉽게 사용할 수 있습니다.'
-          }
+          <strong>💡관리자 팁 :</strong> 
+           체계적인 댓글 관리 시스템으로 건전한 소통 문화를 조성하세요.
         </div>
 
         <h2 id="overview">개요</h2>
         <div className="card">
           <div className="card-title">주요 기능</div>
-          <p>{userType === 'developer' ? '개발자를 위한' : '사용자를 위한'} {title} 기능에 대해 자세히 알아보실 수 있습니다.</p>
+          <p>{userType === 'admin' ? '관리자를 위한' : '모더레이터를 위한'} 댓글 관리 기능에 대해 자세히 알아보실 수 있습니다.</p>
           
           <div className="grid-container">
             {content.features.map((feature, index) => (
@@ -153,7 +99,6 @@ function DefaultPage({ title, description }) {
                   {feature.priority === 'high' && <span className="priority-badge">추천</span>}
                 </div>
                 <p>{feature.description}</p>
-                <button className="btn btn-primary">{feature.buttonText}</button>
               </div>
             ))}
           </div>
@@ -161,10 +106,8 @@ function DefaultPage({ title, description }) {
 
         <h2 id="getting-started">{content.quickStart.title}</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 환경 설정' : '시작하기 전에'}
-          </div>
-          <p>{title} 기능을 사용하기 위한 단계별 가이드입니다.</p>
+          <div className="card-title">시작하기 전에</div>
+          <p>댓글 관리 기능을 사용하기 위한 단계별 가이드입니다.</p>
           
           <div className="step-content">
             <h3 id="step-1">단계별 가이드</h3>
@@ -174,126 +117,181 @@ function DefaultPage({ title, description }) {
               ))}
             </ul>
           </div>
-
-          {userType === 'developer' && (
-            <div className="code-example">
-              <h4>🔧 코드 예제</h4>
-              <div className="code-block">
-                <pre><code>{`// ${title} 기본 사용 예제
-import { mBaasSDK } from '@mbaas/sdk';
-
-const client = new mBaasSDK({
-  apiKey: 'your-api-key',
-  projectId: 'your-project-id'
-});
-
-// 기본 기능 사용
-await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></pre>
-              </div>
-            </div>
-          )}
         </div>
 
-        <h2 id="resources">유용한 자료</h2>
-        <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 리소스' : '학습 자료'}
-          </div>
-          <p>더 효과적으로 활용할 수 있는 자료들을 모았습니다.</p>
+        {/* 댓글 시스템 개요 */}
+        <h2 id="comment-system" className="comment-section-title">댓글 시스템 개요</h2>
+        <div className="card comment-management-card">
+          <div className="card-title">댓글 관리 체계 이해하기</div>
+          <p>효과적인 댓글 관리를 위해 먼저 시스템 구조를 이해해보세요.</p>
           
-          <div className="resources-grid">
-            {content.resources.map((resource, index) => (
-              <div key={index} className="resource-item">
-                <div className="resource-title">{resource.title}</div>
-                <div className="resource-desc">{resource.description}</div>
-                <button className="btn btn-secondary">보러가기</button>
+          <div className="step-content">
+            <h3>댓글 생명주기</h3>
+            <div className="step-detail">
+              <div className="step-content">
+                <div className="step-item">
+                  <div className="step-title">
+                    <span className="step-number">1</span>
+                    댓글 작성
+                  </div>
+                  <div className="step-content">
+                    <p>사용자가 게시글에 댓글을 작성합니다.</p>
+                  </div>
+                </div>
+                <div className="step-item">
+                  <div className="step-title">
+                    <span className="step-number">2</span>
+                    검토 단계
+                  </div>
+                  <div className="step-content">
+                    <p>수동 검토를 거칩니다.</p>
+                  </div>
+                </div>
+                <div className="step-item">
+                  <div className="step-title">
+                    <span className="step-number">3</span>
+                    게시/차단
+                  </div>
+                  <div className="step-content">
+                    <p>최종적으로 게시되거나 차단됩니다.</p>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 관리자 전용 섹션 */}
+        {userType === 'admin' && (
+          <>
+            <h2 id="system-settings" className="comment-section-title">댓글 시스템 설정</h2>
+            <div className="card comment-management-card">
+              <div className="card-title">댓글 시스템 기본 설정</div>
+              <p>댓글 기능의 전반적인 정책과 동작 방식을 설정합니다.</p>
+              
+              <div className="step-content">
+                <h3>기본 정책 설정</h3>
+                <div className="step-detail">
+                  <div className="grid-container">
+                    <div className="card">
+                      <div className="card-title">🔐 권한 설정</div>
+                      <ul className="checklist">
+                        <li><strong>댓글 작성 권한:</strong> 회원, 비회원, 특정 등급 이상</li>
+                        <li><strong>대댓글 허용:</strong> 댓글에 대한 댓글 작성 가능 여부</li>
+                        <li><strong>수정/삭제 권한:</strong> 작성자 본인만 또는 시간 제한</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="card">
+                      <div className="card-title">📝 작성 규칙</div>
+                      <ul className="checklist">
+                        <li><strong>첨부 파일:</strong> 이미지, 링크 첨부 허용 여부</li>
+                        <li><strong>멘션 기능:</strong> @사용자명으로 멘션 가능</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* <h3>자동 필터링 설정</h3>
+                <div className="step-detail">
+                  <div className="alert alert-warning">
+                    <strong>⚠️ 주의:</strong> 필터링 설정이 너무 엄격하면 정상적인 댓글도 차단될 수 있습니다. 단계적으로 강도를 조절하며 테스트해보세요.
+                  </div>
+                  
+                  <ul className="checklist">
+                    <li><strong>욕설 필터:</strong> 부적절한 언어 자동 감지 및 차단</li>
+                    <li><strong>스팸 감지:</strong> 반복적인 내용이나 광고성 댓글 차단</li>
+                    <li><strong>링크 제한:</strong> 외부 링크 포함 댓글 검토 대상으로 분류</li>
+                    <li><strong>키워드 필터:</strong> 특정 키워드 포함 댓글 자동 차단</li>
+                    <li><strong>이미지 검증:</strong> 부적절한 이미지 자동 감지</li>
+                  </ul>
+                </div> */}
+
+                <h3>알림 및 이메일 설정</h3>
+                <div className="step-detail">
+                  <ul className="checklist">
+                    <li><strong>실시간 알림:</strong> 새 댓글 작성 시 게시글 작성자에게 알림</li>
+                    <li><strong>관리자 알림:</strong> 신고된 댓글이나 검토 필요 댓글 알림</li>
+                    <li><strong>모바일 푸시:</strong> 앱 사용자 대상 댓글 알림</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* 댓글 관리 모범 사례 */}
+        <h2 id="best-practices">댓글 관리 모범 사례</h2>
+        <div className="card">
+          <div className="card-title">건전한 댓글 문화 조성하기</div>
+          
+          <h3 id="community-guidelines">📋 커뮤니티 가이드라인 수립</h3>
+          <div className="grid-container">
+            <div className="card">
+              <div className="card-title">명확한 규칙</div>
+              <ul>
+                <li>- 구체적이고 이해하기 쉬운 규칙 작성</li>
+                <li>- 예시를 들어 설명</li>
+                <li>- 정기적인 규칙 업데이트</li>
+                <li>- 사용자 피드백 반영</li>
+              </ul>
+            </div>
+            
+            <div className="card">
+              <div className="card-title">투명한 처리</div>
+              <ul>
+                <li>- 차단 사유 명시</li>
+                <li>- 이의제기 절차 마련</li>
+                <li>- 처리 결과 공개</li>
+                <li>- 일관된 기준 적용</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 id="positive-engagement">🌟 긍정적인 참여 유도</h3>
+          <ul className="checklist">
+            <li><strong>관리자 참여:</strong> 관리자가 직접 댓글을 작성하여 분위기 조성</li>
+            <li><strong>건설적인 토론 장려:</strong> 서로 다른 의견 존중하는 문화 조성</li>
+            <li><strong>정기적인 이벤트:</strong> 댓글 
+            이벤트를 통한 활발한 참여 유도</li>
+          </ul>
+
+          <h3 id="continuous-improvement">🔄 지속적인 개선</h3>
+          <ul className="checklist">
+            <li><strong>정기적인 정책 검토:</strong> 월 1회 댓글 정책과 처리 현황 검토</li>
+            <li><strong>사용자 만족도 조사:</strong> 댓글 시스템에 대한 사용자 의견 수집</li>
+            <li><strong>교육 및 훈련:</strong> 모더레이터 대상 정기 교육 실시</li>
+          </ul>
+
+          <div className="alert alert-success">
+            <strong>🎯 성공적인 댓글 관리의 핵심:</strong> 기술적인 도구도 중요하지만, 무엇보다 사용자들이 자발적으로 건전한 댓글을 작성하고 서로를 존중하는 문화를 만드는 것이 가장 중요합니다.
           </div>
         </div>
 
         <h2 id="troubleshooting">문제 해결</h2>
         <div className="card">
-          <div className="card-title">
-            {userType === 'developer' ? '개발 관련 문제' : '자주 발생하는 문제'}
-          </div>
+          <div className="card-title">자주 발생하는 문제</div>
           
-          {userType === 'developer' ? (
-            <>
-              <div className="card">
-                <div className="card-title">Q. API 호출이 실패합니다.</div>
-                <p><strong>A.</strong> API 키와 엔드포인트 URL이 올바른지 확인하세요. 요청 헤더에 Content-Type이 올바르게 설정되어 있는지도 확인해보세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. SDK 초기화 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 프로젝트 ID와 API 키가 올바른지 확인하고, 최신 버전의 SDK를 사용하고 있는지 확인하세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 인증 토큰이 만료됩니다.</div>
-                <p><strong>A.</strong> refresh token을 사용하여 자동으로 토큰을 갱신하도록 구현하거나, 토큰 만료 시점을 체크하여 재인증하세요.</p>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="card">
-                <div className="card-title">Q. 기능이 정상적으로 작동하지 않아요.</div>
-                <p><strong>A.</strong> 먼저 기본 설정이 올바른지 확인해보세요. 설정에 문제가 없다면 브라우저 새로고침 후 다시 시도해보세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 권한 오류가 발생합니다.</div>
-                <p><strong>A.</strong> 관리자 권한이 필요한 기능일 수 있습니다. 계정 권한을 확인하거나 관리자에게 문의하세요.</p>
-              </div>
-              <div className="card">
-                <div className="card-title">Q. 데이터가 표시되지 않습니다.</div>
-                <p><strong>A.</strong> 데이터 로딩에 시간이 걸릴 수 있습니다. 잠시 후 다시 확인해보시거나, 필터 설정을 확인해보세요.</p>
-              </div>
-            </>
-          )}
+          <div className="card">
+            <div className="card-title">Q. 댓글 신고가 처리되지 않아요.</div>
+            <p><strong>A.</strong> 신고 처리 대기열을 확인해보세요. 신고량이 많을 때는 처리 시간이 지연될 수 있습니다. 우선순위를 조정하거나 추가 모더레이터를 배치하는 것을 고려해보세요.</p>
+          </div>
+          <div className="card">
+            <div className="card-title">Q. 사용자가 댓글 차단에 대해 항의해요.</div>
+            <p><strong>A.</strong> 차단 사유를 명확히 설명하고, 커뮤니티 가이드라인을 안내하세요. 정당한 항의라면 이의제기 절차를 통해 재검토할 수 있음을 알려주세요.</p>
+          </div>
         </div>
 
         <h2 id="support">추가 지원</h2>
         <div className="card">
           <div className="card-title">도움이 더 필요하신가요?</div>
           <p>위의 내용으로 해결되지 않는 문제가 있으시면 언제든 문의해주세요.</p>
-          
           <div className="grid-container">
-            {userType === 'developer' ? (
-              <>
-                <div className="card">
-                  <div className="card-title">🔧 기술 지원</div>
-                  <p>dev-support@mbaas.com</p>
-                  <p>개발 관련 기술 문의</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📚 개발자 포럼</div>
-                  <p>developers.mbaas.com</p>
-                  <p>개발자 커뮤니티 참여</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">🐛 버그 리포트</div>
-                  <p>GitHub Issues</p>
-                  <p>버그 신고 및 기능 요청</p>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="card">
-                  <div className="card-title">📞 전화 문의</div>
-                  <p>02-1234-5678</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">📧 이메일 문의</div>
-                  <p>support@mbaas.com</p>
-                  <p>24시간 접수 가능</p>
-                </div>
-                <div className="card">
-                  <div className="card-title">💬 채팅 문의</div>
-                  <p>실시간 채팅 지원</p>
-                  <p>평일 9:00 - 18:00</p>
-                </div>
-              </>
-            )}
+            <div className="card">
+              <div className="card-title">📧 이메일 문의</div>
+              <p>support@mbaas.com</p>
+              <p>24시간 접수 가능</p>
+            </div>
           </div>
         </div>
       </section>
@@ -301,4 +299,4 @@ await client.${title.toLowerCase().replace(/\s+/g, '')}.initialize();`}</code></
   );
 }
 
-export default DefaultPage;
+export default CommentModeration;
