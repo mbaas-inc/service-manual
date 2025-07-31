@@ -13,6 +13,7 @@ import MemberList from '../pages/user-guide/member-management/MemberList';
 import MemberPermissions from '../pages/user-guide/member-management/MemberPermissions';
 
 // 메시지 발송
+import MessageGroup from '../pages/user-guide/messaging/MessageGroup'
 import SendEmail from '../pages/user-guide/messaging/SendEmail';
 import SendSMS from '../pages/user-guide/messaging/SendSMS';
 import MessageTemplates from '../pages/user-guide/messaging/MessageTemplates';
@@ -144,8 +145,42 @@ export const pageMapping = {
     subcategory: 'payment',
     description: '고객의 환불 요청을 처리하고 관리하는 방법을 설명합니다.'
   },
+  
+  // 📝 게시판 관리
+  'board-management': { 
+    component: BoardManagement, 
+    title: '게시판 만들기', 
+    breadcrumb: '게시판 만들기',
+    category: 'user-guide',
+    subcategory: 'board',
+    description: '공지사항, 커뮤니티 등의 게시판을 만들고 관리하는 방법을 안내합니다.'
+  },
+  'post-management': { 
+    component: PostManagement, 
+    title: '게시글 관리하기', 
+    breadcrumb: '게시글 관리하기',
+    category: 'user-guide',
+    subcategory: 'board',
+    description: '게시글을 작성, 수정, 삭제하고 관리하는 방법을 설명합니다.'
+  },
+  'comment-moderation': { 
+    component: CommentModeration, 
+    title: '댓글 관리하기', 
+    breadcrumb: '댓글 관리하기',
+    category: 'user-guide',
+    subcategory: 'board',
+    description: '댓글을 모니터링하고 관리하는 방법을 안내합니다.'
+  },
     
   // 📧 메시지 발송
+  'message-group': { 
+    component: MessageGroup, 
+    title: '발송목록 설정', 
+    breadcrumb: '발송목록 설정',
+    category: 'user-guide',
+    subcategory: 'messaging',
+    description: '그룹을 생성하고 구성원을 배정하여 효율적인 메시지 발송이 가능합니다.'
+  },
   'send-email': { 
     component: SendEmail, 
     title: '이메일 보내기', 
@@ -187,31 +222,6 @@ export const pageMapping = {
     description: '발송한 메시지들의 결과와 통계를 확인하는 방법을 설명합니다.'
   },
 
-  // 📝 게시판 관리
-  'board-management': { 
-    component: BoardManagement, 
-    title: '게시판 만들기', 
-    breadcrumb: '게시판 만들기',
-    category: 'user-guide',
-    subcategory: 'board',
-    description: '공지사항, 커뮤니티 등의 게시판을 만들고 관리하는 방법을 안내합니다.'
-  },
-  'post-management': { 
-    component: PostManagement, 
-    title: '게시글 관리하기', 
-    breadcrumb: '게시글 관리하기',
-    category: 'user-guide',
-    subcategory: 'board',
-    description: '게시글을 작성, 수정, 삭제하고 관리하는 방법을 설명합니다.'
-  },
-  'comment-moderation': { 
-    component: CommentModeration, 
-    title: '댓글 관리하기', 
-    breadcrumb: '댓글 관리하기',
-    category: 'user-guide',
-    subcategory: 'board',
-    description: '댓글을 모니터링하고 관리하는 방법을 안내합니다.'
-  },
   
   // 푸시 관리
   'push-key': { 

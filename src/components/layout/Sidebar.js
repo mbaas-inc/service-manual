@@ -13,7 +13,7 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
       'auth-login', 'auth-join', 'auth-log',
       'member-list', 'member-profile', 'member-permissions', 'member-export',
       'payment-setup', 'payment-methods', 'payment-history', 'refund-management', 'payment-reports',
-      'send-email', 'send-sms', 'message-templates', 'bulk-messaging', 'message-history',
+      'message-group','send-email', 'send-sms', 'message-templates', 'bulk-messaging', 'message-history',
       'board-management', 'post-management', 'comment-moderation',
       'push-key', 'push-device', 'push-topic',
       'general-settings', 'security-settings', 'notification-settings'
@@ -97,6 +97,7 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
           key: 'messaging',
           title: '메시지 발송',
           items: [
+            { id: 'message-group', label: '발송목록 설정' },
             { id: 'send-email', label: '이메일 보내기' },
             { id: 'send-sms', label: 'SMS 발송하기' },
             { id: 'message-templates', label: '메시지 템플릿 만들기' },
