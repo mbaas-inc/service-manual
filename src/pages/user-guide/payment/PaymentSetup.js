@@ -290,13 +290,13 @@ function PaymentSetup() {
                 <div className="form-panel">
                   <div className="form-group">
                     <label className="form-label">상점 ID (MID) *</label>
-                    <input type="text" className="form-input" placeholder="PG사에서 발급받은 가맹점 식별자" />
+                    <input type="text" className="form-input" placeholder="PG사에서 발급받은 가맹점 식별자" disabled />
                     <div className="form-help">PG사 가입 시 발급받은 고유 상점 식별자를 입력하세요.</div>
                   </div>
                   
                   <div className="form-group">
                     <label className="form-label">API 키 *</label>
-                    <input type="password" className="form-input" placeholder="API 인증을 위한 비밀키" />
+                    <input type="password" className="form-input" placeholder="API 인증을 위한 비밀키" disabled/>
                     <div className="form-help">PG사에서 제공하는 API 키를 입력하세요. 외부에 노출되지 않도록 안전하게 관리됩니다.</div>
                   </div>
                   
@@ -606,8 +606,8 @@ function PaymentSetup() {
         <div className="card">
           <div className="card-title">자주 발생하는 문제</div>
           
-          <div className="troubleshooting-list">
-            <div className="trouble-item">
+          <div className="troubleshooting-list grid-container">
+            <div className="trouble-item ">
               <div className="trouble-header">
                 <span className="trouble-icon">❌</span>
                 <h4>PG사 연결 실패</h4>

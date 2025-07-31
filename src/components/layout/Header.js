@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header({ onToggleSidebar, onCategoryNavigation, currentCategory }) {
+function Header({ onToggleSidebar, onToggleMobileMenu, onCategoryNavigation, currentCategory, isMobileMenuOpen }) {
   
   // 🔥 현재 카테고리 정보를 props에서 받아서 사용
   const currentActiveNav = currentCategory || 'user-guide';
@@ -13,17 +13,28 @@ function Header({ onToggleSidebar, onCategoryNavigation, currentCategory }) {
     onCategoryNavigation(navType);
   };
 
+  // 🔥 모바일 메뉴 클릭 핸들러
+  const handleMobileMenuClick = () => {
+    onToggleMobileMenu();
+  };
+
   return (
     <header className="header">
-      <div className="logo">mBaaS 서비스 매뉴얼</div>
+      <div className="logo">AiApp 서비스 매뉴얼</div>
       
-      {/* 모바일 메뉴 버튼 */}
-      <button className="mobile-menu-btn" onClick={onToggleSidebar}>
-        ☰
+      {/* 모바일 햄버거 메뉴 버튼 */}
+      <button 
+        className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`} 
+        onClick={handleMobileMenuClick}
+        aria-label="모바일 메뉴 열기/닫기"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
       
-      {/* 네비게이션 메뉴 */}
-      <nav>
+      {/* 데스크톱 네비게이션 메뉴 */}
+      <nav className="desktop-nav">
         <ul className="nav-menu">
           <li className="nav-item">
             <a 
@@ -43,15 +54,6 @@ function Header({ onToggleSidebar, onCategoryNavigation, currentCategory }) {
               개발자 문서
             </a>
           </li>
-          {/* <li className="nav-item">
-            <a 
-              href="#help"
-              className={currentActiveNav === 'help' ? 'active' : ''}
-              onClick={(e) => handleNavClick('help', e)}
-            >
-              FAQ
-            </a>
-          </li> */}
         </ul>
       </nav>
     </header>

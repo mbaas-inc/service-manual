@@ -10,12 +10,14 @@ import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';
 import MainContent from './components/layout/MainContent';
 import TOC from './components/layout/TOC';
+import MobileMenu from './components/layout/MobileMenu';
 
 // 페이지 매핑 import
 import { pageMapping, getDefaultPage } from './utils/pageMapping';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('quick-start');
   const [sidebarSections, setSidebarSections] = useState({
     'getting-started': true, // 시작하기는 기본적으로 열림
@@ -34,6 +36,16 @@ function App() {
   // 사이드바 토글 함수
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  // 모바일 메뉴 토글 함수
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // 모바일 메뉴 닫기 함수
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   // 🔥 개선된 사이드바 섹션 토글 함수 (하나만 열리게)
@@ -94,17 +106,32 @@ function App() {
     return currentPage ? currentPage.category : 'user-guide';
   };
 
-  // 화면 크기에 따른 사이드바 자동 닫기
+  // 화면 크기에 따른 사이드바/모바일메뉴 자동 닫기
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
         setIsSidebarOpen(false);
+        setIsMobileMenuOpen(false);
       }
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // body 스크롤 제어 (모바일 메뉴 열렸을 때)
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // 컴포넌트 언마운트 시 스크롤 복원
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   // 사이드바 외부 클릭 시 닫기
   useEffect(() => {
@@ -133,10 +160,12 @@ function App() {
     <div className="App">
       {/* 헤더 */}
       <Header 
-        onToggleSidebar={toggleSidebar} 
+        onToggleSidebar={toggleSidebar}
+        onToggleMobileMenu={toggleMobileMenu}
         activeSection={activeSection}
         onCategoryNavigation={handleCategoryNavigation}
         currentCategory={getCurrentPageCategory()}
+        isMobileMenuOpen={isMobileMenuOpen}
       />
       
       {/* 메인 레이아웃 */}
@@ -167,6 +196,15 @@ function App() {
           />
         </div>
       </div>
+
+      {/* 모바일 메뉴 */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={closeMobileMenu}
+        onCategoryNavigation={handleCategoryNavigation}
+        onSetActive={setActiveLink}
+        currentCategory={getCurrentPageCategory()}
+      />
     </div>
   );
 }
