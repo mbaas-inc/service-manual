@@ -361,6 +361,10 @@ a:hover {
   background: var(--bg-primary);
 }
 
+p + .checklist {
+  margin-top: 0.5rem;
+}
+
 /* 알림 컴포넌트 */
 .alert {
   padding: 16px 20px;

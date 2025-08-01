@@ -97,12 +97,12 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
           key: 'messaging',
           title: '메시지 발송',
           items: [
-            { id: 'message-group', label: '발송목록 설정' },
-            { id: 'send-email', label: '이메일 보내기' },
-            { id: 'send-sms', label: 'SMS 발송하기' },
+            { id: 'message-group', label: '발송대상 목록 관리' },
+            { id: 'send-sms', label: 'SMS/MMS 발송하기' },
+            { id: 'send-talk', label: '알림톡 발송하기' },
             { id: 'message-templates', label: '메시지 템플릿 만들기' },
             { id: 'bulk-messaging', label: '대량 메시지 발송' },
-            { id: 'message-history', label: '발송 내역 확인' }
+            { id: 'message-history', label: '발송 이력 확인' }
           ]
         },
         {

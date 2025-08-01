@@ -14,7 +14,7 @@ import MemberPermissions from '../pages/user-guide/member-management/MemberPermi
 
 // 메시지 발송
 import MessageGroup from '../pages/user-guide/messaging/MessageGroup'
-import SendEmail from '../pages/user-guide/messaging/SendEmail';
+import SendTalk from '../pages/user-guide/messaging/SendTalk';
 import SendSMS from '../pages/user-guide/messaging/SendSMS';
 import MessageTemplates from '../pages/user-guide/messaging/MessageTemplates';
 import BulkMessaging from '../pages/user-guide/messaging/BulkMessaging';
@@ -175,27 +175,27 @@ export const pageMapping = {
   // 📧 메시지 발송
   'message-group': { 
     component: MessageGroup, 
-    title: '발송목록 설정', 
-    breadcrumb: '발송목록 설정',
+    title: '발송대상 목록 관리', 
+    breadcrumb: '발송대상 목록 관리',
     category: 'user-guide',
     subcategory: 'messaging',
     description: '그룹을 생성하고 구성원을 배정하여 효율적인 메시지 발송이 가능합니다.'
   },
-  'send-email': { 
-    component: SendEmail, 
-    title: '이메일 보내기', 
-    breadcrumb: '이메일 보내기',
-    category: 'user-guide',
-    subcategory: 'messaging',
-    description: '회원들에게 이메일을 발송하는 방법과 모범 사례를 안내합니다.'
-  },
   'send-sms': { 
     component: SendSMS, 
-    title: 'SMS 발송하기', 
-    breadcrumb: 'SMS 발송하기',
+    title: 'SMS/MMS 발송하기', 
+    breadcrumb: 'SMS/MMS 발송하기',
     category: 'user-guide',
     subcategory: 'messaging',
-    description: 'SMS 메시지를 발송하고 관리하는 방법을 상세히 설명합니다.'
+    description: 'SMS/MMS 메시지를 발송하고 관리하는 방법을 상세히 설명합니다.'
+  },
+  'send-talk': { 
+    component: SendTalk, 
+    title: '알림톡 발송하기', 
+    breadcrumb: '알림톡 발송하기',
+    category: 'user-guide',
+    subcategory: 'messaging',
+    description: '회원들에게 알림톡을 발송하는 방법과 모범 사례를 안내합니다.'
   },
   'message-templates': { 
     component: MessageTemplates, 
@@ -215,8 +215,8 @@ export const pageMapping = {
   },
   'message-history': { 
     component: MessageHistory, 
-    title: '발송 내역 확인', 
-    breadcrumb: '발송 내역 확인',
+    title: '발송 이력 확인', 
+    breadcrumb: '발송 이력 확인',
     category: 'user-guide',
     subcategory: 'messaging',
     description: '발송한 메시지들의 결과와 통계를 확인하는 방법을 설명합니다.'
