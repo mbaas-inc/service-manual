@@ -14,10 +14,9 @@ import MemberPermissions from '../pages/user-guide/member-management/MemberPermi
 
 // 메시지 발송
 import MessageGroup from '../pages/user-guide/messaging/MessageGroup'
-import SendTalk from '../pages/user-guide/messaging/SendTalk';
+import SendTalkPage from '../pages/user-guide/messaging/SendTalk';
 import SendSMS from '../pages/user-guide/messaging/SendSMS';
 import MessageTemplates from '../pages/user-guide/messaging/MessageTemplates';
-import BulkMessaging from '../pages/user-guide/messaging/BulkMessaging';
 import MessageHistory from '../pages/user-guide/messaging/MessageHistory';
 
 // 결제 관리
@@ -190,7 +189,7 @@ export const pageMapping = {
     description: 'SMS/MMS 메시지를 발송하고 관리하는 방법을 상세히 설명합니다.'
   },
   'send-talk': { 
-    component: SendTalk, 
+    component: SendTalkPage, 
     title: '알림톡 발송하기', 
     breadcrumb: '알림톡 발송하기',
     category: 'user-guide',
@@ -204,14 +203,6 @@ export const pageMapping = {
     category: 'user-guide',
     subcategory: 'messaging',
     description: '재사용 가능한 메시지 템플릿을 만들고 관리하는 방법을 설명합니다.'
-  },
-  'bulk-messaging': { 
-    component: BulkMessaging, 
-    title: '대량 메시지 발송', 
-    breadcrumb: '대량 메시지 발송',
-    category: 'user-guide',
-    subcategory: 'messaging',
-    description: '많은 수의 회원에게 한 번에 메시지를 발송하는 방법을 안내합니다.'
   },
   'message-history': { 
     component: MessageHistory, 
