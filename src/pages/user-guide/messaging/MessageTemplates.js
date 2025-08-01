@@ -298,7 +298,7 @@ function MessageTemplatesPage() {
             <p>'새 템플릿 만들기' 버튼을 클릭하여 템플릿을 작성합니다.</p>
             <ul className="checklist">
               <li>템플릿 이름과 카테고리를 명확하게 지정</li>
-              <li>메시지 내용에 변수 활용 (예: ${`{name}`, `{orderNo}`})</li>
+              <li>메시지 내용에 변수 활용 (예: ${`{name}, {orderNo}`})</li>
               <li>알림톡의 경우 템플릿 코드와 유형 설정</li>
             </ul>
           </div>
@@ -398,7 +398,7 @@ function MessageTemplatesPage() {
             <p><strong>A.</strong> 변수 형식을 확인해보세요:</p>
             <ul className="checklist">
               <li>올바른 형식: <code className='field-name'>${`{변수명}`}</code></li>
-              <li>잘못된 형식: <code className='field-name'>${`{변수명}`}</code></li>
+              <li>잘못된 형식: <code className='field-name'>${`{변수명}, <변수명>, [변수명]`}</code></li>
               <li>변수명에 공백이나 특수문자가 없는지 확인</li>
             </ul>
           </div>
