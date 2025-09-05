@@ -3,10 +3,12 @@
   width: var(--toc-width);
   padding: 40px 24px;
   background: var(--bg-primary);
-  position: sticky;
+  position: fixed;
   top: 64px;
+  right: 0;
   height: calc(100vh - 64px);
   overflow-y: auto;
+  z-index: 10;
 }
 
 .toc-title {

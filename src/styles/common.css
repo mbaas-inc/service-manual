@@ -88,13 +88,15 @@ a:hover {
   flex: 1;
   display: flex;
   max-width: calc(100vw - var(--sidebar-width));
+  margin-right: var(--toc-width); /* TOC 너비만큼 오른쪽 여백 추가 */
   transition: opacity 0.2s ease-in-out;
 }
 
 .main-content {
   flex: 1;
   padding: 40px;
-  max-width: calc(100vw - var(--sidebar-width) - var(--toc-width));
+  max-width: 900px; /* 고정 최대 너비로 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
 }
 
 /* 브레드크럼 */
@@ -1303,8 +1305,12 @@ code {
     display: none;
   }
 
+  .content-area {
+    margin-right: 0; /* TOC 여백 제거 */
+  }
+
   .main-content {
-    max-width: calc(100vw - var(--sidebar-width));
+    max-width: 100%; /* 태블릿에서 100% 너비 */
   }
 }
 
@@ -1317,13 +1323,14 @@ code {
     display: none;
   }
 
-  .main-content {
-    max-width: 100vw;
-    padding: 24px 16px;
-  }
-
   .content-area {
     max-width: 100vw;
+    margin-right: 0; /* TOC 여백 제거 */
+  }
+
+  .main-content {
+    max-width: 100%; /* 모바일에서 100% 너비 */
+    padding: 24px 16px;
   }
 
   /* 🔥 모바일 개선 */
