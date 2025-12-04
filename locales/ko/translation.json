@@ -1,0 +1,185 @@
+{
+  "common": {
+    "logo": "AiApp 문서",
+    "menu": "메뉴",
+    "close": "닫기",
+    "copy": "복사",
+    "copied": "복사됨!"
+  },
+  "nav": {
+    "userGuide": "사용자 가이드",
+    "developer": "개발자 문서",
+    "mobileMenuToggle": "모바일 메뉴 열기/닫기",
+    "menuClose": "메뉴 닫기"
+  },
+  "categories": {
+    "userGuide": "사용자 가이드",
+    "developer": "개발자 문서",
+    "help": "도움말"
+  },
+  "subcategories": {
+    "gettingStarted": "시작하기",
+    "authentication": "인증 관리",
+    "memberManagement": "고객 관리",
+    "messaging": "메시지 발송",
+    "payment": "결제 관리",
+    "board": "게시판 관리",
+    "push": "푸시 관리",
+    "settings": "설정",
+    "api": "API 문서",
+    "sdk": "SDK 가이드",
+    "integration": "연동 가이드",
+    "advanced": "고급 기능"
+  },
+  "sidebar": {
+    "gettingStarted": {
+      "title": "시작하기",
+      "quickStart": "빠른 시작 가이드",
+      "accountSetup": "계정 생성하기",
+      "dashboardOverview": "대시보드 둘러보기"
+    },
+    "authentication": {
+      "title": "인증 관리",
+      "authLogin": "로그인 설정",
+      "authJoin": "회원가입 설정",
+      "authLog": "접속 로그"
+    },
+    "memberManagement": {
+      "title": "고객 관리",
+      "memberList": "고객 정보 관리",
+      "memberPermissions": "고객 권한 설정하기"
+    },
+    "payment": {
+      "title": "결제 관리",
+      "paymentSetup": "PG 결제 설정",
+      "paymentHistory": "결제 내역 조회"
+    },
+    "board": {
+      "title": "게시판 관리",
+      "boardManagement": "게시판 만들기",
+      "postManagement": "게시글 관리하기",
+      "commentModeration": "댓글 관리하기"
+    },
+    "messaging": {
+      "title": "메시지 관리",
+      "messageGroup": "발송대상 목록 관리",
+      "sendSms": "SMS/MMS 발송하기",
+      "sendTalk": "알림톡 발송하기",
+      "messageTemplates": "메시지 템플릿 만들기",
+      "messageHistory": "발송 이력 확인"
+    },
+    "push": {
+      "title": "푸시 관리",
+      "pushKey": "Firebase key 업로드",
+      "pushDevice": "디바이스 목록",
+      "pushTopic": "토픽 관리"
+    },
+    "apiDocs": {
+      "title": "API 문서",
+      "accountApi": "Account API"
+    }
+  },
+  "mobileMenu": {
+    "title": "메뉴",
+    "userGuide": "사용자 가이드",
+    "developer": "개발자 문서",
+    "sendEmail": "이메일 보내기",
+    "sendSms": "SMS 발송하기",
+    "bulkMessaging": "대량 메시지 발송",
+    "messageHistory": "발송 내역 확인"
+  },
+  "toc": {
+    "apiDocTitle": "API 문서 목차",
+    "pageTitle": "이 페이지의 목차"
+  },
+  "accountApi": {
+    "title": "Account API 문서",
+    "description": "회원 관리를 위한 RESTful API 가이드입니다. 회원가입, 로그인, 정보 조회 기능을 제공합니다.",
+    "devTip": "개발자 팁:",
+    "devTipContent": "모든 API 요청에는 올바른 Content-Type 헤더가 필요하며, 인증이 필요한 엔드포인트는 Cookie에 access_token을 포함해야 합니다.",
+    "basicInfo": {
+      "title": "API 기본 정보",
+      "baseUrl": "Base URL",
+      "baseHeader": "Base Header",
+      "headerName": "Name",
+      "headerDescription": "Description",
+      "cookieDesc": "access_token 쿠키를 통해 인증 정보를 유지합니다."
+    },
+    "accountObject": {
+      "title": "Account 객체",
+      "description": "API에서 사용되는 Account 객체의 상세 구조입니다.",
+      "fieldName": "필드명",
+      "fieldType": "타입",
+      "fieldDesc": "설명",
+      "id": "계정 고유 식별자",
+      "userId": "로그인 ID",
+      "name": "사용자 이름",
+      "phone": "연락처",
+      "lastLoggedAt": "마지막 로그인 시각",
+      "createdAt": "계정 생성일",
+      "data": "회원가입 시 추가로 저장하는 정보 (예: 프로필 이미지 등)"
+    },
+    "endpoints": {
+      "title": "API 엔드포인트",
+      "signup": {
+        "title": "회원가입",
+        "description": "프로젝트 소속 계정을 등록합니다."
+      },
+      "login": {
+        "title": "계정 로그인",
+        "description": "프로젝트 계정으로 로그인합니다."
+      },
+      "info": {
+        "title": "내 정보 조회",
+        "description": "로그인된 계정의 정보를 조회합니다."
+      }
+    },
+    "parameters": {
+      "title": "Request Parameters",
+      "required": "필수",
+      "projectId": "지급받은 프로젝트 id",
+      "userId": "로그인 ID",
+      "userPw": "비밀번호 (8자 이상)",
+      "userPwLogin": "비밀번호",
+      "name": "이름",
+      "phone": "연락처",
+      "isReserved": "예약 계정 여부",
+      "data": "추가 필요 저장할 정보"
+    },
+    "request": {
+      "body": "Request Body",
+      "header": "Request Header"
+    },
+    "response": {
+      "title": "Response"
+    },
+    "setCookie": {
+      "title": "Set-Cookie (옵션)"
+    },
+    "error": {
+      "title": "에러 응답",
+      "description": "API 호출 시 발생할 수 있는 에러 응답 형식입니다.",
+      "unprocessable": "422 Unprocessable Entity"
+    },
+    "codeExample": {
+      "title": "코드 예제",
+      "javascript": "JavaScript 예제",
+      "python": "Python 예제"
+    },
+    "bestPractices": {
+      "title": "모범 사례",
+      "security": {
+        "title": "보안",
+        "description": "API 키와 토큰은 환경 변수에 저장하고, HTTPS를 사용하여 통신하세요."
+      },
+      "performance": {
+        "title": "성능",
+        "description": "불필요한 API 호출을 줄이고, 토큰 만료 시간을 고려하여 재인증 로직을 구현하세요."
+      },
+      "errorHandling": {
+        "title": "오류 처리",
+        "description": "모든 API 응답에 대한 에러 처리를 구현하고, 사용자에게 적절한 피드백을 제공하세요."
+      }
+    }
+  }
+}

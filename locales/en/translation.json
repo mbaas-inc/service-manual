@@ -1,0 +1,185 @@
+{
+  "common": {
+    "logo": "AiApp Docs",
+    "menu": "Menu",
+    "close": "Close",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "nav": {
+    "userGuide": "User Guide",
+    "developer": "Developer Docs",
+    "mobileMenuToggle": "Toggle mobile menu",
+    "menuClose": "Close menu"
+  },
+  "categories": {
+    "userGuide": "User Guide",
+    "developer": "Developer Docs",
+    "help": "Help"
+  },
+  "subcategories": {
+    "gettingStarted": "Getting Started",
+    "authentication": "Authentication",
+    "memberManagement": "Customer Management",
+    "messaging": "Messaging",
+    "payment": "Payment",
+    "board": "Board Management",
+    "push": "Push Notifications",
+    "settings": "Settings",
+    "api": "API Documentation",
+    "sdk": "SDK Guide",
+    "integration": "Integration Guide",
+    "advanced": "Advanced Features"
+  },
+  "sidebar": {
+    "gettingStarted": {
+      "title": "Getting Started",
+      "quickStart": "Quick Start Guide",
+      "accountSetup": "Create Account",
+      "dashboardOverview": "Dashboard Overview"
+    },
+    "authentication": {
+      "title": "Authentication",
+      "authLogin": "Login Settings",
+      "authJoin": "Sign-up Settings",
+      "authLog": "Access Logs"
+    },
+    "memberManagement": {
+      "title": "Customer Management",
+      "memberList": "Customer Information",
+      "memberPermissions": "Customer Permissions"
+    },
+    "payment": {
+      "title": "Payment",
+      "paymentSetup": "PG Payment Setup",
+      "paymentHistory": "Payment History"
+    },
+    "board": {
+      "title": "Board Management",
+      "boardManagement": "Create Board",
+      "postManagement": "Manage Posts",
+      "commentModeration": "Manage Comments"
+    },
+    "messaging": {
+      "title": "Messaging",
+      "messageGroup": "Recipient List Management",
+      "sendSms": "Send SMS/MMS",
+      "sendTalk": "Send KakaoTalk Notification",
+      "messageTemplates": "Create Message Templates",
+      "messageHistory": "Message History"
+    },
+    "push": {
+      "title": "Push Notifications",
+      "pushKey": "Upload Firebase Key",
+      "pushDevice": "Device List",
+      "pushTopic": "Topic Management"
+    },
+    "apiDocs": {
+      "title": "API Documentation",
+      "accountApi": "Account API"
+    }
+  },
+  "mobileMenu": {
+    "title": "Menu",
+    "userGuide": "User Guide",
+    "developer": "Developer Docs",
+    "sendEmail": "Send Email",
+    "sendSms": "Send SMS",
+    "bulkMessaging": "Bulk Messaging",
+    "messageHistory": "Message History"
+  },
+  "toc": {
+    "apiDocTitle": "API Documentation Index",
+    "pageTitle": "On This Page"
+  },
+  "accountApi": {
+    "title": "Account API Documentation",
+    "description": "RESTful API guide for user management. Provides sign-up, login, and profile retrieval features.",
+    "devTip": "Developer Tip:",
+    "devTipContent": "All API requests require the correct Content-Type header, and endpoints requiring authentication must include the access_token in the Cookie.",
+    "basicInfo": {
+      "title": "API Basic Information",
+      "baseUrl": "Base URL",
+      "baseHeader": "Base Header",
+      "headerName": "Name",
+      "headerDescription": "Description",
+      "cookieDesc": "Authentication is maintained through the access_token cookie."
+    },
+    "accountObject": {
+      "title": "Account Object",
+      "description": "Detailed structure of the Account object used in the API.",
+      "fieldName": "Field Name",
+      "fieldType": "Type",
+      "fieldDesc": "Description",
+      "id": "Unique account identifier",
+      "userId": "Login ID",
+      "name": "User name",
+      "phone": "Phone number",
+      "lastLoggedAt": "Last login time",
+      "createdAt": "Account creation date",
+      "data": "Additional information stored during sign-up (e.g., profile image)"
+    },
+    "endpoints": {
+      "title": "API Endpoints",
+      "signup": {
+        "title": "Sign Up",
+        "description": "Register a new account for the project."
+      },
+      "login": {
+        "title": "Login",
+        "description": "Login with project account credentials."
+      },
+      "info": {
+        "title": "Get My Info",
+        "description": "Retrieve the logged-in account information."
+      }
+    },
+    "parameters": {
+      "title": "Request Parameters",
+      "required": "Required",
+      "projectId": "Assigned project ID",
+      "userId": "Login ID",
+      "userPw": "Password (minimum 8 characters)",
+      "userPwLogin": "Password",
+      "name": "Name",
+      "phone": "Phone number",
+      "isReserved": "Reserved account status",
+      "data": "Additional information to store"
+    },
+    "request": {
+      "body": "Request Body",
+      "header": "Request Header"
+    },
+    "response": {
+      "title": "Response"
+    },
+    "setCookie": {
+      "title": "Set-Cookie (Optional)"
+    },
+    "error": {
+      "title": "Error Response",
+      "description": "Error response format that may occur during API calls.",
+      "unprocessable": "422 Unprocessable Entity"
+    },
+    "codeExample": {
+      "title": "Code Examples",
+      "javascript": "JavaScript Example",
+      "python": "Python Example"
+    },
+    "bestPractices": {
+      "title": "Best Practices",
+      "security": {
+        "title": "Security",
+        "description": "Store API keys and tokens in environment variables and use HTTPS for communication."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Reduce unnecessary API calls and implement re-authentication logic considering token expiration time."
+      },
+      "errorHandling": {
+        "title": "Error Handling",
+        "description": "Implement error handling for all API responses and provide appropriate feedback to users."
+      }
+    }
+  }
+}
