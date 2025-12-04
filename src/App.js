@@ -19,6 +19,12 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('api-account');
+
+  // 임베드 모드 체크 (?embed=true)
+  const [isEmbed, setIsEmbed] = useState(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('embed') === 'true';
+  });
   const [sidebarSections, setSidebarSections] = useState({
     'getting-started': false, // 시작하기는 기본적으로 열림
     'member-management': false,
@@ -157,26 +163,29 @@ function App() {
   }, [activeSection]);
 
   return (
-    <div className="App">
-      {/* 헤더 */}
-      <Header 
-        onToggleSidebar={toggleSidebar}
-        onToggleMobileMenu={toggleMobileMenu}
-        activeSection={activeSection}
-        onCategoryNavigation={handleCategoryNavigation}
-        currentCategory={getCurrentPageCategory()}
-        isMobileMenuOpen={isMobileMenuOpen}
-      />
-      
+    <div className={`App ${isEmbed ? 'embed-mode' : ''}`}>
+      {/* 헤더 - 임베드 모드에서는 숨김 */}
+      {!isEmbed && (
+        <Header
+          onToggleSidebar={toggleSidebar}
+          onToggleMobileMenu={toggleMobileMenu}
+          activeSection={activeSection}
+          onCategoryNavigation={handleCategoryNavigation}
+          currentCategory={getCurrentPageCategory()}
+          isMobileMenuOpen={isMobileMenuOpen}
+        />
+      )}
+
       {/* 메인 레이아웃 */}
-      <div className="main-layout">
+      <div className={`main-layout ${isEmbed ? 'embed-mode' : ''}`}>
         {/* 사이드바 */}
-        <Sidebar 
+        <Sidebar
           isOpen={isSidebarOpen}
           sections={sidebarSections}
           activeSection={activeSection}
           onToggleSection={toggleSidebarSection}
           onSetActive={setActiveLink}
+          isEmbed={isEmbed}
         />
         
         {/* 콘텐츠 영역 */}
@@ -188,10 +197,11 @@ function App() {
           />
           
           {/* 목차 (TOC) */}
-          <TOC 
+          <TOC
             activeSection={activeSection}
             onSetActive={setActiveLink}
-            pageType={getCurrentPageCategory()} 
+            pageType={getCurrentPageCategory()}
+            isEmbed={isEmbed}
             key={activeSection} // activeSection이 변경될 때마다 TOC 재생성
           />
         </div>

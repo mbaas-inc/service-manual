@@ -11,6 +11,12 @@
   z-index: 10;
 }
 
+/* 임베드 모드 - TOC 상단부터 시작 */
+.toc.embed-mode {
+  top: 0;
+  height: 100vh;
+}
+
 .toc-title {
   font-size: 0.9rem;
   font-weight: 600;

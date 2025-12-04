@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-function TOC({ activeSection, onSetActive, pageType = 'user-guide' }) {
+function TOC({ activeSection, onSetActive, pageType = 'user-guide', isEmbed = false }) {
   const { t } = useTranslation();
   const [tocItems, setTocItems] = useState([]);
   const [currentActive, setCurrentActive] = useState('');
@@ -184,7 +184,7 @@ function TOC({ activeSection, onSetActive, pageType = 'user-guide' }) {
   }
 
   return (
-    <aside className="toc">
+    <aside className={`toc ${isEmbed ? 'embed-mode' : ''}`}>
       <div className="toc-title">
         {pageType === 'developer' || pageType === 'api' ? t('toc.apiDocTitle') : t('toc.pageTitle')}
       </div>

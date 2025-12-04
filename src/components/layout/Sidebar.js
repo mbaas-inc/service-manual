@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive }) {
+function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive, isEmbed }) {
   const { t } = useTranslation();
   
   // 현재 섹션의 카테고리 파악
@@ -213,7 +213,7 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
   }
 
   return (
-    <aside className={`sidebar ${isOpen ? 'active' : ''}`}>
+    <aside className={`sidebar ${isOpen ? 'active' : ''} ${isEmbed ? 'embed-mode' : ''}`}>
 
       {/* 메뉴 섹션들 */}
       <div className="sidebar-content">

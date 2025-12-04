@@ -83,6 +83,12 @@ a:hover {
   min-height: calc(100vh - 64px);
 }
 
+/* 임베드 모드 - 헤더 높이 제거 */
+.main-layout.embed-mode {
+  margin-top: 0;
+  min-height: 100vh;
+}
+
 /* 메인 콘텐츠 */
 .content-area {
   flex: 1;
