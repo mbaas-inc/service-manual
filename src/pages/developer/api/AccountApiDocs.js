@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function AccountApiDocs() {
+  const { t } = useTranslation();
   const [activeEndpoint, setActiveEndpoint] = useState('signup');
   const [copiedCode, setCopiedCode] = useState('');
 
@@ -42,7 +44,7 @@ function AccountApiDocs() {
           zIndex: 10
         }}
       >
-        {copiedCode === codeId ? '복사됨!' : '복사'}
+        {copiedCode === codeId ? t('common.copied') : t('common.copy')}
       </button>
       <pre><code>{code}</code></pre>
     </div>
@@ -52,8 +54,8 @@ function AccountApiDocs() {
     signup: {
       method: 'POST',
       path: '/account/signup',
-      title: '회원가입',
-      description: '프로젝트 소속 계정을 등록합니다.',
+      title: t('accountApi.endpoints.signup.title'),
+      description: t('accountApi.endpoints.signup.description'),
       requestBody: {
         "project_id": "UUID",
         "user_id": "admin01", 
@@ -83,20 +85,20 @@ function AccountApiDocs() {
         }
       },
       parameters: [
-        { name: 'project_id', type: 'UUID', required: true, description: '지급받은 프로젝트 id' },
-        { name: 'user_id', type: 'String', required: true, description: '로그인 ID' },
-        { name: 'user_pw', type: 'String', required: true, description: '비밀번호 (8자 이상)' },
-        { name: 'name', type: 'String', required: true, description: '이름' },
-        { name: 'phone', type: 'String', required: true, description: '연락처' },
-        { name: 'is_reserved', type: 'Boolean', required: true, description: '예약 계정 여부' },
-        { name: 'data', type: 'Json', required: false, description: '추가 필요 저장할 정보' }
+        { name: 'project_id', type: 'UUID', required: true, description: t('accountApi.parameters.projectId') },
+        { name: 'user_id', type: 'String', required: true, description: t('accountApi.parameters.userId') },
+        { name: 'user_pw', type: 'String', required: true, description: t('accountApi.parameters.userPw') },
+        { name: 'name', type: 'String', required: true, description: t('accountApi.parameters.name') },
+        { name: 'phone', type: 'String', required: true, description: t('accountApi.parameters.phone') },
+        { name: 'is_reserved', type: 'Boolean', required: true, description: t('accountApi.parameters.isReserved') },
+        { name: 'data', type: 'Json', required: false, description: t('accountApi.parameters.data') }
       ]
     },
     login: {
       method: 'POST',
       path: '/account/login',
-      title: '계정 로그인',
-      description: '프로젝트 계정으로 로그인합니다.',
+      title: t('accountApi.endpoints.login.title'),
+      description: t('accountApi.endpoints.login.description'),
       requestBody: {
         "user_id": "admin01",
         "user_pw": "12345678", 
@@ -112,15 +114,15 @@ function AccountApiDocs() {
       },
       parameters: [
         { name: 'user_id', type: 'String', required: true, description: '로그인 ID' },
-        { name: 'user_pw', type: 'String', required: true, description: '비밀번호' },
+        { name: 'user_pw', type: 'String', required: true, description: t('accountApi.parameters.userPwLogin') },
         { name: 'project_id', type: 'UUID', required: true, description: '지급받은 프로젝트 id' }
       ]
     },
     info: {
       method: 'GET',
       path: '/account/info',
-      title: '내 정보 조회',
-      description: '로그인된 계정의 정보를 조회합니다.',
+      title: t('accountApi.endpoints.info.title'),
+      description: t('accountApi.endpoints.info.description'),
       requestBody: null,
       responseBody: {
         "result": "SUCCESS",
@@ -147,22 +149,22 @@ function AccountApiDocs() {
 
   return (
     <>
-      <h1>Account API 문서</h1>
+      <h1>{t('accountApi.title')}</h1>
       <p className="main-description">
-        회원 관리를 위한 RESTful API 가이드입니다. 회원가입, 로그인, 정보 조회 기능을 제공합니다.
+        {t('accountApi.description')}
       </p>
 
       <div className="alert alert-info">
-        <strong><i data-lucide="lightbulb" style={{display: 'inline', marginRight: '4px', width: '16px', height: '16px'}}></i> 개발자 팁:</strong> 
-        모든 API 요청에는 올바른 Content-Type 헤더가 필요하며, 인증이 필요한 엔드포인트는 Cookie에 access_token을 포함해야 합니다.
+        <strong><i data-lucide="lightbulb" style={{display: 'inline', marginRight: '4px', width: '16px', height: '16px'}}></i> {t('accountApi.devTip')}</strong> 
+        {t('accountApi.devTipContent')}
       </div>
 
       {/* API 기본 정보 */}
       <div className="card" id="api-basic-info">
-        <div className="card-title"><i data-lucide="code" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>API 기본 정보</div>
+        <div className="card-title"><i data-lucide="code" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>{t('accountApi.basicInfo.title')}</div>
         
         <div className="api-example">
-          <h4><i data-lucide="globe" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>Base URL</h4>
+          <h4><i data-lucide="globe" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>{t('accountApi.basicInfo.baseUrl')}</h4>
           <CodeBlock 
             code="https://api.aiapp.link/account"
             codeId="base-url"
@@ -170,18 +172,18 @@ function AccountApiDocs() {
         </div>
 
         <div className="api-example">
-          <h4><i data-lucide="key" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>Base Header</h4>
+          <h4><i data-lucide="key" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>{t('accountApi.basicInfo.baseHeader')}</h4>
           <table className="api-table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Description</th>
+                <th>{t('accountApi.basicInfo.headerName')}</th>
+                <th>{t('accountApi.basicInfo.headerDescription')}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><code className="field-name">Cookie</code></td>
-                <td>access_token 쿠키를 통해 인증 정보를 유지합니다.</td>
+                <td>{t('accountApi.basicInfo.cookieDesc')}</td>
               </tr>
             </tbody>
           </table>
@@ -190,52 +192,52 @@ function AccountApiDocs() {
 
       {/* Account 객체 구조 */}
       <div className="card">
-        <div className="card-title"><i data-lucide="file-text" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>Account 객체</div>
-        <p>API에서 사용되는 Account 객체의 상세 구조입니다.</p>
+        <div className="card-title"><i data-lucide="file-text" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>{t('accountApi.accountObject.title')}</div>
+        <p>{t('accountApi.accountObject.description')}</p>
         
         <table className="api-table">
           <thead>
             <tr>
-              <th>필드명</th>
-              <th>타입</th>
-              <th>설명</th>
+              <th>{t('accountApi.accountObject.fieldName')}</th>
+              <th>{t('accountApi.accountObject.fieldType')}</th>
+              <th>{t('accountApi.accountObject.fieldDesc')}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><code className="field-name">id</code></td>
               <td>UUID</td>
-              <td>계정 고유 식별자</td>
+              <td>{t('accountApi.accountObject.id')}</td>
             </tr>
             <tr>
               <td><code className="field-name">user_id</code></td>
               <td>String</td>
-              <td>로그인 ID</td>
+              <td>{t('accountApi.accountObject.userId')}</td>
             </tr>
             <tr>
               <td><code className="field-name">name</code></td>
               <td>String</td>
-              <td>사용자 이름</td>
+              <td>{t('accountApi.accountObject.name')}</td>
             </tr>
             <tr>
               <td><code className="field-name">phone</code></td>
               <td>String</td>
-              <td>연락처</td>
+              <td>{t('accountApi.accountObject.phone')}</td>
             </tr>
             <tr>
               <td><code className="field-name">last_logged_at</code></td>
               <td>datetime</td>
-              <td>마지막 로그인 시각</td>
+              <td>{t('accountApi.accountObject.lastLoggedAt')}</td>
             </tr>
             <tr>
               <td><code className="field-name">created_at</code></td>
               <td>datetime</td>
-              <td>계정 생성일</td>
+              <td>{t('accountApi.accountObject.createdAt')}</td>
             </tr>
             <tr>
               <td><code className="field-name">data</code></td>
               <td>Json</td>
-              <td>회원가입 시 추가로 저장하는 정보 (예: 프로필 이미지 등)</td>
+              <td>{t('accountApi.accountObject.data')}</td>
             </tr>
           </tbody>
         </table>
@@ -243,7 +245,7 @@ function AccountApiDocs() {
 
       {/* 엔드포인트 탭 */}
       <div className="card">
-        <div className="card-title"><i data-lucide="rocket" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>API 엔드포인트</div>
+        <div className="card-title"><i data-lucide="rocket" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>{t('accountApi.endpoints.title')}</div>
         
         <div className="endpoint-tabs">
           {Object.entries(endpoints).map(([key, endpoint]) => (
@@ -268,13 +270,13 @@ function AccountApiDocs() {
           {/* 파라미터 표 */}
           {currentEndpoint.parameters.length > 0 && (
             <div className="request-section">
-              <h4>Request Parameters</h4>
+              <h4>{t('accountApi.parameters.title')}</h4>
               <table className="api-table">
                 <thead>
                   <tr>
                     <th>필드명</th>
                     <th>타입</th>
-                    <th>필수</th>
+                    <th>{t('accountApi.parameters.required')}</th>
                     <th>설명</th>
                   </tr>
                 </thead>
@@ -299,7 +301,7 @@ function AccountApiDocs() {
           {/* 요청 예시 */}
           {currentEndpoint.requestBody && (
             <div className="request-section">
-              <h4>Request Body</h4>
+              <h4>{t('accountApi.request.body')}</h4>
               <CodeBlock 
                 code={JSON.stringify(currentEndpoint.requestBody, null, 2)}
                 codeId={`${activeEndpoint}-request`}
@@ -309,7 +311,7 @@ function AccountApiDocs() {
 
           {/* 응답 예시 */}
           <div className="response-section">
-            <h4>Response</h4>
+            <h4>{t('accountApi.response.title')}</h4>
             <div className="status-badge success">200 OK</div>
             <CodeBlock 
               code={JSON.stringify(currentEndpoint.responseBody, null, 2)}
@@ -320,7 +322,7 @@ function AccountApiDocs() {
           {/* 특별 케이스: 로그인 API의 Set-Cookie */}
           {activeEndpoint === 'login' && (
             <div className="api-example">
-              <h4>Set-Cookie (옵션)</h4>
+              <h4>{t('accountApi.setCookie.title')}</h4>
               <CodeBlock 
                 code="access_token=<token>; HttpOnly; Path=/; Max-Age=86400"
                 codeId="login-cookie"
@@ -331,7 +333,7 @@ function AccountApiDocs() {
           {/* 특별 케이스: 내 정보 조회의 RequestHeader */}
           {activeEndpoint === 'info' && (
             <div className="request-section">
-              <h4>Request Header</h4>
+              <h4>{t('accountApi.request.header')}</h4>
               <table className="api-table">
                 <thead>
                   <tr>
@@ -353,11 +355,11 @@ function AccountApiDocs() {
 
       {/* 에러 응답 */}
       <div className="card">
-        <div className="card-title"><i data-lucide="alert-triangle" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>에러 응답</div>
-        <p>API 호출 시 발생할 수 있는 에러 응답 형식입니다.</p>
+        <div className="card-title"><i data-lucide="alert-triangle" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>{t('accountApi.error.title')}</div>
+        <p>{t('accountApi.error.description')}</p>
         
         <div className="api-example">
-          <h4>422 Unprocessable Entity</h4>
+          <h4>{t('accountApi.error.unprocessable')}</h4>
           <div className="status-badge error">422 Error</div>
           <CodeBlock 
             code={JSON.stringify({
@@ -378,10 +380,10 @@ function AccountApiDocs() {
 
       {/* 코드 예제 */}
       <div className="card">
-        <div className="card-title"><i data-lucide="code" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>코드 예제</div>
+        <div className="card-title"><i data-lucide="code" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>{t('accountApi.codeExample.title')}</div>
         
         <div className="code-example">
-          <h4><i data-lucide="code" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>JavaScript 예제</h4>
+          <h4><i data-lucide="code" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>{t('accountApi.codeExample.javascript')}</h4>
           <CodeBlock 
             code={`// 회원가입
 const signupResponse = await fetch('https://api.aiapp.link/account/signup', {
@@ -431,7 +433,7 @@ console.log('내 정보:', infoData);`}
         </div>
 
         <div className="code-example">
-          <h4><i data-lucide="code" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>Python 예제</h4>
+          <h4><i data-lucide="code" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>{t('accountApi.codeExample.python')}</h4>
           <CodeBlock 
             code={`import requests
 import json
@@ -480,22 +482,22 @@ print('내 정보:', info_response.json())`}
 
       {/* 모범 사례 */}
       <div className="card">
-        <div className="card-title"><i data-lucide="lightbulb" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>모범 사례</div>
+        <div className="card-title"><i data-lucide="lightbulb" style={{display: 'inline', marginRight: '8px', width: '20px', height: '20px'}}></i>{t('accountApi.bestPractices.title')}</div>
         
         <div className="best-practices-content">
           <div className="practice-item">
-            <h4><i data-lucide="shield" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>보안</h4>
-            <p>API 키와 토큰은 환경 변수에 저장하고, HTTPS를 사용하여 통신하세요.</p>
+            <h4><i data-lucide="shield" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>{t('accountApi.bestPractices.security.title')}</h4>
+            <p>{t('accountApi.bestPractices.security.description')}</p>
           </div>
           
           <div className="practice-item">
-            <h4><i data-lucide="zap" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>성능</h4>
-            <p>불필요한 API 호출을 줄이고, 토큰 만료 시간을 고려하여 재인증 로직을 구현하세요.</p>
+            <h4><i data-lucide="zap" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>{t('accountApi.bestPractices.performance.title')}</h4>
+            <p>{t('accountApi.bestPractices.performance.description')}</p>
           </div>
           
           <div className="practice-item">
-            <h4><i data-lucide="alert-triangle" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>오류 처리</h4>
-            <p>모든 API 응답에 대한 에러 처리를 구현하고, 사용자에게 적절한 피드백을 제공하세요.</p>
+            <h4><i data-lucide="alert-triangle" style={{display: 'inline', marginRight: '6px', width: '16px', height: '16px'}}></i>{t('accountApi.bestPractices.errorHandling.title')}</h4>
+            <p>{t('accountApi.bestPractices.errorHandling.description')}</p>
           </div>
         </div>
       </div>

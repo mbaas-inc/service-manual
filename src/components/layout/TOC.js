@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function TOC({ activeSection, onSetActive, pageType = 'user-guide' }) {
+  const { t } = useTranslation();
   const [tocItems, setTocItems] = useState([]);
   const [currentActive, setCurrentActive] = useState('');
 
@@ -184,7 +186,7 @@ function TOC({ activeSection, onSetActive, pageType = 'user-guide' }) {
   return (
     <aside className="toc">
       <div className="toc-title">
-        {pageType === 'developer' || pageType === 'api' ? 'API 문서 목차' : '이 페이지의 목차'}
+        {pageType === 'developer' || pageType === 'api' ? t('toc.apiDocTitle') : t('toc.pageTitle')}
       </div>
       <ul className="toc-list">
         {tocItems.map((item) => (

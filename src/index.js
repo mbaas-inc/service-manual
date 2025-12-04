@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './i18n'; // i18n 초기화
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// 로딩 컴포넌트
+const LoadingFallback = () => (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    fontSize: '16px',
+    color: '#666'
+  }}>
+    Loading...
+  </div>
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<LoadingFallback />}>
+      <App />
+    </Suspense>
   </React.StrictMode>
 );
 

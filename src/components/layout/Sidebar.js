@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive }) {
+  const { t } = useTranslation();
   
   // 현재 섹션의 카테고리 파악
   const getCurrentCategory = () => {
@@ -51,66 +53,66 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
       return [
         {
           key: 'getting-started',
-          title: '시작하기',
+          title: t('sidebar.gettingStarted.title'),
           items: [
-            { id: 'quick-start', label: '빠른 시작 가이드' },
-            { id: 'account-setup', label: '계정 생성하기' },
-            { id: 'dashboard-overview', label: '대시보드 둘러보기' }
+            { id: 'quick-start', label: t('sidebar.gettingStarted.quickStart') },
+            { id: 'account-setup', label: t('sidebar.gettingStarted.accountSetup') },
+            { id: 'dashboard-overview', label: t('sidebar.gettingStarted.dashboardOverview') }
           ]
         },
         {
           key: 'authentication',
-          title: '인증 관리',
+          title: t('sidebar.authentication.title'),
           items: [
-            { id: 'auth-login', label: '로그인 설정' },
-            { id: 'auth-join', label: '회원가입 설정' },
-            { id: 'auth-log', label: '접속 로그' }
+            { id: 'auth-login', label: t('sidebar.authentication.authLogin') },
+            { id: 'auth-join', label: t('sidebar.authentication.authJoin') },
+            { id: 'auth-log', label: t('sidebar.authentication.authLog') }
           ]
         },
         {
           key: 'member-management',
-          title: '고객 관리',
+          title: t('sidebar.memberManagement.title'),
           items: [
-            { id: 'member-list', label: '고객 정보 관리' },
-            { id: 'member-permissions', label: '고객 권한 설정하기' },
+            { id: 'member-list', label: t('sidebar.memberManagement.memberList') },
+            { id: 'member-permissions', label: t('sidebar.memberManagement.memberPermissions') },
           ]
         },
         {
           key: 'payment',
-          title: '결제 관리',
+          title: t('sidebar.payment.title'),
           items: [
-            { id: 'payment-setup', label: 'PG 결제 설정' },
-            { id: 'payment-history', label: '결제 내역 조회' },
+            { id: 'payment-setup', label: t('sidebar.payment.paymentSetup') },
+            { id: 'payment-history', label: t('sidebar.payment.paymentHistory') },
             // { id: 'refund-management', label: '환불 처리하기' },
           ]
         },
         {
           key: 'board',
-          title: '게시판 관리',
+          title: t('sidebar.board.title'),
           items: [
-            { id: 'board-management', label: '게시판 만들기' },
-            { id: 'post-management', label: '게시글 관리하기' },
-            { id: 'comment-moderation', label: '댓글 관리하기' }
+            { id: 'board-management', label: t('sidebar.board.boardManagement') },
+            { id: 'post-management', label: t('sidebar.board.postManagement') },
+            { id: 'comment-moderation', label: t('sidebar.board.commentModeration') }
           ]
         },
         {
           key: 'messaging',
-          title: '메시지 관리',
+          title: t('sidebar.messaging.title'),
           items: [
-            { id: 'message-group', label: '발송대상 목록 관리' },
-            { id: 'send-sms', label: 'SMS/MMS 발송하기' },
-            { id: 'send-talk', label: '알림톡 발송하기' },
-            { id: 'message-templates', label: '메시지 템플릿 만들기' },
-            { id: 'message-history', label: '발송 이력 확인' }
+            { id: 'message-group', label: t('sidebar.messaging.messageGroup') },
+            { id: 'send-sms', label: t('sidebar.messaging.sendSms') },
+            { id: 'send-talk', label: t('sidebar.messaging.sendTalk') },
+            { id: 'message-templates', label: t('sidebar.messaging.messageTemplates') },
+            { id: 'message-history', label: t('sidebar.messaging.messageHistory') }
           ]
         },
         {
           key: 'push',
-          title: '푸시 관리',
+          title: t('sidebar.push.title'),
           items: [
-            { id: 'push-key', label: 'Firebase key 업로드' },
-            { id: 'push-device', label: '디바이스 목록' },
-            { id: 'push-topic', label: '토픽 관리' }
+            { id: 'push-key', label: t('sidebar.push.pushKey') },
+            { id: 'push-device', label: t('sidebar.push.pushDevice') },
+            { id: 'push-topic', label: t('sidebar.push.pushTopic') }
           ]
         },
         // {
@@ -130,9 +132,9 @@ function Sidebar({ isOpen, sections, activeSection, onToggleSection, onSetActive
       return [
         {
           key: 'api-docs',
-          title: 'API 문서',
+          title: t('sidebar.apiDocs.title'),
           items: [
-            { id: 'api-account', label: 'Account API' }
+            { id: 'api-account', label: t('sidebar.apiDocs.accountApi') }
           ]
         },
         // {
