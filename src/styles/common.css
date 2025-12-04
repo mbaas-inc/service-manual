@@ -1301,6 +1301,10 @@ code {
 
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
+  .content-area {
+    max-width: calc(100vw - 200px);
+  }
+
   .toc {
     display: none;
   }

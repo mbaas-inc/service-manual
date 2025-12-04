@@ -18,9 +18,9 @@ import { pageMapping, getDefaultPage } from './utils/pageMapping';
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('quick-start');
+  const [activeSection, setActiveSection] = useState('api-account');
   const [sidebarSections, setSidebarSections] = useState({
-    'getting-started': true, // 시작하기는 기본적으로 열림
+    'getting-started': false, // 시작하기는 기본적으로 열림
     'member-management': false,
     'messaging': false,
     'payment': false,
@@ -28,7 +28,7 @@ function App() {
     'push': false,
     'analytics': false,
     'settings': false,
-    'api-docs': false,
+    'api-docs': true, // 개발자 문서 API가 기본적으로 열림
     'developer': false,
     'help': false
   });

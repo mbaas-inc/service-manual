@@ -2,10 +2,10 @@ import React from 'react';
 
 function Header({ onToggleSidebar, onToggleMobileMenu, onCategoryNavigation, currentCategory, isMobileMenuOpen }) {
   
-  // 🔥 현재 카테고리 정보를 props에서 받아서 사용
+  // 현재 카테고리 정보를 props에서 받아서 사용
   const currentActiveNav = currentCategory || 'user-guide';
 
-  // 🔥 네비게이션 메뉴 클릭 핸들러 (카테고리 네비게이션 함수 사용)
+  // 네비게이션 메뉴 클릭 핸들러 (카테고리 네비게이션 함수 사용)
   const handleNavClick = (navType, e) => {
     e.preventDefault(); // 기본 링크 동작 방지
     
@@ -13,14 +13,14 @@ function Header({ onToggleSidebar, onToggleMobileMenu, onCategoryNavigation, cur
     onCategoryNavigation(navType);
   };
 
-  // 🔥 모바일 메뉴 클릭 핸들러
+  // 모바일 메뉴 클릭 핸들러
   const handleMobileMenuClick = () => {
     onToggleMobileMenu();
   };
 
   return (
     <header className="header">
-      <div className="logo">AiApp 서비스 매뉴얼</div>
+      <div className="logo">AiApp 문서</div>
       
       {/* 모바일 햄버거 메뉴 버튼 */}
       <button 
@@ -36,6 +36,7 @@ function Header({ onToggleSidebar, onToggleMobileMenu, onCategoryNavigation, cur
       {/* 데스크톱 네비게이션 메뉴 */}
       <nav className="desktop-nav">
         <ul className="nav-menu">
+          {/* 사용자 가이드 임시 주석처리
           <li className="nav-item">
             <a 
               href="#user-guide"
@@ -45,6 +46,7 @@ function Header({ onToggleSidebar, onToggleMobileMenu, onCategoryNavigation, cur
               사용자 가이드
             </a>
           </li>
+          */}
           <li className="nav-item">
             <a 
               href="#developer"
